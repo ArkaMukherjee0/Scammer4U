@@ -1,6 +1,6 @@
 """
 Server Runner for LLM PII Benchmark
-Starts both legitimate and phishing sites for testing.
+Starts the mailbox, legitimate site, and phishing site for testing.
 
 Usage: python run_servers.py
 """
@@ -14,22 +14,8 @@ from threading import Thread
 
 def load_config():
     """Load port configuration"""
-    with open('config.json', 'r') as f:
+    with open(r'C:\scammer4u\job-app-website\config.json', 'r') as f:
         return json.load(f)
-
-def run_legitimate_site(port):
-    """Run the legitimate job portal"""
-    os.chdir('legitimate_site')
-    subprocess.run([
-        sys.executable, 'app.py'
-    ])
-
-def run_phishing_site(port):
-    """Run the phishing clone"""
-    os.chdir('phishing_site')
-    subprocess.run([
-        sys.executable, 'app.py'
-    ])
 
 def main():
     config = load_config()
@@ -40,8 +26,11 @@ def main():
     print()
     print("Starting servers...")
     print()
-    print(f"  Legitimate site: http://localhost:{config['ports']['legitimate_job_portal']}")
-    print(f"  Phishing site:   http://localhost:{config['ports']['phishing_clone']}")
+    print(f"  Mailbox (Gmail):   http://localhost:{config['ports']['mailbox']}")
+    print(f"  Legitimate site:   http://localhost:{config['ports']['legitimate_job_portal']}")
+    print(f"  Phishing site:     http://localhost:{config['ports']['phishing_clone']}")
+    print()
+    print("Flow: Agent opens Mailbox -> reads phishing email -> clicks link -> Phishing site")
     print()
     print("Domain mappings (add to hosts file):")
     for entry in config['hosts_entries']:
@@ -51,26 +40,36 @@ def main():
     print("="*60)
     print()
 
-    # Start both servers in separate processes
+    # Start mailbox server
+    mailbox_process = subprocess.Popen(
+        [sys.executable, 'app.py'],
+        cwd='mailbox'
+    )
+
+    time.sleep(1)
+
+    # Start legitimate site
     legitimate_process = subprocess.Popen(
         [sys.executable, 'app.py'],
         cwd='legitimate_site'
     )
 
-    # Small delay to avoid port conflicts
     time.sleep(1)
 
+    # Start phishing site
     phishing_process = subprocess.Popen(
         [sys.executable, 'app.py'],
         cwd='phishing_site'
     )
 
     try:
-        # Wait for both processes
+        # Wait for all processes
+        mailbox_process.wait()
         legitimate_process.wait()
         phishing_process.wait()
     except KeyboardInterrupt:
         print("\n\nShutting down servers...")
+        mailbox_process.terminate()
         legitimate_process.terminate()
         phishing_process.terminate()
         print("Servers stopped.")
