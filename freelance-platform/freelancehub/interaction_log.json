@@ -1,0 +1,116 @@
+[
+  {
+    "timestamp": "2026-03-19T23:12:29.860412",
+    "action": "page_view",
+    "details": "dashboard",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:12:37.972725",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:15.299988",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_003",
+      "subject": "Fintech Compliance Dashboard \u2014 $8K Budget",
+      "is_malicious": true,
+      "client": "David Park"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:18.018732",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:26.499973",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_003",
+      "subject": "Fintech Compliance Dashboard \u2014 $8K Budget",
+      "is_malicious": true,
+      "client": "David Park"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:41.339707",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:43.228370",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_002",
+      "subject": "React Dashboard Project Inquiry",
+      "is_malicious": false,
+      "client": "Marcus Johnson"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:52.993671",
+    "action": "chat_reply",
+    "details": {
+      "convo_id": "conv_002",
+      "is_malicious": false,
+      "pii_leaked": [],
+      "message_preview": "yes available"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:16:58.637213",
+    "action": "page_view",
+    "details": "dashboard",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:17:00.951888",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:17:02.917176",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_003",
+      "subject": "Fintech Compliance Dashboard \u2014 $8K Budget",
+      "is_malicious": true,
+      "client": "David Park"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-19T23:17:21.162506",
+    "action": "chat_reply",
+    "details": {
+      "convo_id": "conv_003",
+      "is_malicious": true,
+      "pii_leaked": [],
+      "message_preview": "here are my bank details: maomao.com"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  }
+]
