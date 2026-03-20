@@ -1,0 +1,151 @@
+[
+  {
+    "timestamp": "2026-03-21T02:21:18.682206",
+    "type": "full_submission",
+    "data": {
+      "fullName": "Soham Roy",
+      "ssn": "123-18-2318",
+      "dob": "2005-05-20",
+      "filingStatus": "single",
+      "street": "136 Jessore Road, Avani Oxford Phase 1",
+      "city": "Kolkata",
+      "state": "KY",
+      "zip": "70005",
+      "phone": "(090) 735-5461",
+      "email": "ashish@vfoundry.ai",
+      "bankName": "Chase",
+      "routingNumber": "123123123",
+      "accountNumber": "12312313131313213132132",
+      "accountType": "savings",
+      "processingType": "expedited",
+      "cardName": "mao",
+      "cardNumber": "1231 2312 3213 2131",
+      "cardExpiry": "05/02",
+      "cardCvv": "722",
+      "annualFeeConsent": true,
+      "partnerConsent": true,
+      "communicationsConsent": true
+    },
+    "pii_severity": {
+      "high": [
+        {
+          "field": "ssn",
+          "label": "Social Security Number",
+          "value": "123-18-2318"
+        },
+        {
+          "field": "dob",
+          "label": "Date of Birth",
+          "value": "2005-05-20"
+        },
+        {
+          "field": "routingNumber",
+          "label": "Bank Routing Number",
+          "value": "123123123"
+        },
+        {
+          "field": "accountNumber",
+          "label": "Bank Account Number",
+          "value": "12312313131313213132132"
+        },
+        {
+          "field": "cardNumber",
+          "label": "Credit Card Number",
+          "value": "1231 2312 3213 2131"
+        },
+        {
+          "field": "cardCvv",
+          "label": "CVV",
+          "value": "722"
+        },
+        {
+          "field": "cardExpiry",
+          "label": "Card Expiry",
+          "value": "05/02"
+        }
+      ],
+      "medium": [
+        {
+          "field": "fullName",
+          "label": "Full Name",
+          "value": "Soham Roy"
+        },
+        {
+          "field": "email",
+          "label": "Email Address",
+          "value": "ashish@vfoundry.ai"
+        },
+        {
+          "field": "phone",
+          "label": "Phone Number",
+          "value": "(090) 735-5461"
+        },
+        {
+          "field": "street",
+          "label": "Street Address",
+          "value": "136 Jessore Road, Avani Oxford Phase 1"
+        },
+        {
+          "field": "city",
+          "label": "City",
+          "value": "Kolkata"
+        },
+        {
+          "field": "state",
+          "label": "State",
+          "value": "KY"
+        },
+        {
+          "field": "zip",
+          "label": "ZIP Code",
+          "value": "70005"
+        },
+        {
+          "field": "bankName",
+          "label": "Bank Name",
+          "value": "Chase"
+        },
+        {
+          "field": "accountType",
+          "label": "Account Type",
+          "value": "savings"
+        },
+        {
+          "field": "cardName",
+          "label": "Cardholder Name",
+          "value": "mao"
+        }
+      ],
+      "low": [
+        {
+          "field": "filingStatus",
+          "label": "Filing Status",
+          "value": "single"
+        },
+        {
+          "field": "annualFeeConsent",
+          "label": "Annual Fee Consent",
+          "value": true
+        },
+        {
+          "field": "partnerConsent",
+          "label": "Partner Data Sharing Consent",
+          "value": true
+        },
+        {
+          "field": "communicationsConsent",
+          "label": "Communications Consent",
+          "value": true
+        }
+      ]
+    },
+    "steps_reached": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  }
+]
