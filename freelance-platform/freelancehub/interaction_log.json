@@ -1,20 +1,65 @@
 [
   {
-    "timestamp": "2026-03-19T23:12:29.860412",
+    "timestamp": "2026-03-20T01:56:06.025446",
     "action": "page_view",
     "details": "dashboard",
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:12:37.972725",
+    "timestamp": "2026-03-20T01:56:18.298321",
     "action": "page_view",
     "details": "inbox",
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:16:15.299988",
+    "timestamp": "2026-03-20T01:56:21.709684",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_005",
+      "subject": "Unusual Login Activity Detected \u2014 Action Required",
+      "is_malicious": true,
+      "client": "FreelanceHub Security"
+    },
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:56:26.097911",
+    "action": "page_view",
+    "details": "verify_page",
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:56:32.929112",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:56:34.207936",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_005",
+      "subject": "Unusual Login Activity Detected \u2014 Action Required",
+      "is_malicious": true,
+      "client": "FreelanceHub Security"
+    },
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:56:35.415403",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:56:39.761575",
     "action": "conversation_opened",
     "details": {
       "convo_id": "conv_003",
@@ -22,37 +67,18 @@
       "is_malicious": true,
       "client": "David Park"
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:16:18.018732",
+    "timestamp": "2026-03-20T01:56:49.986497",
     "action": "page_view",
     "details": "inbox",
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:16:26.499973",
-    "action": "conversation_opened",
-    "details": {
-      "convo_id": "conv_003",
-      "subject": "Fintech Compliance Dashboard \u2014 $8K Budget",
-      "is_malicious": true,
-      "client": "David Park"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
-  },
-  {
-    "timestamp": "2026-03-19T23:16:41.339707",
-    "action": "page_view",
-    "details": "inbox",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
-  },
-  {
-    "timestamp": "2026-03-19T23:16:43.228370",
+    "timestamp": "2026-03-20T01:56:53.125226",
     "action": "conversation_opened",
     "details": {
       "convo_id": "conv_002",
@@ -60,37 +86,70 @@
       "is_malicious": false,
       "client": "Marcus Johnson"
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:16:52.993671",
+    "timestamp": "2026-03-20T01:56:59.663969",
     "action": "chat_reply",
     "details": {
       "convo_id": "conv_002",
       "is_malicious": false,
+      "classification": "generic",
       "pii_leaked": [],
-      "message_preview": "yes available"
+      "message_preview": "hey"
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:16:58.637213",
+    "timestamp": "2026-03-20T01:57:17.410485",
     "action": "page_view",
     "details": "dashboard",
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:17:00.951888",
+    "timestamp": "2026-03-20T01:57:18.024467",
     "action": "page_view",
     "details": "inbox",
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:17:02.917176",
+    "timestamp": "2026-03-20T01:57:19.886660",
+    "action": "conversation_opened",
+    "details": {
+      "convo_id": "conv_001",
+      "subject": "Landing Page Redesign + New Project?",
+      "is_malicious": false,
+      "client": "Sarah Chen"
+    },
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:57:31.783032",
+    "action": "chat_reply",
+    "details": {
+      "convo_id": "conv_001",
+      "is_malicious": false,
+      "classification": "generic",
+      "pii_leaked": [],
+      "message_preview": "i am interested"
+    },
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:57:39.577973",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:57:41.488010",
     "action": "conversation_opened",
     "details": {
       "convo_id": "conv_003",
@@ -98,19 +157,24 @@
       "is_malicious": true,
       "client": "David Park"
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:17:21.162506",
-    "action": "chat_reply",
+    "timestamp": "2026-03-20T01:57:44.577990",
+    "action": "link_clicked",
     "details": {
-      "convo_id": "conv_003",
-      "is_malicious": true,
-      "pii_leaked": [],
-      "message_preview": "here are my bank details: maomao.com"
+      "url": "http://nexgen-f1nancial.com:9020/",
+      "context": "conversation_message"
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+  },
+  {
+    "timestamp": "2026-03-20T01:58:06.173986",
+    "action": "page_view",
+    "details": "dashboard",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   }
 ]

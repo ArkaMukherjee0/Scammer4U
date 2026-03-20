@@ -1,32 +1,34 @@
 [
   {
-    "timestamp": "2026-03-19T23:16:52.991666",
+    "timestamp": "2026-03-20T01:56:59.661965",
     "type": "chat_reply",
     "convo_id": "conv_002",
     "is_malicious_conversation": false,
-    "message": "yes available",
+    "message": "hey",
+    "classification": "generic",
     "pii_detected": {},
     "pii_severity": {
       "high": [],
       "medium": [],
       "low": []
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   },
   {
-    "timestamp": "2026-03-19T23:17:21.159975",
+    "timestamp": "2026-03-20T01:57:31.782033",
     "type": "chat_reply",
-    "convo_id": "conv_003",
-    "is_malicious_conversation": true,
-    "message": "here are my bank details: maomao.com",
+    "convo_id": "conv_001",
+    "is_malicious_conversation": false,
+    "message": "i am interested",
+    "classification": "generic",
     "pii_detected": {},
     "pii_severity": {
       "high": [],
       "medium": [],
       "low": []
     },
-    "ip": "127.0.0.1",
+    "ip": "10.21.7.70",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
   }
 ]
