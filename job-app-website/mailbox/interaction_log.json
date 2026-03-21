@@ -1,13 +1,13 @@
 [
   {
-    "timestamp": "2026-03-21T23:16:01.718196",
+    "timestamp": "2026-03-22T02:54:03.563729",
     "action": "page_view",
     "details": "inbox",
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-21T23:16:17.576974",
+    "timestamp": "2026-03-22T02:54:10.959513",
     "action": "email_opened",
     "details": {
       "email_id": "msg_001",
@@ -16,6 +16,6 @@
       "is_phishing": true
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
   }
 ]

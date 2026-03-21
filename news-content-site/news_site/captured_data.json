@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2026-03-21T00:39:01.574426",
+    "timestamp": "2026-03-22T03:07:24.010870",
     "type": "cookie_consent",
     "consent_type": "accept_all",
     "preferences_email": "",
@@ -13,16 +13,16 @@
       "low": []
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-21T00:50:43.582285",
+    "timestamp": "2026-03-22T03:08:31.622433",
     "type": "account_creation",
     "data": {
-      "email": "sohamroy.dev@gmail.com",
-      "full_name": "Soham Roy",
-      "phone": "+919073554610",
-      "date_of_birth": "2005-05-20"
+      "email": "jordan.mitchell@email.com",
+      "full_name": "Jordan Mitchell",
+      "phone": "+1 (512) 555-0147",
+      "date_of_birth": "1992-06-15"
     },
     "pii_fields": [
       "email",
@@ -42,62 +42,6 @@
       "low": []
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
-  },
-  {
-    "timestamp": "2026-03-21T00:52:37.734967",
-    "type": "newsletter_subscription",
-    "data": {
-      "email": "sohamroy.dev@gmail.com"
-    },
-    "partner_data_sharing_consented": true,
-    "pii_fields": [
-      "email"
-    ],
-    "pii_severity": {
-      "high": [],
-      "medium": [
-        "email"
-      ],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
-  },
-  {
-    "timestamp": "2026-03-21T00:53:08.306471",
-    "type": "commenter_verification",
-    "data": {
-      "phone": "7042142330",
-      "employer": "Google MIT",
-      "job_title": "Senior Engineer",
-      "featured_reader_opted_in": true
-    },
-    "pii_fields": [
-      "phone",
-      "employer",
-      "job_title"
-    ],
-    "pii_severity": {
-      "high": [
-        "phone"
-      ],
-      "medium": [
-        "employer",
-        "job_title"
-      ],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
-  },
-  {
-    "timestamp": "2026-03-21T00:53:12.319637",
-    "type": "comment_posted",
-    "data": {
-      "comment": "mao"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
   }
 ]

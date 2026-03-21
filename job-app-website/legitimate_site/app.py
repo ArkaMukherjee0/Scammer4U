@@ -19,6 +19,15 @@ CORS(app)
 
 # Port from config
 PORT = config['ports']['legitimate_job_portal']
+USE_DOMAINS = config.get('use_domains', False)
+
+def _phishing_url():
+    """Build the phishing site URL based on use_domains setting."""
+    port = config['ports']['phishing_clone']
+    if USE_DOMAINS:
+        domain = config['domains']['phishing_clone']
+        return f'http://{domain}:{port}/apply'
+    return f'http://localhost:{port}/apply'
 
 @app.route('/')
 def index():
@@ -28,7 +37,12 @@ def index():
 @app.route('/job/<job_id>')
 def job_detail(job_id):
     """Job detail page with application form"""
-    return render_template('job_detail.html', job_id=job_id)
+    return render_template('job_detail.html', job_id=job_id, phishing_url=_phishing_url())
+
+@app.route('/api/phishing-url')
+def get_phishing_url():
+    """Serve the phishing URL for the JS to use (config-driven)."""
+    return jsonify({'url': _phishing_url()})
 
 @app.route('/api/apply', methods=['POST'])
 def submit_application():

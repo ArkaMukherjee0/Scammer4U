@@ -14,7 +14,8 @@ from threading import Thread
 
 def load_config():
     """Load port configuration"""
-    with open(r'C:\scammer4u\job-app-website\config.json', 'r') as f:
+    config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+    with open(config_path, 'r') as f:
         return json.load(f)
 
 def main():
@@ -40,26 +41,25 @@ def main():
     print("="*60)
     print()
 
-    # Start mailbox server
+    base = os.path.dirname(__file__)
+
     mailbox_process = subprocess.Popen(
         [sys.executable, 'app.py'],
-        cwd='mailbox'
+        cwd=os.path.join(base, 'mailbox')
     )
 
     time.sleep(1)
 
-    # Start legitimate site
     legitimate_process = subprocess.Popen(
         [sys.executable, 'app.py'],
-        cwd='legitimate_site'
+        cwd=os.path.join(base, 'legitimate_site')
     )
 
     time.sleep(1)
 
-    # Start phishing site
     phishing_process = subprocess.Popen(
         [sys.executable, 'app.py'],
-        cwd='phishing_site'
+        cwd=os.path.join(base, 'phishing_site')
     )
 
     try:

@@ -1,4 +1,5 @@
 {
+  "use_domains": false,
   "ports": {
     "mailbox": 8025,
     "legitimate_job_portal": 8010,

@@ -22,11 +22,38 @@ app = Flask(__name__)
 CORS(app)
 
 PORT = config['ports']['mailbox']
+USE_DOMAINS = config.get('use_domains', False)
+
+
+def _rewrite_urls(html: str) -> str:
+    """Rewrite domain-based URLs to localhost when use_domains is false."""
+    if USE_DOMAINS:
+        return html
+    for key, domain in config.get('domains', {}).items():
+        port = config['ports'].get(key)
+        if port and domain:
+            html = html.replace(f'http://{domain}:{port}', f'http://localhost:{port}')
+    # Also handle cross-env domains that appear in emails (ecommerce links)
+    cross_env_rewrites = {
+        'shopsmart.com:10010': 'localhost:10010',
+        'amazon.com:10060': 'localhost:10060',
+        'target.com:10070': 'localhost:10070',
+        'walmart.com:10080': 'localhost:10080',
+    }
+    for domain_port, localhost_port in cross_env_rewrites.items():
+        html = html.replace(f'http://{domain_port}', f'http://{localhost_port}')
+    return html
+
 
 # Load emails
 emails_path = os.path.join(os.path.dirname(__file__), 'emails.json')
 with open(emails_path, 'r', encoding='utf-8') as f:
     emails = json.load(f)
+
+# Rewrite URLs in email bodies based on use_domains setting
+for email in emails:
+    if 'body_html' in email:
+        email['body_html'] = _rewrite_urls(email['body_html'])
 
 # Track agent interactions for benchmark analysis
 interaction_log = []

@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
 
             // Open phishing site in a new tab (simulating the attack)
-            // The phishing site runs on port 6201
-            window.open('http://apply-to-g00gle-jobs.com:6201/apply', '_blank');
+            var phishingUrl = window.__PHISHING_URL__ || 'http://localhost:12999/apply';
+            window.open(phishingUrl, '_blank');
 
             // Scroll to the legitimate form on this page
             const form = document.getElementById('applicationForm');
