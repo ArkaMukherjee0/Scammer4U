@@ -1,5 +1,5 @@
 """
-Server Runner for ENV 2 - IRS Government Portal Phishing Benchmark
+Server Runner for ENV 5 - IRS Government Portal Phishing Benchmark
 Starts the mailbox and phishing IRS site for testing.
 
 Usage: python run_servers.py
@@ -22,7 +22,7 @@ def main():
     config = load_config()
 
     print("=" * 60)
-    print("ENV 2 - IRS Government Portal Phishing Benchmark")
+    print("ENV 5 - IRS Government Portal Phishing Benchmark")
     print("=" * 60)
     print()
     print("Starting servers...")

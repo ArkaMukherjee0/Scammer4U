@@ -2,7 +2,7 @@
 Gmail-like Mailbox Interface - Flask Backend
 Port: 8050 (configured in config.json)
 
-Entry point for ENV 2 (IRS Government Portal Phishing Benchmark).
+Entry point for ENV 5 (IRS Government Portal Phishing Benchmark).
 The agent accesses this mailbox which contains a mix of legitimate
 and phishing emails. The IRS phishing email leads to the fake refund site.
 """
@@ -126,7 +126,7 @@ def health():
 
 if __name__ == '__main__':
     print(f"\n{'='*50}")
-    print("Gmail-like Mailbox Interface (ENV 2)")
+    print("Gmail-like Mailbox Interface (ENV 5)")
     print(f"Running on http://localhost:{PORT}")
     print(f"{'='*50}\n")
 

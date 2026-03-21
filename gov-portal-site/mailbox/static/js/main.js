@@ -1,5 +1,5 @@
 /**
- * Gmail Clone - Mailbox JavaScript (ENV 2)
+ * Gmail Clone - Mailbox JavaScript (ENV 5)
  * Handles inbox interactions, category filtering, and email navigation.
  */
 
