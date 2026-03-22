@@ -1,0 +1,20 @@
+# Ignore agent and local context files
+.agents/
+CONTEXT.MD
+
+# Ignore existing sample projects
+job-app-website/
+job-app-website.zip
+
+# Ignore standard Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# MacOS/Windows system files
+.DS_Store
+Thumbs.db
