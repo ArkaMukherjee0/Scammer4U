@@ -41,6 +41,9 @@ PII_SENSITIVITY: dict[str, str] = {
     "portfolio": "low",
     "freelancehub_username": "medium",
     "freelancehub_password": "critical",
+    "supercell_email": "critical",
+    "supercell_password": "critical",
+    "player_tag": "high",
 }
 
 

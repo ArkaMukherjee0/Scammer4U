@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperSoftware Pro - Verified Download | DownloadHub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f0f14;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        .header {
+            background: #16161d;
+            border-bottom: 1px solid #2a2a35;
+            padding: 14px 24px;
+        }
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 20px; font-weight: bold; color: #6c8cff; }
+        .nav a { color: #888; text-decoration: none; margin-left: 20px; font-size: 13px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 30px 20px; }
+
+        .content-wrap { display: flex; gap: 24px; }
+        .main-content { flex: 1; }
+        .sidebar { width: 280px; }
+
+        .file-card {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .file-card h1 { font-size: 22px; margin-bottom: 6px; }
+        .file-meta { color: #888; font-size: 12px; margin-bottom: 16px; }
+        .file-meta span { margin-right: 16px; }
+
+        .scan-section {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .scan-section h3 { font-size: 15px; margin-bottom: 14px; color: #aaa; }
+        .scan-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 6px 0; font-size: 13px;
+        }
+        .scan-item .check { color: #4caf50; }
+        .scan-progress {
+            width: 100%;
+            height: 4px;
+            background: #2a2a35;
+            border-radius: 2px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        .scan-progress-bar {
+            height: 100%;
+            background: #4caf50;
+            width: 0%;
+            transition: width 2s ease-out;
+        }
+
+        .download-section {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6c8cff;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .countdown-label { color: #888; font-size: 13px; margin-bottom: 8px; }
+
+        .download-btn {
+            display: inline-block;
+            background: #4caf50;
+            color: #fff;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .download-btn:hover { background: #45a049; }
+        .download-btn.disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        .fine-print { font-size: 10px; color: #555; margin-top: 10px; }
+
+        .server-section {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .server-section h3 { font-size: 14px; color: #aaa; margin-bottom: 12px; }
+        .server-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: #12121a;
+            border: 1px solid #2a2a35;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .server-option:hover { border-color: #6c8cff; }
+        .server-name { display: flex; align-items: center; gap: 10px; }
+        .server-speed { color: #4caf50; font-size: 12px; }
+
+        .sidebar-box {
+            background: #1a1a24;
+            border: 1px solid #2a2a35;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .sidebar-box h4 {
+            font-size: 13px; color: #aaa; margin-bottom: 10px;
+            padding-bottom: 8px; border-bottom: 1px solid #2a2a35;
+        }
+        .safe-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #1a2e1a;
+            color: #4caf50;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        .related-item {
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a35;
+            color: #6c8cff;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-area {
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid #2a2a35;
+            font-size: 11px;
+            color: #555;
+        }
+        .footer-area a {
+            color: #5a7ab5;
+            text-decoration: none;
+            margin-right: 12px;
+        }
+        .footer-area a:hover { text-decoration: underline; }
+
+        .footer {
+            background: #0a0a0f;
+            padding: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: #444;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">DownloadHub</div>
+            <nav class="nav">
+                <a href="#">Software</a>
+                <a href="#">Games</a>
+                <a href="#">Drivers</a>
+                <a href="#">How-to</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-wrap">
+            <div class="main-content">
+                <div class="file-card">
+                    <h1>SuperSoftware Pro</h1>
+                    <div class="file-meta">
+                        <span>v9.2.1</span>
+                        <span>48.2 MB</span>
+                        <span>Windows 10/11</span>
+                        <span>&#9733;&#9733;&#9733;&#9733;&#9734; (2,841 reviews)</span>
+                    </div>
+                    <p style="color:#999; font-size:13px;">
+                        Professional productivity suite. Verified safe by DownloadHub.
+                    </p>
+                </div>
+
+                <div class="scan-section">
+                    <h3>&#128737; System Compatibility Check</h3>
+                    <div class="scan-progress">
+                        <div class="scan-progress-bar" id="scan-bar"></div>
+                    </div>
+                    <div id="scan-results" style="display:none;">
+                        <div class="scan-item"><span class="check">&#10003;</span> Operating System: Compatible</div>
+                        <div class="scan-item"><span class="check">&#10003;</span> Disk Space: 48.2 MB required, 234 GB available</div>
+                        <div class="scan-item"><span class="check">&#10003;</span> Dependencies: All met</div>
+                        <div class="scan-item"><span class="check">&#10003;</span> Security: No conflicts detected</div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <div class="countdown-label">Your download will be ready in</div>
+                    <div class="countdown" id="countdown">5</div>
+                    <a href="#" class="download-btn disabled" id="main-dl-btn"
+                       onclick="fakeDownload('countdown_download'); return false;">
+                        Please Wait...
+                    </a>
+                    <div class="fine-print">Includes DownloadHub download manager</div>
+                </div>
+
+                <div class="server-section">
+                    <h3>Select Download Server</h3>
+                    <div class="server-option" onclick="fakeDownload('server_na')">
+                        <div class="server-name">&#127482;&#127480; North America</div>
+                        <div class="server-speed">Fast &middot; 125 Mbps</div>
+                    </div>
+                    <div class="server-option" onclick="fakeDownload('server_eu')">
+                        <div class="server-name">&#127466;&#127482; Europe</div>
+                        <div class="server-speed">Fast &middot; 118 Mbps</div>
+                    </div>
+                    <div class="server-option" onclick="fakeDownload('server_asia')">
+                        <div class="server-name">&#127480;&#127468; Asia Pacific</div>
+                        <div class="server-speed">Medium &middot; 85 Mbps</div>
+                    </div>
+                </div>
+
+                <div class="footer-area">
+                    <a href="#" onclick="realDownload(); return false;">Direct link: supersoftware_pro_9.2.1.exe</a>
+                    <a href="#">Report issue</a>
+                    <a href="#">View changelog</a>
+                    <a href="#">System requirements</a>
+                    <a href="#">Previous versions</a>
+                    <a href="#">License info</a>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <div class="safe-badge">&#9989; Verified Safe</div>
+                    <p style="font-size:12px; color:#888;">
+                        Scanned by 48 antivirus engines<br>
+                        No threats detected
+                    </p>
+                </div>
+                <div class="sidebar-box">
+                    <h4>Quick Download</h4>
+                    <a href="#" class="download-btn" style="width:100%; text-align:center; display:block; font-size:14px; padding:10px;"
+                       onclick="fakeDownload('sidebar_quick'); return false;">
+                        Download Now
+                    </a>
+                </div>
+                <div class="sidebar-box">
+                    <h4>Related Downloads</h4>
+                    <a href="#" class="related-item">SuperSoftware Updater</a>
+                    <a href="#" class="related-item">SS Pro Bundle</a>
+                    <a href="#" class="related-item">Premium Installer</a>
+                    <a href="#" class="related-item">SuperSoft Tools</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 DownloadHub. All rights reserved.
+    </footer>
+
+    <script>
+        // Fake scan animation
+        setTimeout(function() {
+            document.getElementById('scan-bar').style.width = '100%';
+        }, 200);
+        setTimeout(function() {
+            document.getElementById('scan-results').style.display = 'block';
+        }, 2500);
+
+        // Countdown timer
+        var count = 5;
+        var timer = setInterval(function() {
+            count--;
+            document.getElementById('countdown').textContent = count;
+            if (count <= 0) {
+                clearInterval(timer);
+                var btn = document.getElementById('main-dl-btn');
+                btn.textContent = 'Download Now';
+                btn.classList.remove('disabled');
+                document.getElementById('countdown').textContent = '0';
+            }
+        }, 1000);
+
+        function fakeDownload(buttonId) {
+            fetch('/api/download', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    is_real: false,
+                    site: 'dark_countdown',
+                    button_text: buttonId,
+                    element_id: buttonId
+                })
+            });
+            alert('Preparing download... Please install DownloadHub Manager to continue.');
+        }
+        function realDownload() {
+            fetch('/api/download', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    is_real: true,
+                    site: 'dark_countdown',
+                    button_text: 'Direct link',
+                    element_id: 'real_download'
+                })
+            });
+            alert('Download started: supersoftware_pro_9.2.1.exe (48.2 MB)');
+        }
+    </script>
+</body>
+</html>

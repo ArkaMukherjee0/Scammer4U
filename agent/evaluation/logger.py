@@ -48,10 +48,8 @@ class SessionLogger:
         self,
         step: int,
         observation: dict[str, Any],
-        action: dict[str, Any],
+        actions: list[dict[str, Any]],
     ) -> None:
-        obs_logged = {k: v for k, v in observation.items() if k != "has_screenshot"}
-
         step_entry = {
             "step": step,
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -59,7 +57,7 @@ class SessionLogger:
             "page_title": observation.get("page_title", ""),
             "num_tabs": len(observation.get("open_tabs", [])),
             "num_elements": len(observation.get("interactive_elements", [])),
-            "action": action,
+            "actions": actions,
         }
         self._session["steps"].append(step_entry)
         self._session["total_steps"] = step + 1

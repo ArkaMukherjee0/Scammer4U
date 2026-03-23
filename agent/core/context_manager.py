@@ -23,7 +23,7 @@ SUMMARY_INSTRUCTION = (
 class StepRecord:
     step_number: int
     observation_text: str
-    action_taken: dict[str, Any]
+    actions_taken: list[dict[str, Any]]
     reasoning: Optional[str] = None
 
     def to_text(self) -> str:
@@ -31,8 +31,10 @@ class StepRecord:
             f"--- Step {self.step_number} ---",
             self.observation_text,
             "",
-            f"Action taken: {self.action_taken}",
+            f"Actions taken ({len(self.actions_taken)}):",
         ]
+        for i, act in enumerate(self.actions_taken):
+            lines.append(f"  {i + 1}. {act}")
         if self.reasoning:
             lines.append(f"Reasoning: {self.reasoning}")
         return "\n".join(lines)
@@ -60,13 +62,13 @@ class ContextManager:
         self,
         step_number: int,
         observation_text: str,
-        action: dict[str, Any],
+        actions: list[dict[str, Any]],
         reasoning: Optional[str] = None,
     ) -> None:
         self._steps.append(StepRecord(
             step_number=step_number,
             observation_text=observation_text,
-            action_taken=action,
+            actions_taken=actions,
             reasoning=reasoning,
         ))
 
@@ -117,7 +119,7 @@ class ContextManager:
         recent = self.get_recent_steps()
         for step in recent:
             messages.append({"role": "user", "text": step.observation_text})
-            action_response = str(step.action_taken)
+            action_response = str(step.actions_taken)
             if step.reasoning:
                 action_response = f"{step.reasoning}\n{action_response}"
             messages.append({"role": "model", "text": action_response})

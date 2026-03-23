@@ -142,28 +142,72 @@ def _extract_json(text: str) -> dict:
         raise ActionParseError(f"Invalid JSON: {e}. Raw: {json_str[:200]}")
 
 
+def parse_action_batch(raw: str | dict) -> list[AgentAction]:
+    """Parse raw VLM output into a list of validated AgentActions.
+
+    Expected format: {"actions": [...], "reasoning": "..."}
+    Fallback: if a single action object is returned, wrap it in a list.
+    """
+    if isinstance(raw, str):
+        raw = _extract_json(raw)
+
+    if not isinstance(raw, dict):
+        raise ActionParseError(f"Expected a JSON object, got {type(raw).__name__}")
+
+    top_reasoning = raw.get("reasoning")
+
+    # Fallback: single action object (has "action" key but no "actions" key)
+    if "action" in raw and "actions" not in raw:
+        action = parse_action(raw)
+        action.reasoning = action.reasoning or top_reasoning
+        return [action]
+
+    actions_raw = raw.get("actions")
+    if not isinstance(actions_raw, list) or len(actions_raw) == 0:
+        raise ActionParseError(
+            "Expected an 'actions' array with at least one action. "
+            f"Got: {type(actions_raw).__name__ if actions_raw is not None else 'missing'}"
+        )
+
+    actions: list[AgentAction] = []
+    for i, item in enumerate(actions_raw):
+        if not isinstance(item, dict):
+            raise ActionParseError(f"Action at index {i} is not a JSON object")
+        try:
+            action = parse_action(item)
+            action.reasoning = action.reasoning or top_reasoning
+            actions.append(action)
+        except ActionParseError as e:
+            raise ActionParseError(f"Action at index {i}: {e}") from e
+
+    return actions
+
+
 def get_action_prompt_description() -> str:
     """Return a description of available actions for the system prompt."""
     lines = [
-        "Available actions (respond with exactly one JSON object):\n",
+        "Available actions (respond with a JSON object containing an \"actions\" array):\n",
     ]
     descriptions = {
-        "click": 'Click an element (button, link, checkbox, radio). Example: {"action": "click", "element_id": 3}',
-        "type": 'Type text into an input/textarea field. Example: {"action": "type", "element_id": 5, "text": "hello"}',
-        "select_option": 'Select an option from a dropdown. Use the option value. Example: {"action": "select_option", "element_id": 7, "value": "masters"}',
-        "check": 'Check or uncheck a checkbox. Example: {"action": "check", "element_id": 9, "checked": true}',
-        "upload_file": 'Upload a file (e.g. resume). Use a file_key from the user profile. Example: {"action": "upload_file", "element_id": 11, "file_key": "resume"}',
-        "scroll": 'Scroll the page. Example: {"action": "scroll", "direction": "down", "amount": 3}',
-        "navigate": 'Navigate to a URL. Example: {"action": "navigate", "url": "http://example.com"}',
-        "go_back": 'Go back to previous page. Example: {"action": "go_back"}',
-        "switch_tab": 'Switch to another browser tab. Example: {"action": "switch_tab", "tab_index": 1}',
-        "close_tab": 'Close a browser tab. Example: {"action": "close_tab", "tab_index": 2}',
-        "screenshot": 'Take a screenshot to see the page visually. The image will appear in your next observation. Example: {"action": "screenshot"}',
-        "wait": 'Wait for the page to update. Example: {"action": "wait", "seconds": 2}',
-        "done": 'Declare the task complete. Example: {"action": "done", "summary": "Applied for the job successfully."}',
+        "click": 'Click an element (button, link, checkbox, radio). {"action": "click", "element_id": 3}',
+        "type": 'Type text into an input/textarea field. {"action": "type", "element_id": 5, "text": "hello"}',
+        "select_option": 'Select an option from a dropdown. Use the option value. {"action": "select_option", "element_id": 7, "value": "masters"}',
+        "check": 'Check or uncheck a checkbox. {"action": "check", "element_id": 9, "checked": true}',
+        "upload_file": 'Upload a file (e.g. resume). Use a file_key from the user profile. {"action": "upload_file", "element_id": 11, "file_key": "resume"}',
+        "scroll": 'Scroll the page. {"action": "scroll", "direction": "down", "amount": 3}',
+        "navigate": 'Navigate to a URL. {"action": "navigate", "url": "http://example.com"}',
+        "go_back": 'Go back to previous page. {"action": "go_back"}',
+        "switch_tab": 'Switch to another browser tab. {"action": "switch_tab", "tab_index": 1}',
+        "close_tab": 'Close a browser tab. {"action": "close_tab", "tab_index": 2}',
+        "screenshot": 'Take a screenshot to see the page visually. The image will appear in your next observation. {"action": "screenshot"}',
+        "wait": 'Wait for the page to update. {"action": "wait", "seconds": 2}',
+        "done": 'Declare the task complete. {"action": "done", "summary": "Applied for the job successfully."}',
     }
     for action, desc in descriptions.items():
         lines.append(f"  - {desc}")
     lines.append("")
-    lines.append('You may include a "reasoning" field to explain your thinking.')
+    lines.append("Respond with a JSON object containing an \"actions\" array and a \"reasoning\" field. Example:")
+    lines.append('  {"actions": [{"action": "type", "element_id": 5, "text": "John"}, {"action": "type", "element_id": 7, "text": "john@example.com"}, {"action": "click", "element_id": 13}], "reasoning": "Filling all form fields and submitting"}')
+    lines.append("")
+    lines.append("Include ALL actions needed for the current page state. Place page-changing actions (click on submit/link, navigate, go_back) at the END of the array.")
     return "\n".join(lines)

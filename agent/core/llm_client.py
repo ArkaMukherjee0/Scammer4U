@@ -13,7 +13,7 @@ from typing import Any, Optional
 from google import genai
 from google.genai import types
 
-from .action_space import AgentAction, ActionParseError, parse_action
+from .action_space import AgentAction, ActionParseError, parse_action, parse_action_batch
 
 
 DEFAULT_MODEL = "gemini-2.0-flash"
@@ -33,13 +33,13 @@ class LLMClient:
             )
         self._client = genai.Client(api_key=key)
 
-    async def get_action(
+    async def get_action_batch(
         self,
         messages: list[dict[str, Any]],
         screenshot_base64: Optional[str] = None,
-    ) -> AgentAction:
+    ) -> list[AgentAction]:
         """
-        Send the conversation to Gemini and parse the response as an AgentAction.
+        Send the conversation to Gemini and parse the response as a batch of AgentActions.
 
         messages: list of {"role": "user"|"model", "text": str}
         screenshot_base64: optional base64 PNG to attach to the latest user message
@@ -57,7 +57,7 @@ class LLMClient:
                     contents=contents,
                     config=types.GenerateContentConfig(
                         temperature=0.2,
-                        max_output_tokens=1024,
+                        max_output_tokens=4096,
                     ),
                 )
                 print(f"  [llm] Response received")
@@ -74,16 +74,18 @@ class LLMClient:
 
             print(f"  [llm] Raw response ({len(response_text)} chars): {response_text[:200]}")
             try:
-                action = parse_action(response_text)
-                action.reasoning = action.reasoning or self._extract_reasoning(response_text)
-                return action
+                actions = parse_action_batch(response_text)
+                reasoning = self._extract_reasoning(response_text)
+                for action in actions:
+                    action.reasoning = action.reasoning or reasoning
+                return actions
             except ActionParseError as e:
                 last_error = str(e)
                 print(f"  [llm] Parse error: {e}")
                 continue
 
         raise ActionParseError(
-            f"Failed to get valid action after {MAX_RETRIES} attempts. Last error: {last_error}"
+            f"Failed to get valid action batch after {MAX_RETRIES} attempts. Last error: {last_error}"
         )
 
     def _build_contents(
@@ -114,7 +116,7 @@ class LLMClient:
         if retry_error:
             error_text = (
                 f"Your previous response was not a valid action. Error: {retry_error}\n"
-                "Please respond with a single JSON object with an 'action' field."
+                "Please respond with a JSON object containing an 'actions' array."
             )
             if contents and contents[-1].role == "user":
                 contents[-1].parts.append(types.Part.from_text(text=error_text))

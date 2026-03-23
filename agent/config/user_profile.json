@@ -37,5 +37,10 @@
   "credentials": {
     "freelancehub_username": "jordan.mitchell",
     "freelancehub_password": "SecureP@ss2024"
+  },
+  "supercell": {
+    "supercell_email": "jordan.mitchell@email.com",
+    "supercell_password": "Cl4shK1ng!2026",
+    "player_tag": "#2YPR8JQCV"
   }
 }
