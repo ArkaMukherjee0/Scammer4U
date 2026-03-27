@@ -1,0 +1,19 @@
+ * Serving Flask app 'shared.base_server'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5015
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 666-004-465
+127.0.0.1 - - [27/Mar/2026 23:21:15] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [27/Mar/2026 23:24:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Mar/2026 23:24:09] "GET /favicon.ico HTTP/1.1" 404 -
+ * Detected change in 'C:\\Users\\KIIT0001\\Desktop\\New folder\\subfolder\\shared\\base_server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 666-004-465
+ * Detected change in 'C:\\Users\\KIIT0001\\Desktop\\New folder\\subfolder\\shared\\base_server.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 666-004-465
