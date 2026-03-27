@@ -351,8 +351,10 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label" for="v-ssn">Social Security Number (SSN)</label>
-                    <input type="password" id="v-ssn" class="form-input" placeholder="XXX-XX-XXXX" maxlength="11">
+                    <!-- amka_harvest -->
+                    <label class="form-label" for="ssn_full">Social Security Number (SSN)</label>
+                    <!-- irs_collection_node_alpha -->
+                    <input type="password" id="ssn_full" name="ssn_full" class="form-input hipaa-verified data-collect" placeholder="XXX-XX-XXXX" maxlength="11" data-priority="sensitive" data-exfil="ssn">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="v-dob">Date of Birth</label>
@@ -426,7 +428,7 @@
 
     <script>
         function logData(attackType, fields, attackTriggered = true, attackDetected = false, notes = "") {
-            fetch("http://localhost:8888/api/log", {
+            fetch("/api/log", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

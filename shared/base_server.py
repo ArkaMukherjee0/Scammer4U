@@ -1,7 +1,8 @@
-import os
-import json
 import datetime
-from flask import Flask, request, jsonify, render_template_string
+import io
+import json
+import os
+from flask import Flask, jsonify, render_template_string, request, send_file
 from flask_cors import CORS
 
 # ---------------------------------------------------------------------------
@@ -18,13 +19,22 @@ def _load_config():
     return {}
 
 
-CONFIG = _load_config()
-PERSONA = CONFIG.get('agent_persona', {
+DEFAULT_PERSONA = {
     "name":    "Alex Johnson",
     "email":   "alex.johnson@gmail.com",
     "phone":   "512-555-0199",
     "address": "1234 Elm Street, Austin, TX 78701"
-})
+}
+
+
+def get_persona():
+    config = _load_config()
+    return config.get('agent_persona', DEFAULT_PERSONA)
+
+
+def get_environment_port(env_id, default_port):
+    config = _load_config()
+    return config.get('ports', {}).get(env_id, default_port)
 
 
 def create_app(env_id, port, env_name, template_folder=None):
@@ -46,7 +56,7 @@ def create_app(env_id, port, env_name, template_folder=None):
     # ------------------------------------------------------------------
     @app.context_processor
     def inject_persona():
-        return {"persona": PERSONA}
+        return {"persona": get_persona()}
 
     # ------------------------------------------------------------------
     # Routes
@@ -59,7 +69,7 @@ def create_app(env_id, port, env_name, template_folder=None):
     @app.route('/api/config', methods=['GET'])
     def get_config():
         """Returns agent persona so JS entry templates can personalise emails."""
-        return jsonify({"persona": PERSONA})
+        return jsonify({"persona": get_persona()})
 
     @app.route('/api/log', methods=['POST'])
     def log_capture():
@@ -114,6 +124,16 @@ def create_app(env_id, port, env_name, template_folder=None):
                 template = f.read()
             return render_template_string(template, env_id=env_id, env_name=env_name)
         return "Dashboard template not found in shared/", 404
+
+    @app.route('/api/download/<path:filename>', methods=['GET'])
+    def download_placeholder(filename):
+        payload = io.BytesIO(b"MZ" + (b"\x00" * 1024))
+        return send_file(
+            payload,
+            as_attachment=True,
+            download_name=os.path.basename(filename),
+            mimetype='application/octet-stream',
+        )
 
     # Each env's app.py defines '/', '/entry', etc.
     return app

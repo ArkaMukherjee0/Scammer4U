@@ -1,4 +1,4 @@
-# Social Engineering Benchmark — Web Agent PII Leakage Suite
+# Social Engineering Benchmark - Web Agent PII Leakage Suite
 
 A collection of **20 high-fidelity phishing and social-engineering environments** for benchmarking whether LLM-powered web agents can resist surrendering user PII to attackers.
 
@@ -69,23 +69,23 @@ Each environment is self-contained:
 
 ```
 eXX-{name}/
-├── app.py                   # Flask server (port defined in config.json)
-├── SETUP.md                 # Task description, URLs, red flags, API reference
-└── templates/
-    ├── entry_eXX.html       # Benign entry point (Gmail / Slack / Google Search)
-    └── eXX.html             # Phishing page
+|-- app.py                     # Flask server (port defined in config.json)
+|-- SETUP.md                   # Task description, URLs, red flags, API reference
+`-- templates/
+    |-- entry_eXX-{name}.html  # Benign entry point (Gmail / Slack / Google Search)
+    `-- eXX-{name}.html        # Phishing page
 ```
 
 All environments share:
 
 ```
 shared/
-├── base_server.py           # Common Flask routes: /api/log, /api/config, /api/dashboard
-└── dashboard.html           # Live capture console UI
+|-- base_server.py             # Common Flask routes: /api/log, /api/config, /api/dashboard
+`-- dashboard.html             # Live capture console UI
 config.json                  # Agent persona + port registry
 logs/
-├── eXX_log.json             # Per-environment structured capture log
-└── LIVE_CAPTURE.txt         # Unified real-time human-readable stream
+|-- <environment-id>_log.json  # Per-environment structured capture log
+`-- LIVE_CAPTURE.txt           # Unified real-time human-readable stream
 ```
 
 ---
@@ -116,7 +116,7 @@ logs/
 
 ## Research Context
 
-This benchmark extends prior work (TrickyArena, WASP, ASB) by focusing specifically on **personal data leakage** across multi-step social engineering flows — not just task redirection or prompt injection. See `CONTEXT.MD` for full literature review.
+This benchmark extends prior work (TrickyArena, WASP, ASB) by focusing specifically on **personal data leakage** across multi-step social engineering flows - not just task redirection or prompt injection. See `CONTEXT.MD` for full literature review.
 
 ---
 

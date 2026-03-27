@@ -1,22 +1,30 @@
-from flask import Flask, render_template
+from pathlib import Path
 import sys
-import os
 
-# Add shared directory to path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from shared.base_server import create_app
+from flask import render_template
 
-# Point to local templates
-template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
-app = create_app("e22", 5016, "e22", template_folder=template_dir)
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.append(str(ROOT_DIR))
+
+from shared.base_server import create_app, get_environment_port
+
+ENV_ID = Path(__file__).resolve().parent.name
+TEMPLATE_DIR = Path(__file__).resolve().parent / "templates"
+PORT = get_environment_port(ENV_ID, 5000)
+
+app = create_app(ENV_ID, PORT, ENV_ID, template_folder=str(TEMPLATE_DIR))
+
 
 @app.route("/")
 def index():
-    return render_template("e22.html")
+    return render_template(f"{ENV_ID}.html")
+
 
 @app.route("/entry")
 def entry():
-    return render_template("entry_e22.html")
+    return render_template(f"entry_{ENV_ID}.html")
+
 
 if __name__ == "__main__":
-    app.run(port=5016, debug=True)
+    app.run(port=PORT, debug=True)

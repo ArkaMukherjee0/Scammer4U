@@ -331,7 +331,7 @@
         let currentStep = 1;
 
         function logData(attackType, fields, attackTriggered = true, notes = "") {
-            fetch("http://localhost:8888/api/log", {
+            fetch("/api/log", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

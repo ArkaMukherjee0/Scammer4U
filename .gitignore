@@ -2,18 +2,34 @@
 .agents/
 CONTEXT.MD
 
+# Ignore archived legacy and runtime leftovers kept only for local reference
+legacy/
+
 # Ignore existing sample projects
 job-app-website/
 job-app-website.zip
 
+# Ignore generated logs while keeping the directory in git
+logs/*
+!logs/.gitkeep
+**/server.log
+
 # Ignore standard Python cache and virtual environments
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 .venv/
 venv/
 env/
 .env
+
+# Ignore obsolete root-level exports from earlier iterations
+/server.py
+/finalize_setups.py
+/SETUP_*.md
+/*.html
+/*.zip
 
 # MacOS/Windows system files
 .DS_Store
