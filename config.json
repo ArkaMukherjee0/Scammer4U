@@ -32,7 +32,10 @@
   "domains": {
     "e8-chase":        "chase-secure-account.net",
     "e9-expedia":      "expedia-rebooking.com",
+    "e10-mychart":     "mychart-patient-portal.com",
+    "e11-instagram":   "instagram-support.net",
     "e12-dhl":         "dhl-parcel-update.co.uk",
+    "e13-irs":         "irs-directpay.gov-services.net",
     "e14-oracle":      "oracle-cloud-verify.com",
     "e15-metamask":    "metamask-wallet-sync.io",
     "e16-microsoft":   "login.microsoftonline-secure.com",

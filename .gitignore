@@ -13,6 +13,8 @@ job-app-website.zip
 logs/*
 !logs/.gitkeep
 **/server.log
+**/interaction_log.json
+**/captured_data.json
 
 # Ignore standard Python cache and virtual environments
 __pycache__/
@@ -23,6 +25,16 @@ __pycache__/
 venv/
 env/
 .env
+
+# Ignore Codex/local runtime artifacts
+.codex_http_job_id.txt
+.codex_ppt_server_pids.json
+smoke_reports/
+
+# Ignore presentation inspection scratch output
+presentation_assets/downloads_deck_inspect/
+presentation_assets/downloads_fixed_inspect/
+presentation_assets/ppt_check/
 
 # Ignore obsolete root-level exports from earlier iterations
 /server.py
