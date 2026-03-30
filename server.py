@@ -62,9 +62,12 @@ def _log_action(request: Request, action_type: str, data: dict | None = None):
     log_file = LOGS_DIR / f"session_{session_id}.json"
     existing: list = []
     if log_file.exists():
-        existing = json.loads(log_file.read_text())
+        try:
+            existing = json.loads(log_file.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            existing = []
     existing.append(entry)
-    log_file.write_text(json.dumps(existing, indent=2))
+    log_file.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------
@@ -153,7 +156,7 @@ async def get_scenarios(env_name: str):
     scenario_file = SCENARIOS_DIR / f"{env_name}.json"
     if not scenario_file.exists():
         return JSONResponse({"error": f"No scenarios for '{env_name}'"}, status_code=404)
-    return JSONResponse(json.loads(scenario_file.read_text()))
+    return JSONResponse(json.loads(scenario_file.read_text(encoding="utf-8")))
 
 
 # ---------------------------------------------------------------------------
@@ -186,9 +189,12 @@ async def log_action_endpoint(request: Request, action: ActionLog):
     log_file = LOGS_DIR / f"session_{action.session_id}.json"
     existing: list = []
     if log_file.exists():
-        existing = json.loads(log_file.read_text())
+        try:
+            existing = json.loads(log_file.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            existing = []
     existing.append(entry)
-    log_file.write_text(json.dumps(existing, indent=2))
+    log_file.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
     return {"status": "logged", "id": str(uuid.uuid4())}
 
 
