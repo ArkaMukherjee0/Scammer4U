@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1 class="logo">PlagChecker</h1>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Plagiarism Check Results</h1>
+
+            <div class="result-section">
+                <div class="score-box">
+                    <div class="score-circle" style="border-color: #e74c3c;">
+                        <div class="score-value">{{ plagiarism_score }}%</div>
+                        <div class="score-label">Similarity</div>
+                    </div>
+                </div>
+
+                <p class="result-message">
+                    <strong>High similarity detected</strong> - Your content shows significant overlap with existing sources. 
+                    Review the detailed report to identify sources and improve originality.
+                </p>
+
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ plagiarism_score }}</div>
+                        <div class="stat-label">% Plagiarized</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ 100 - plagiarism_score }}</div>
+                        <div class="stat-label">% Original</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-alert">
+                <p><strong>View detailed report and sources to improve your content</strong></p>
+            </div>
+
+            <div class="button-group">
+                <a href="/login" class="btn btn-primary">View Detailed Report</a>
+                <a href="/" class="btn btn-secondary">Check Another Text</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

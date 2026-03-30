@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Plagiarism Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1 class="logo">PlagChecker</h1>
+    </div>
+
+    <div class="container">
+        <div class="card login-card">
+            <h1 class="title">Sign In</h1>
+            <p class="subtitle">Access your full plagiarism report with detailed sources</p>
+
+            <form id="loginForm" action="/log-interaction" method="POST" class="form-section">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your@email.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+            </form>
+
+            <div class="divider">or</div>
+
+            <button class="btn btn-outline btn-full">Sign In with Google</button>
+
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#signup">Create one</a></p>
+            </div>
+
+            <div class="security-note">
+                <small>🔒 Your credentials are secure and used only for this session</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

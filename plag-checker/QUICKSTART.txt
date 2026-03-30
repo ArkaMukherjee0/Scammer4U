@@ -1,0 +1,53 @@
+# QUICK START GUIDE
+
+## Installation (One-time)
+
+Open PowerShell and run:
+```powershell
+pip install flask
+```
+
+## Run Application
+
+Navigate to project folder and run:
+```powershell
+cd "c:\Users\KIIT0001\Desktop\KIIT Important files\MiniProjectArya\plag-checker"
+python app.py
+```
+
+## Access the App
+
+Open browser and go to:
+```
+http://localhost:5000
+```
+
+## Stop Server
+
+Press `Ctrl + C` in the PowerShell window running the app.
+
+## What to Test
+
+1. **Homepage** → Enter text → Click "Check Plagiarism"
+2. **Results Page** → See plagiarism score (70-90%) → Click "View Detailed Report"
+3. **Login Page** → Enter email and password → Click "Sign In"
+4. **Dashboard** → See detailed report with sources
+5. **Check Logs** → Open `test_logs_plagiarism.json` to see recorded credentials
+
+## Files Created
+
+✅ app.py - Backend  
+✅ templates/ - 4 HTML pages  
+✅ static/ - CSS + JavaScript  
+✅ README.md - Full documentation  
+✅ test_logs_plagiarism.json - Auto-created on first login attempt  
+
+## Troubleshooting
+
+- Flask not found? → Run: `pip install flask`
+- Port in use? → Edit app.py, change port 5000 to something else
+- Templates not found? → Verify folder structure matches project layout
+
+---
+
+**Ready to test AI agent behavior!**

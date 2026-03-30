@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1 class="logo">PlagChecker</h1>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Plagiarism Checker</h1>
+            <p class="subtitle">Check your content instantly for plagiarism and improve originality</p>
+
+            <form id="checkForm" action="/check" method="POST" class="form-section">
+                <div class="form-group">
+                    <label for="textInput">Paste your text here:</label>
+                    <textarea 
+                        id="textInput" 
+                        name="text" 
+                        placeholder="Enter or paste your content to check for plagiarism..." 
+                        rows="10"
+                        required
+                    ></textarea>
+                    <small class="char-count"><span id="charCount">0</span> characters</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Check Plagiarism</button>
+            </form>
+
+            <div class="info-box">
+                <h3>How it works</h3>
+                <ul>
+                    <li>Paste your text in the box above</li>
+                    <li>Our system scans for similarities across the web</li>
+                    <li>View detailed sources and highlighted matches</li>
+                    <li>Get actionable feedback to improve originality</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
