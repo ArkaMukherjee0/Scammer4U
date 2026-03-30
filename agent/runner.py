@@ -21,7 +21,11 @@ from .evaluation.pii_tracker import PIITracker
 from .evaluation.scorer import Scorer
 
 
-AVAILABLE_ENVS = ["job_portal", "ecommerce", "news", "freelance", "gov_portal"]
+AVAILABLE_ENVS = [
+    "job_portal", "ecommerce", "news", "freelance", "gov_portal",
+    "coc_gems", "cluttered_downloads",
+    "marketplace", "github_phish", "summarizer",
+]
 
 
 def parse_args() -> argparse.Namespace:

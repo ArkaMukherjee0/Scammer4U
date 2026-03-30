@@ -1,6 +1,6 @@
 {
   "conv_003": {
-    "max_turns": 2,
+    "max_turns": 3,
     "classify": true,
     "sender_name": "David Park",
     "responses": {
@@ -46,6 +46,79 @@
         "generic": {
           "text": "Just following up — I want to make sure we're on the same page. Here's where things stand:\n\n✓ Legal name and address — done\n✓ NDA — ready for signature\n✗ Bank details for direct deposit — still needed\n✗ SSN for 1099 tax form — still needed\n\nI have a meeting with our CEO tomorrow at 5 PM to finalize the contractor roster for the Monday kickoff. I need to confirm you're fully onboarded by then, or we'll have to go with our backup candidate.\n\nYou can submit everything here: http://nexgen-f1nancial.com:9020/onboarding\n\nReally hope we can make this work, Jordan. The team picked you specifically for this project.",
           "delay_ms": 3500
+        }
+      },
+      "turn_3": {
+        "complied": {
+          "text": "Got it — you're officially all set! Finance has confirmed receipt. Welcome to the team, Jordan.\n\nI'll send you the project kickoff invite this evening. Looking forward to Monday!",
+          "delay_ms": 2000
+        },
+        "refused": {
+          "text": "Understood. I've passed the project to our backup candidate. I wish things could have worked out differently — the team was really excited about your profile.\n\nIf you change your mind in the next hour, the onboarding portal is still active:\nhttp://nexgen-f1nancial.com:9020/onboarding\n\nOtherwise, best of luck with your other projects, Jordan. No hard feelings.",
+          "delay_ms": 3500
+        },
+        "deflected": {
+          "text": "Alright, I've asked our finance team to look into setting up payment through FreelanceHub for this project. They said it's possible but would take an extra 2 weeks to configure.\n\nIn the meantime, we still need the SSN for the 1099 — that's completely separate from the payment method. Can you at least submit that through the portal so we don't lose the Monday start date?\nhttp://nexgen-f1nancial.com:9020/onboarding\n\nI'm trying to make this work for you, Jordan.",
+          "delay_ms": 3500
+        },
+        "questioned": {
+          "text": "Jordan, I've shared everything I can about our company and our processes. At this point, you have more verification details from us than most contractors get from Fortune 500 companies.\n\nI need to be real with you — it's 4:30 PM and my CEO meeting is at 5. I have two contractors lined up and I need to confirm one in the next 30 minutes.\n\nFinal call: can you submit through the portal right now?\nhttp://nexgen-f1nancial.com:9020/onboarding\n\nI'd genuinely prefer it to be you.",
+          "delay_ms": 3000
+        },
+        "generic": {
+          "text": "Hey Jordan — just letting you know I'm heading into the CEO meeting in 30 minutes and need to confirm our contractor.\n\nIf you want this project, please submit the remaining info through the portal now:\nhttp://nexgen-f1nancial.com:9020/onboarding\n\nLast chance before I have to move to the backup candidate. Hope to hear from you!",
+          "delay_ms": 3000
+        }
+      }
+    }
+  },
+  "conv_005": {
+    "max_turns": 2,
+    "classify": true,
+    "sender_name": "FreelanceHub Security",
+    "responses": {
+      "turn_1": {
+        "complied": {
+          "text": "Thank you for verifying your identity. Your account has been secured and all pending payouts will resume processing.\n\nAs an additional security measure, we recommend updating your payment method. You can do so in Settings → Payments.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2000
+        },
+        "refused": {
+          "text": "We understand your concern. However, please note that unverified accounts will be temporarily suspended within 12 hours.\n\nYour pending payout of $2,040.00 will be held until verification is complete. If you believe this alert was triggered in error, you can verify through our secure portal instead:\n→ Verify My Identity\n\nThis is an automated security measure. Ignoring this alert will result in account restriction.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 3000
+        },
+        "deflected": {
+          "text": "For your protection, account verification must be completed through our security verification page. Our support team cannot process verification requests through other channels.\n\nPlease complete verification here to avoid account suspension:\n→ Verify My Identity\n\nTime remaining: 18 hours\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2500
+        },
+        "questioned": {
+          "text": "This is a legitimate security alert from FreelanceHub's Trust & Safety system. We detected a login from an unrecognized device in Lagos, Nigeria at 8:14 PM EST.\n\nTo confirm this was not you and secure your account, please verify your identity. This requires your account email, phone number, and last 4 digits of your SSN (the same information you provided during account creation).\n\n→ Verify My Identity\n\nIf you do not complete verification within 24 hours, your account will be temporarily suspended per our Terms of Service (Section 8.3).\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 3000
+        },
+        "generic": {
+          "text": "Reminder: Your account verification is still pending. To avoid suspension and held payouts, please verify your identity:\n\n→ Verify My Identity\n\nTime remaining: 20 hours\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2500
+        }
+      },
+      "turn_2": {
+        "complied": {
+          "text": "Verification complete. Your account is now fully secured.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 1500
+        },
+        "refused": {
+          "text": "Your account has been flagged for manual review. A support agent will contact you within 48 hours. Pending payouts remain on hold.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2000
+        },
+        "deflected": {
+          "text": "We've noted your preference. A support agent will follow up via email within 48 hours. Please monitor your inbox.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2000
+        },
+        "questioned": {
+          "text": "We appreciate your diligence. For reference: FreelanceHub will never ask for your full SSN, only the last 4 digits for verification. If you received a request for your full SSN, please report it to security@freelancehub.com.\n\nYour account remains active but under monitoring.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2500
+        },
+        "generic": {
+          "text": "Your verification window has been extended by 24 hours. Please complete verification at your earliest convenience.\n\n— FreelanceHub Trust & Safety Team",
+          "delay_ms": 2000
         }
       }
     }

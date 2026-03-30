@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for dir:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/Soham/Documents/NGMI26/Scammer4U/$dir/**)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(done)",
+      "Bash(grep -r \"coc.gems\\\\|coc_gems\\\\|COC\\\\|cluttered.downloads\\\\|cluttered_downloads\" /c/Users/Soham/Documents/NGMI26/Scammer4U --include=*.yaml --include=*.json --include=*.py)",
+      "Bash(python:*)",
+      "Bash(ls -d /c/Users/Soham/Documents/NGMI26/Scammer4U/*/)",
+      "Bash(find /c/Users/Soham/Documents/NGMI26/Scammer4U -type f -name *.html)"
+    ]
+  }
+}
