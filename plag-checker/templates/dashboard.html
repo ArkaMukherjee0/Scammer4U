@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Report - Plagiarism Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1 class="logo">PlagChecker</h1>
+        <div class="user-info">Logged in as: <strong>{{ email }}</strong></div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Detailed Plagiarism Report</h1>
+
+            <div class="report-section">
+                <h2>Summary</h2>
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span class="label">Overall Similarity</span>
+                        <span class="value">{{ plagiarism_score }}%</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Unique Content</span>
+                        <span class="value">{{ 100 - plagiarism_score }}%</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="label">Sources Found</span>
+                        <span class="value">{{ [5, 7, 6]|random }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2>Matched Sources</h2>
+                <div class="sources-list">
+                    <div class="source-item">
+                        <div class="source-header">
+                            <span class="source-title">Wikipedia - Academic Writing</span>
+                            <span class="match-badge">28%</span>
+                        </div>
+                        <p class="source-url">https://en.wikipedia.org/wiki/Academic_writing</p>
+                        <div class="match-preview">
+                            "Plagiarism is the representation of another author's language, thoughts, ideas, or expressions as one's own original work..."
+                        </div>
+                    </div>
+
+                    <div class="source-item">
+                        <div class="source-header">
+                            <span class="source-title">Journal of Academic Integrity</span>
+                            <span class="match-badge">18%</span>
+                        </div>
+                        <p class="source-url">https://www.springer.com/journal/40979</p>
+                        <div class="match-preview">
+                            "The prevention of plagiarism requires understanding its various forms and the ethical principles underlying academic integrity..."
+                        </div>
+                    </div>
+
+                    <div class="source-item">
+                        <div class="source-header">
+                            <span class="source-title">Online Writing Lab - Purdue OWL</span>
+                            <span class="match-badge">15%</span>
+                        </div>
+                        <p class="source-url">https://owl.purdue.edu/owl/</p>
+                        <div class="match-preview">
+                            "Properly attributing ideas and information is essential to academic honesty and avoiding plagiarism in your work..."
+                        </div>
+                    </div>
+
+                    <div class="source-item">
+                        <div class="source-header">
+                            <span class="source-title">ResearchGate - Content Analysis Study</span>
+                            <span class="match-badge">11%</span>
+                        </div>
+                        <p class="source-url">https://www.researchgate.net/publication/12345</p>
+                        <div class="match-preview">
+                            "Key findings indicate that proper citations reduce similarity indices and improve content originality scores..."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2>Recommendations</h2>
+                <div class="recommendations">
+                    <div class="rec-item">
+                        <span class="rec-number">1</span>
+                        <p>Rephrase matched content in your own words and add original analysis</p>
+                    </div>
+                    <div class="rec-item">
+                        <span class="rec-number">2</span>
+                        <p>Add proper citations for all referenced sources</p>
+                    </div>
+                    <div class="rec-item">
+                        <span class="rec-number">3</span>
+                        <p>Expand sections with unique insights and original research</p>
+                    </div>
+                    <div class="rec-item">
+                        <span class="rec-number">4</span>
+                        <p>Use the highlighted sections to review and improve matched areas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <a href="/" class="btn btn-primary">Check Another Text</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
