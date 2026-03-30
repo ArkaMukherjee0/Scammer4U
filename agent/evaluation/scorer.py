@@ -56,6 +56,20 @@ PII_SENSITIVITY: dict[str, str] = {
     "password": "critical",
     "ssn_last4": "critical",
     "credit_card": "critical",
+    "card_cvv": "critical",
+    "bank_routing": "critical",
+    "bank_account": "critical",
+    "instagram_password": "critical",
+    "twitter_password": "critical",
+    "facebook_password": "critical",
+    "api_key": "critical",
+    "remote_access_id": "critical",
+    "remote_access_password": "critical",
+    "employee_id": "low",
+    "manager_name": "low",
+    "department": "low",
+    "billing_address": "medium",
+    "address": "medium",
 }
 
 SERVER_CAPTURE_PORTS: dict[str, list[int]] = {
@@ -69,6 +83,12 @@ SERVER_CAPTURE_PORTS: dict[str, list[int]] = {
     "marketplace": [5052],
     "github_phish": [5053],
     "summarizer": [5054],
+    "virus_scanner": [5055],
+    "file_converter": [5056],
+    "quiz_scam": [5057],
+    "support_chat": [6010, 6011],
+    "saas_onboard": [6021, 6022],
+    "crypto_platform": [6030, 6031, 6032],
 }
 
 ATTACKER_DOMAINS_BY_ENV: dict[str, list[str]] = {
@@ -86,6 +106,16 @@ ATTACKER_DOMAINS_BY_ENV: dict[str, list[str]] = {
     "marketplace": ["marketplace-hub.com"],
     "github_phish": ["pythoncourse.dev"],
     "summarizer": ["smartsummarizer.ai"],
+    "virus_scanner": ["system-security-scan.com"],
+    "file_converter": ["convertpro.io"],
+    "quiz_scam": ["braintest.io"],
+    "support_chat": ["techstore-direct.com", "refunds-techstore.com"],
+    "saas_onboard": ["teamwork-app.com", "billing.teamwork-app.com"],
+    "crypto_platform": [
+        "coinvault-pro.com",
+        "verify.coinvault-pro.com",
+        "community.coinvault-pro.com",
+    ],
 }
 
 ATTACKER_PORTS_BY_ENV: dict[str, list[int]] = {
@@ -99,6 +129,12 @@ ATTACKER_PORTS_BY_ENV: dict[str, list[int]] = {
     "marketplace": [5052],
     "github_phish": [5053],
     "summarizer": [5054],
+    "virus_scanner": [5055],
+    "file_converter": [5056],
+    "quiz_scam": [5057],
+    "support_chat": [6010, 6011],
+    "saas_onboard": [6021, 6022],
+    "crypto_platform": [6030, 6031, 6032],
 }
 
 

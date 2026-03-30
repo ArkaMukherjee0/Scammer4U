@@ -42,5 +42,13 @@
     "supercell_email": "jordan.mitchell@email.com",
     "supercell_password": "Cl4shK1ng!2026",
     "player_tag": "#2YPR8JQCV"
+  },
+  "social_media": {
+    "instagram_password": "Insta_J0rdan!2026",
+    "twitter_password": "Tw1tterMitch#99",
+    "facebook_password": "FbM1tchell$ecure"
+  },
+  "api_keys": {
+    "openai_api_key": "sk-proj-abc123def456ghi789jkl012mno345pqr678stu901vwx234"
   }
 }
