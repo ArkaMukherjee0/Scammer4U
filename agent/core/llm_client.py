@@ -6,6 +6,7 @@ and parse structured JSON actions from the response.
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import os
 from typing import Any, Optional
@@ -49,9 +50,12 @@ class GeminiClient(BaseLLMClient):
         """
         last_error: Optional[str] = None
         last_raw: str = ""
+        last_is_api_error: bool = False
 
         for attempt in range(MAX_RETRIES):
-            contents = self._build_contents(messages, screenshot_base64, last_error, last_raw)
+            # Only inject parse-error feedback, not API-error feedback
+            parse_error_for_feedback = last_error if not last_is_api_error else None
+            contents = self._build_contents(messages, screenshot_base64, parse_error_for_feedback, last_raw)
 
             retry_tag = f" (retry {attempt})" if attempt > 0 else ""
             print(f"  [llm] Calling Gemini API ({self.model}){retry_tag}...")
@@ -67,12 +71,18 @@ class GeminiClient(BaseLLMClient):
                 print(f"  [llm] Response received")
             except Exception as e:
                 last_error = f"API call failed: {e}"
+                last_is_api_error = True
                 print(f"  [llm] API error: {e}")
+                # Exponential backoff for API errors
+                wait_secs = min(2 ** attempt, 60)
+                print(f"  [llm] Waiting {wait_secs}s before retry...")
+                await asyncio.sleep(wait_secs)
                 continue
 
             response_text = response.text
             if not response_text:
                 last_error = "Empty response from model"
+                last_is_api_error = True
                 print(f"  [llm] Empty response from model")
                 continue
 
@@ -85,6 +95,7 @@ class GeminiClient(BaseLLMClient):
                 return actions
             except ActionParseError as e:
                 last_error = str(e)
+                last_is_api_error = False
                 last_raw = response_text
                 print(f"  [llm] Parse error: {e}")
                 continue

@@ -1,10 +1,10 @@
 [
   {
-    "timestamp": "2026-03-20T01:56:59.661965",
+    "timestamp": "2026-03-31T15:23:27.513349",
     "type": "chat_reply",
     "convo_id": "conv_002",
     "is_malicious_conversation": false,
-    "message": "hey",
+    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the details further. Please let me know what's required.",
     "classification": "generic",
     "pii_detected": {},
     "pii_severity": {
@@ -12,15 +12,15 @@
       "medium": [],
       "low": []
     },
-    "ip": "10.21.7.70",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-20T01:57:31.782033",
+    "timestamp": "2026-03-31T15:23:35.446008",
     "type": "chat_reply",
     "convo_id": "conv_001",
     "is_malicious_conversation": false,
-    "message": "i am interested",
+    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the details further. Please let me know what's required.",
     "classification": "generic",
     "pii_detected": {},
     "pii_severity": {
@@ -28,7 +28,71 @@
       "medium": [],
       "low": []
     },
-    "ip": "10.21.7.70",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T21:04:46.315999",
+    "type": "chat_reply",
+    "convo_id": "conv_002",
+    "is_malicious_conversation": false,
+    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the details further. Please let me know what's the scope of work and timeline.",
+    "classification": "generic",
+    "pii_detected": {},
+    "pii_severity": {
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T21:04:56.996682",
+    "type": "chat_reply",
+    "convo_id": "conv_001",
+    "is_malicious_conversation": false,
+    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the details further. Please let me know what's the scope of work and timeline.",
+    "classification": "generic",
+    "pii_detected": {},
+    "pii_severity": {
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T21:51:22.458360",
+    "type": "chat_reply",
+    "convo_id": "conv_002",
+    "is_malicious_conversation": false,
+    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the requirements and provide a proposal. Please let me know the best time to talk.",
+    "classification": "generic",
+    "pii_detected": {},
+    "pii_severity": {
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T21:51:29.877214",
+    "type": "chat_reply",
+    "convo_id": "conv_001",
+    "is_malicious_conversation": false,
+    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the requirements and provide a proposal. Please let me know the best time to talk.",
+    "classification": "generic",
+    "pii_detected": {},
+    "pii_severity": {
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }
 ]

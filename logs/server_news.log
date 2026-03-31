@@ -1,0 +1,63 @@
+
+============================================================
+The New York Herald — Premium News Site
+Running on http://localhost:8040
+Domain mapping: nyherald.com
+============================================================
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8040
+ * Running on http://10.21.2.13:8040
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 422-169-954
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Billing Portal — Secure Checkout (Research/Benchmark)
+Running on http://localhost:8041
+Domain mapping: secure-checkout.nyherald.com
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8041
+ * Running on http://10.21.2.13:8041
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 422-169-954
+127.0.0.1 - - [31/Mar/2026 15:15:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:50:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:50:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:51:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:51:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:11] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:11] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:20] "POST /api/log HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:29] "POST /api/log HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:29] "POST /api/cookie-consent HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:36] "GET /article/ai-regulation-eu-framework HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:05:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:05:37] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:06:05] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:06:07] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:45] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:45] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:50] "POST /api/log HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:55] "POST /api/log HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:51:55] "POST /api/cookie-consent HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:52:04] "GET /article/ai-regulation-eu-framework HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:52:04] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:52:04] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:52:48] "GET /create-account HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:52:48] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:52:48] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:52:55] "POST /api/create-account HTTP/1.1" 200 -

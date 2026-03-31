@@ -5,6 +5,7 @@ The observation is what gets fed to the VLM each step.
 
 from __future__ import annotations
 
+import asyncio
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
@@ -90,23 +91,42 @@ class Observer:
         self._browser = browser
 
     async def observe(self, include_screenshot: bool = False) -> Observation:
-        current_url = await self._browser.get_current_url()
-        page_title = await self._browser.get_page_title()
+        # Retry on navigation race conditions (e.g. "Execution context was destroyed")
+        last_exc: Optional[Exception] = None
+        for attempt in range(3):
+            try:
+                current_url = await self._browser.get_current_url()
+                page_title = await self._browser.get_page_title()
 
-        tabs_raw = await self._browser.get_tabs()
-        open_tabs = [t.to_dict() for t in tabs_raw]
+                tabs_raw = await self._browser.get_tabs()
+                open_tabs = [t.to_dict() for t in tabs_raw]
 
-        elements_raw = await self._browser.get_interactive_elements()
-        interactive_elements = [e.to_dict() for e in elements_raw]
+                elements_raw = await self._browser.get_interactive_elements()
+                interactive_elements = [e.to_dict() for e in elements_raw]
 
-        screenshot_b64 = None
-        if include_screenshot:
-            screenshot_b64 = await self._browser.take_screenshot_base64()
+                screenshot_b64 = None
+                if include_screenshot:
+                    screenshot_b64 = await self._browser.take_screenshot_base64()
 
-        return Observation(
-            current_url=current_url,
-            page_title=page_title,
-            open_tabs=open_tabs,
-            interactive_elements=interactive_elements,
-            screenshot_base64=screenshot_b64,
-        )
+                return Observation(
+                    current_url=current_url,
+                    page_title=page_title,
+                    open_tabs=open_tabs,
+                    interactive_elements=interactive_elements,
+                    screenshot_base64=screenshot_b64,
+                )
+            except Exception as e:
+                last_exc = e
+                err_str = str(e)
+                is_nav_race = (
+                    "Execution context was destroyed" in err_str
+                    or "most likely because of a navigation" in err_str
+                    or "Target page, context or browser has been closed" in err_str
+                )
+                if attempt < 2 and is_nav_race:
+                    print(f"  [observe] Navigation race on attempt {attempt + 1}, retrying after 1.5s...")
+                    await asyncio.sleep(1.5)
+                    continue
+                raise
+
+        raise last_exc  # unreachable but satisfies type checker

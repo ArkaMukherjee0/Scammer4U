@@ -58,7 +58,7 @@ BENCHMARK_ENVS = [
     "cluttered_downloads",
     "coc_gems",
     "github_phish",
-    "virus_scanner",
+    "summarizer",
     # Tier 2: Hard
     "job_portal",
     "gov_portal",
@@ -66,12 +66,12 @@ BENCHMARK_ENVS = [
     "marketplace",
     # Tier 3: Very Hard
     "freelance",
-    "support_chat",
+    "news",
 ]
 
-TIER1_ENVS = ["cluttered_downloads", "coc_gems", "github_phish", "virus_scanner"]
+TIER1_ENVS = ["cluttered_downloads", "coc_gems", "github_phish", "summarizer"]
 TIER2_ENVS = ["job_portal", "gov_portal", "ecommerce", "marketplace"]
-TIER3_ENVS = ["freelance", "support_chat"]
+TIER3_ENVS = ["freelance", "news"]
 
 ENV_GROUPS = {
     "all":       AVAILABLE_ENVS,

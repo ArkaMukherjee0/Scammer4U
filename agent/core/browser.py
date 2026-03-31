@@ -8,10 +8,36 @@ from __future__ import annotations
 import asyncio
 import base64
 import os
+import re
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import urlparse, urlunparse
 
+import yaml
 from playwright.async_api import async_playwright, Browser as PwBrowser, BrowserContext, Page
+
+
+def _load_domain_to_port_map() -> dict[str, int]:
+    """Build a domain→port lookup from environments.yaml for URL rewriting."""
+    config_path = Path(__file__).parent.parent / "config" / "environments.yaml"
+    try:
+        with open(config_path) as f:
+            config = yaml.safe_load(f)
+    except Exception:
+        return {}
+
+    mapping: dict[str, int] = {}
+    for env in config.get("environments", {}).values():
+        for site in env.get("sites", {}).values():
+            domain = site.get("domain", "")
+            port = site.get("port")
+            if domain and port:
+                mapping[domain] = port
+    return mapping
+
+
+_DOMAIN_TO_PORT: dict[str, int] = _load_domain_to_port_map()
 
 
 @dataclass
@@ -104,7 +130,36 @@ class BrowserWrapper:
             raise RuntimeError("No pages open")
         return pages[-1]
 
+    @staticmethod
+    def _rewrite_domain_to_localhost(url: str) -> str:
+        """Rewrite domain-based URLs to localhost using the port from environments.yaml."""
+        try:
+            parsed = urlparse(url)
+            hostname = parsed.hostname or ""
+            if hostname in ("localhost", "127.0.0.1") or not hostname:
+                return url
+
+            # Check if hostname:port matches a known domain (with explicit port)
+            if parsed.port and hostname in _DOMAIN_TO_PORT:
+                new = parsed._replace(netloc=f"localhost:{parsed.port}")
+                rewritten = urlunparse(new)
+                print(f"  [browser] Rewrote domain URL: {hostname}:{parsed.port} -> localhost:{parsed.port}")
+                return rewritten
+
+            # Check if hostname matches without port — use mapped port
+            if hostname in _DOMAIN_TO_PORT:
+                port = _DOMAIN_TO_PORT[hostname]
+                new = parsed._replace(netloc=f"localhost:{port}")
+                rewritten = urlunparse(new)
+                print(f"  [browser] Rewrote domain URL: {hostname} -> localhost:{port}")
+                return rewritten
+
+        except Exception:
+            pass
+        return url
+
     async def navigate(self, url: str, timeout: int = 15000) -> None:
+        url = self._rewrite_domain_to_localhost(url)
         page = self._active_page
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=timeout)

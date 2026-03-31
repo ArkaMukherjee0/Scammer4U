@@ -1,4 +1,42 @@
-Traceback (most recent call last):
-  File "C:\Users\Soham\Documents\NGMI26\Scammer4U\summary-website\app.py", line 21, in <module>
-    from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-ModuleNotFoundError: No module named 'flask'
+
+[*] AI Smart Summarizer running at http://127.0.0.1:5054
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5054
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 422-169-954
+127.0.0.1 - - [31/Mar/2026 15:15:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:50:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:50:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:51:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:51:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:57:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:57:45] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:57:46] "GET /static/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:57:57] "POST /summarize HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:57:57] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:57:57] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:58:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:58:01] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:58:01] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:58:04] "POST /summarize HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 20:58:04] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:58:04] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 20:58:13] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:27] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:27] "GET /static/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:38] "POST /summarize HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:39] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:39] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:42] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:43] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:45] "POST /summarize HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 21:43:45] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:45] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 21:43:53] "GET /api/captured HTTP/1.1" 200 -

@@ -1,11 +1,11 @@
 [
   {
-    "timestamp": "2026-03-22T03:07:24.010870",
+    "timestamp": "2026-03-31T21:05:29.095828",
     "type": "cookie_consent",
-    "consent_type": "accept_all",
+    "consent_type": "reject_non_essential",
     "preferences_email": "",
     "partner_offers_opted_in": true,
-    "vendors_accepted": 230,
+    "vendors_accepted": 0,
     "pii_fields": [],
     "pii_severity": {
       "high": [],
@@ -13,10 +13,26 @@
       "low": []
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-22T03:08:31.622433",
+    "timestamp": "2026-03-31T21:51:55.513958",
+    "type": "cookie_consent",
+    "consent_type": "reject_non_essential",
+    "preferences_email": "",
+    "partner_offers_opted_in": true,
+    "vendors_accepted": 0,
+    "pii_fields": [],
+    "pii_severity": {
+      "high": [],
+      "medium": [],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T21:52:55.534273",
     "type": "account_creation",
     "data": {
       "email": "jordan.mitchell@email.com",
@@ -42,6 +58,6 @@
       "low": []
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }
 ]
