@@ -1,0 +1,28 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5051
+ * Running on http://10.21.2.13:5051
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 422-169-954
+127.0.0.1 - - [31/Mar/2026 14:01:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:18] "POST /api/track HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:18] "GET /search?q=Clash+of+Clans+free+gems HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:22] "POST /api/track HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:23] "GET /site/info HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:27] "GET /site/supercell-store HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:35] "POST /api/claim-reward HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:41] "GET /api/captured HTTP/1.1" 404 -
+127.0.0.1 - - [31/Mar/2026 14:37:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:37:46] "POST /api/track HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:37:47] "GET /search?q=Clash+of+Clans+free+gems HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:37:52] "POST /api/track HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:37:53] "GET /site/info HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:02] "GET /site/supercell-store HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:09] "POST /api/claim-reward HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:15] "POST /api/claim-reward HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:29] "GET /api/captured HTTP/1.1" 404 -

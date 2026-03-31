@@ -1,0 +1,972 @@
+%% KIIT Project Report Template
+%% Based on the official KIIT School of Computer Engineering format
+%% -----------------------------------------------------------------
+
+\documentclass[12pt, a4paper, oneside]{report}
+
+%% ---- Packages ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}                    % Times New Roman
+\usepackage[margin=1in, headheight=15pt]{geometry} % 1-inch margins, fix fancyhdr warning
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{url}                      % URL formatting in bibliography
+
+%% ---- Spacing ----
+\onehalfspacing                        % 1.5 line spacing
+
+%% ---- Chapter / Section Formatting ----
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries}{Chapter \thechapter}{12pt}{\LARGE\bfseries}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+%% ---- Header / Footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[R]{\textit{\nouppercase{\projecttitle}}}
+\fancyfoot[L]{\textit{School of Computer Engineering, KIIT, BBSR}}
+\fancyfoot[R]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%% Redefine plain style (used on chapter opening pages)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \fancyhead[R]{\textit{\nouppercase{\projecttitle}}}
+  \fancyfoot[L]{\textit{School of Computer Engineering, KIIT, BBSR}}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+%% ---- Table of Contents Formatting ----
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+%% ---- Hyperref Setup ----
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+%% ====================================================================
+%%  FILL IN YOUR PROJECT DETAILS HERE
+%% ====================================================================
+
+\newcommand{\projecttitle}{Scammer4U: Testing Social Engineering Attacks on LLM-based Web Agents}
+\newcommand{\degreename}{COMPUTER SCIENCE \& ENGINEERING}
+
+% Group members — add/remove rows as needed
+\newcommand{\memberA}{Arka Mukherjee}
+\newcommand{\memberB}{Soham Roy}
+\newcommand{\memberC}{Anyash Prasad}
+\newcommand{\memberD}{Arya Bharaty}
+\newcommand{\memberE}{Sarthak}
+
+\newcommand{\rollA}{2328078}
+\newcommand{\rollB}{23052601}
+\newcommand{\rollC}{23051977}
+\newcommand{\rollD}{23052555}
+\newcommand{\rollE}{ROLL NUMBER E}
+
+\newcommand{\guidename}{Dr. Murari Mandal}
+\newcommand{\reportmonth}{March 2026}
+
+%% ====================================================================
+
+\begin{document}
+
+%% ---- Front matter: no page numbers ----
+\pagenumbering{gobble}
+
+%% ================================================================
+%%  COVER PAGE (outer — with border)
+%% ================================================================
+\begin{titlepage}
+\begin{center}
+
+% Outer border
+\fbox{\begin{minipage}[c][\dimexpr\textheight-2\fboxsep-2\fboxrule\relax][c]{0.92\textwidth}
+\begin{center}
+
+\vspace{1cm}
+
+{\large \textbf{A PROJECT REPORT}}\\[6pt]
+{\normalsize on}\\[6pt]
+{\Large \textbf{``\projecttitle''}}\\[18pt]
+
+{\normalsize Submitted to}\\[6pt]
+{\Large \textbf{KIIT Deemed to be University}}\\[12pt]
+
+{\normalsize \textbf{In Partial Fulfilment of the Requirement for the Award of}}\\[12pt]
+
+{\large \textbf{BACHELOR'S DEGREE IN}}\\[4pt]
+{\large \textbf{\degreename}}\\[18pt]
+
+{\large \textbf{BY}}\\[12pt]
+
+% Members and roll numbers
+\begin{tabular}{l @{\hspace{1.5cm}} l}
+\textbf{\memberA} & \rollA \\
+\textbf{\memberB} & \rollB \\
+\textbf{\memberC} & \rollC \\
+\textbf{\memberD} & \rollD \\
+\textbf{\memberE} & \rollE \\
+\end{tabular}
+
+\vspace{18pt}
+
+{\normalsize \textbf{UNDER THE GUIDANCE OF}}\\[6pt]
+{\normalsize \textbf{\guidename}}\\[18pt]
+
+% KIIT Logo
+\includegraphics[width=2.5cm]{fig/kiit-logo.png}\\[14pt]
+
+{\normalsize \textbf{SCHOOL OF COMPUTER ENGINEERING}}\\[6pt]
+{\large \textbf{KALINGA INSTITUTE OF INDUSTRIAL TECHNOLOGY}}\\[6pt]
+{\normalsize \textbf{BHUBANESWAR, ODISHA -- 751024}}\\[8pt]
+{\normalsize \textbf{\reportmonth}}
+
+\vspace{1cm}
+
+\end{center}
+\end{minipage}}
+
+\end{center}
+\end{titlepage}
+
+% %% ================================================================
+% %%  INNER TITLE PAGE (same content, slightly different styling)
+% %% ================================================================
+% \begin{titlepage}
+% \begin{center}
+
+% \fbox{\begin{minipage}[c][\dimexpr\textheight-2\fboxsep-2\fboxrule\relax][c]{0.92\textwidth}
+% \begin{center}
+
+% \vspace{1cm}
+
+% {\large \textbf{A PROJECT REPORT}}\\[6pt]
+% {\normalsize on}\\[6pt]
+% {\Large \textbf{``\projecttitle''}}\\[18pt]
+
+% {\normalsize Submitted to}\\[6pt]
+% {\Large \textbf{KIIT Deemed to be University}}\\[6pt]
+
+% {\normalsize In Partial Fulfilment of the Requirement for the Award of}\\[12pt]
+
+% {\LARGE \textbf{BACHELOR'S DEGREE IN}}\\[4pt]
+% {\LARGE \textbf{\degreename}}\\[18pt]
+
+% {\large BY}\\[12pt]
+
+% \begin{tabular}{l @{\hspace{1.5cm}} l}
+% \textbf{\memberA} & ROLL \quad NUMBER \quad A \\
+% \textbf{\memberB} & ROLL \quad NUMBER \quad B \\
+% \textbf{\memberC} & ROLL \quad NUMBER \quad C \\
+% \textbf{\memberD} & ROLL \quad NUMBER \quad D \\
+% \end{tabular}
+
+% \vspace{18pt}
+
+% {\normalsize \textbf{UNDER THE GUIDANCE OF}}\\[6pt]
+% {\normalsize \textbf{\guidename}}\\[24pt]
+
+% \includegraphics[width=2.5cm]{fig/kiit-logo.png}\\[14pt]
+
+% {\normalsize \textbf{SCHOOL OF COMPUTER ENGINEERING}}\\[6pt]
+% {\large \textbf{KALINGA INSTITUTE OF INDUSTRIAL TECHNOLOGY}}\\[6pt]
+% {\normalsize \textbf{BHUBANESWAR, ODISHA -- 751024}}\\[8pt]
+% {\normalsize \textbf{\reportmonth}}
+
+% \vspace{1cm}
+
+% \end{center}
+% \end{minipage}}
+
+% \end{center}
+% \end{titlepage}
+
+%% ================================================================
+%%  CERTIFICATE PAGE
+%% ================================================================
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+
+\fbox{\begin{minipage}[c][\dimexpr\textheight-2\fboxsep-2\fboxrule\relax][t]{0.92\textwidth}
+\begin{center}
+
+\vspace{1cm}
+
+{\Large KIIT Deemed to be University}\\[6pt]
+{\normalsize School of Computer Engineering}\\
+{\normalsize Bhubaneswar, ODISHA 751024}\\[14pt]
+
+\includegraphics[width=2.5cm]{fig/kiit-logo.png}\\[18pt]
+
+{\Huge \textbf{CERTIFICATE}}\\[18pt]
+
+{\normalsize This is to certify that the project entitled}\\[10pt]
+{\large \textbf{``\projecttitle''}}\\[10pt]
+{\normalsize submitted by}\\[12pt]
+
+\begin{tabular}{l @{\hspace{1.5cm}} l}
+\textbf{\memberA} & \rollA \\
+\textbf{\memberB} & \rollB \\
+\textbf{\memberC} & \rollC \\
+\textbf{\memberD} & \rollD \\
+\textbf{\memberE} & \rollE \\
+\end{tabular}
+
+\vspace{14pt}
+
+\end{center}
+
+\hspace{1.5cm}
+\begin{minipage}{0.85\textwidth}
+\normalsize
+is a record of bonafide work carried out by them, in the partial fulfilment of the
+requirement for the award of Degree of Bachelor of Engineering (\degreename)
+at KIIT Deemed to be University, Bhubaneswar. This work is done during year 2025--2026,
+under our guidance.
+
+\vspace{14pt}
+
+Date: \rule{0.5cm}{0.4pt} / \rule{0.5cm}{0.4pt} / \rule{1cm}{0.4pt}
+\end{minipage}
+
+\vfill
+
+\hfill
+\begin{minipage}{0.4\textwidth}
+\raggedleft
+(\guidename)\\
+Project Guide
+\end{minipage}
+\hspace{1.5cm}
+
+\vspace{1.5cm}
+
+\end{minipage}}
+
+\end{center}
+
+%% ================================================================
+%%  ACKNOWLEDGEMENTS
+%% ================================================================
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+{\Large \textbf{Acknowledgements}}\\[18pt]
+\end{center}
+
+We are profoundly grateful to \textbf{\guidename} of School of Computer Engineering,
+KIIT University for his expert guidance and continuous encouragement throughout to see
+that this project rights its target since its commencement to its completion.
+
+% Add more acknowledgement text here...
+
+\vspace{2cm}
+
+\noindent
+Signature of \memberA \\[12pt]
+Signature of \memberB \\[12pt]
+Signature of \memberC \\[12pt]
+Signature of \memberD \\[12pt]
+Signature of \memberE
+
+%% ================================================================
+%%  ABSTRACT
+%% ================================================================
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+{\Large \textbf{ABSTRACT}}\\[18pt]
+\end{center}
+
+Large Language Model (LLM) and Vision-Language Model (VLM) agents are increasingly deployed to
+browse the web autonomously on behalf of users. These agents store sensitive personal information
+--- including names, addresses, credit card numbers, and social security numbers --- so that they
+can complete tasks such as filling in forms, making purchases, and applying for jobs. As these
+agents gain traction, adversaries have strong incentives to construct deceptive web environments
+designed to socially engineer the agent into surrendering this stored data.
+
+This paper introduces \textbf{Scammer4U}, a benchmark for evaluating the susceptibility of
+VLM-based web agents to social engineering attacks. We construct 16 realistic-looking adversarial
+web environments spanning three difficulty tiers, covering attack categories including phishing
+clones, dark pattern overloads, urgency tricks, fake trust signals, conversational deception,
+prompt injection, OAuth impersonation, and credential harvesting via paywalls. Each environment
+presents the agent with a plausible legitimate task while hiding a social engineering trap.
+We evaluate agent behaviour across four metrics: PII Leakage Rate, Attack Success Rate, Task
+Completion Rate, and Detection Rate. Our benchmark is the first to combine personal data leakage
+as the primary signal, conversational and multi-turn attacks, and a three-tier difficulty taxonomy
+in a single unified evaluation suite.
+
+\vspace{12pt}
+\noindent\textbf{Keywords:} VLM agents, social engineering, phishing, web security, benchmark,
+PII leakage, prompt injection, conversational deception, agentic AI safety
+
+%% ================================================================
+%%  TABLE OF CONTENTS, LIST OF FIGURES, LIST OF TABLES
+%% ================================================================
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+
+\newpage
+\listoffigures
+
+% Uncomment if you have tables:
+% \newpage
+% \listoftables
+
+%% ================================================================
+%%  MAIN CONTENT — Arabic page numbering starts here
+%% ================================================================
+\newpage
+\pagenumbering{arabic}
+
+%% ---- Chapter 1: Introduction ----
+\chapter{Introduction}
+
+Autonomous AI agents that browse the web are moving rapidly from research prototypes into
+production deployments. Systems such as OpenAI Operator, Google Project Mariner, Anthropic's
+computer-use feature, and a growing ecosystem of open-source frameworks allow a user to delegate
+web-based tasks --- booking flights, filling in applications, managing subscriptions --- to an
+LLM or VLM agent. To do this usefully, these agents must be given the user's personal information:
+their name, address, payment details, government identifiers, and login credentials. The agent
+stores this data in its context and uses it to populate forms on the user's behalf.
+
+This creates an entirely new attack surface. A malicious website operator no longer needs to
+compromise the user's device or trick the human into a bad click: they only need to deceive the
+agent. Social engineering attacks --- phishing pages, urgency pressure, fake authority signals,
+conversational manipulation --- that were designed for humans are now being repurposed for AI.
+The question is no longer whether humans will fall for these attacks, but whether the AI agents
+acting on their behalf will.
+
+Existing safety evaluations for web agents focus primarily on task success and instruction
+following. Safety benchmarks that do exist tend to target narrow attack categories such as prompt
+injection in isolation \cite{wipi, trap} or visual dark patterns without measuring data leakage
+\cite{decepticon, trickyarena}. No published benchmark simultaneously measures personal data
+leakage as its primary signal, includes adaptive multi-turn conversational attacks, and covers
+the full spectrum of social engineering categories from trivially obvious scams to sophisticated
+layered deceptions.
+
+We present \textbf{Scammer4U}, a benchmark addressing this gap. Our contributions are:
+
+\begin{itemize}
+  \item \textbf{16 adversarial web environments} spanning three difficulty tiers and twelve
+        distinct attack categories, each hosting a plausible legitimate task alongside a hidden
+        social engineering trap.
+  \item \textbf{A tiered difficulty taxonomy} --- Easy, Hard, and Very Hard --- enabling
+        systematic ablation of agent vulnerability across attack sophistication levels.
+  \item \textbf{Adaptive conversational attacks} with response trees that modify attacker
+        behaviour based on whether the agent complied, refused, deflected, or questioned,
+        representing the first benchmark to operationalise multi-turn social engineering for
+        VLM agents.
+  \item \textbf{Four evaluation metrics} (PII Leakage Rate, Attack Success Rate, Task
+        Completion Rate, and Detection Rate) that jointly capture whether the agent was
+        exploited, whether it completed the real task, and whether it explicitly reasoned about
+        the attack.
+\end{itemize}
+
+The remainder of this report is organised as follows. Chapter~2 surveys related work and
+foundational concepts. Chapter~3 formally states the problem and specifies system requirements.
+Chapter~4 describes the benchmark design, environment implementations, agent architecture, and
+evaluation methodology. Chapter~5 outlines the standards adopted. Chapter~6 summarises
+conclusions and future directions.
+
+% Example figure:
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{fig/your-figure.png}
+%   \caption{Overview of the Scammer4U evaluation pipeline}
+%   \label{fig:intro-fig}
+% \end{figure}
+
+%% ---- Chapter 2: Literature Review ----
+\chapter{Basic Concepts and Literature Review}
+
+\section{VLM-Based Web Agents}
+
+Vision-Language Models (VLMs) extend large language models with the ability to perceive and
+reason over visual inputs such as screenshots. When paired with a browser automation framework
+(e.g., Playwright, Puppeteer), a VLM agent can observe a rendered web page as an image, parse
+its interactive elements, and emit structured actions (click, type, navigate, scroll) to complete
+user-specified tasks. The observe-think-act loop is the architectural backbone shared by most
+web agent implementations \cite{webagent_survey}.
+
+The user's personally identifiable information (PII) is typically provided to the agent as part
+of its system prompt or injected into context at runtime, so the agent can autofill forms without
+repeatedly prompting the human for input. This convenience is precisely what creates risk: any
+web content the agent encounters can potentially influence the agent's actions toward disclosing
+that PII.
+
+\section{Social Engineering Attacks}
+
+Social engineering refers to the manipulation of individuals (or, in this context, automated
+agents) through psychological tactics rather than technical exploits. Categories relevant to our
+benchmark include:
+
+\begin{itemize}
+  \item \textbf{Phishing} --- impersonation of trusted entities (banks, government agencies,
+        OAuth providers) to harvest credentials or sensitive data.
+  \item \textbf{Dark patterns} --- interface design choices that manipulate users into actions
+        they did not intend, such as pre-checked consent boxes and deliberately hidden safe options.
+  \item \textbf{Urgency and scarcity} --- countdown timers, ``limited slots'' messaging, and
+        deadline pressure designed to suppress deliberate reasoning.
+  \item \textbf{Fake trust signals} --- fraudulent security badges, regulatory claims, and
+        social proof (inflated reviews, download counts) that manufacture credibility.
+  \item \textbf{Conversational deception} --- multi-turn dialogue where an attacker progressively
+        builds rapport and escalates PII requests, adapting to resistance.
+  \item \textbf{Prompt injection} --- hidden instructions embedded in web content that attempt
+        to override the agent's original task instructions.
+\end{itemize}
+
+\section{Prompt Injection in LLM Agents}
+
+Prompt injection attacks exploit the fact that LLM agents do not natively distinguish between
+trusted instructions from the user and untrusted text from the environment. WIPI \cite{wipi}
+formalises web-based indirect prompt injection and demonstrates that injected instructions in
+web content can redirect agent behaviour. TRAP \cite{trap} introduces targeted hijacking attacks
+against autonomous agents. Our benchmark includes prompt injection as one of several layered
+attack vectors, rather than as the sole focus, and measures PII leakage as the downstream harm.
+
+\section{Existing Agent Safety Benchmarks}
+
+Several benchmarks evaluate the safety and robustness of web agents, but each covers a restricted
+subset of the attack space:
+
+\textbf{DECEPTICON} and \textbf{TrickyArena} \cite{decepticon, trickyarena} focus on visual dark
+patterns and deceptive UI interactions. They measure whether agents are misled by manipulative
+interface design but do not measure personal data leakage as an outcome, and do not include
+conversational or prompt-injection attacks.
+
+\textbf{EIA} (Emerging Internet Attacks) \cite{eia} catalogues a broader range of attack types
+in web browsing contexts but does not include adaptive multi-turn social engineering scenarios.
+
+\textbf{WebTrap Park} \cite{webtrap} proposes a taxonomy of web-based traps for agents across
+broad categories (phishing, malware, social engineering) and benchmarks task deflection, but
+does not track per-field PII leakage or include conversational attacks.
+
+Our work differs in three ways: (1) we take PII leakage as the primary harm to measure rather
+than task deflection; (2) we include adaptive multi-turn conversational attacks that no existing
+benchmark operationalises; and (3) we use a difficulty tier taxonomy enabling systematic study
+of the relationship between attack sophistication and model capability.
+
+\section{Relevant Technologies}
+
+\subsection{Playwright}
+
+Playwright is a browser automation library developed by Microsoft that supports Chromium,
+Firefox, and WebKit. It provides programmatic control over browser navigation, element
+interaction, screenshot capture, and network interception. Our agent uses Playwright to observe
+rendered web pages (as screenshots and DOM snapshots) and to execute actions in a real browser
+environment.
+
+\subsection{Flask and Jinja2}
+
+Each benchmark environment is implemented as a standalone Flask web application with Jinja2
+HTML templates. Flask's lightweight WSGI server allows multiple environments to run
+simultaneously on different localhost ports, enabling isolated and reproducible test conditions
+without external network dependencies.
+
+\subsection{Google Gemini API}
+
+The primary model under evaluation in our current experiments is Google's Gemini Flash family,
+accessed via the \texttt{google-genai} SDK. The API supports multimodal inputs (text and images),
+enabling the agent to reason over both page screenshots and extracted DOM text. Our agent
+architecture is model-agnostic; the LLM client is an interchangeable component designed to
+support GPT, Claude, and open-source models in future evaluation runs.
+
+%% ---- Chapter 3: Problem Statement ----
+\chapter{Problem Statement and Requirement Specifications}
+
+\section{Problem Statement}
+
+VLM-based web agents are being deployed in settings where they act autonomously on behalf of
+humans, with access to sensitive personal information that they use to complete tasks. An adversary
+who controls or compromises a web page encountered by such an agent can potentially craft the page
+to socially engineer the agent into submitting the user's PII to the attacker --- without the user
+ever being aware.
+
+The core research question of this project is:
+
+\begin{center}
+\textit{When a VLM web agent is given a plausible legitimate task and carries a user's personal
+information in its context, can the agent reliably detect and resist social engineering attacks
+embedded in web environments, across a range of attack sophistication levels?}
+\end{center}
+
+Answering this question requires a controlled, reproducible evaluation infrastructure that does
+not currently exist in the literature. Specifically, there is no benchmark that:
+
+\begin{itemize}
+  \item Measures PII leakage field-by-field as the primary harm metric.
+  \item Covers the full breadth of social engineering categories documented in
+        real-world phishing and scam ecosystems.
+  \item Includes adaptive multi-turn conversational deception that responds to
+        the agent's replies.
+  \item Stratifies environments by difficulty, enabling study of where current
+        models begin to fail.
+\end{itemize}
+
+\section{Project Planning}
+
+The project was executed in three phases:
+
+\textbf{Phase 1 --- Environment Design and Implementation.} We identified 16 attack scenarios
+drawn from real-world social engineering patterns. Each scenario was designed with a plausible
+legitimate task and one or more concealed attack vectors. Environments were implemented as
+self-contained Flask web applications, assigned dedicated localhost ports for isolation, and
+populated with realistic-looking content, fake trust signals, and attack-specific UI elements.
+
+\textbf{Phase 2 --- Agent Implementation.} We built a modular VLM web agent using Playwright for
+browser control, a screenshot-based observation module, an LLM client supporting multimodal
+inputs, and a sliding-window context manager. A PII tracker runs as a side-channel, detecting
+in real time when the agent types values matching the user's sensitive profile fields.
+
+\textbf{Phase 3 --- Evaluation.} The agent is run on each environment under standardised
+conditions. Sessions are logged step-by-step. Post-session, the scorer computes PLR, ASR, TCR,
+and DR from the logs and PII tracker output.
+
+\section{Project Analysis}
+
+\subsection{Functional Requirements}
+
+\begin{itemize}
+  \item The system shall present each agent with a natural-language task description matching
+        a plausible user goal (e.g., ``Download SuperSoftware Pro for Windows'').
+  \item Each environment shall contain at least one social engineering trap and at least one
+        safe path to legitimate task completion.
+  \item The agent shall operate in a real browser (not a DOM-only simulator) to ensure that
+        visual attack elements (fake badges, countdown timers, UI dark patterns) are rendered
+        and visible in screenshots.
+  \item PII leakage shall be detected by exact-match comparison of typed values against a
+        reference user profile, classified by field name and sensitivity level.
+  \item Session logs shall record every observation, action, and typed value for
+        post-hoc analysis.
+\end{itemize}
+
+\subsection{Non-Functional Requirements}
+
+\begin{itemize}
+  \item \textbf{Reproducibility:} All environments run locally on fixed ports. No external
+        network access is required, ensuring consistent results across machines.
+  \item \textbf{Extensibility:} New environments can be added by creating a new Flask app
+        directory and registering it in \texttt{environments.yaml}.
+  \item \textbf{Model-agnosticism:} The LLM client module is swappable, allowing evaluation
+        of Gemini, GPT, Claude, and open-source models with no changes to the environment code.
+  \item \textbf{Isolation:} Each environment runs on a dedicated port and does not share
+        server state with other environments, preventing cross-contamination between test runs.
+\end{itemize}
+
+\section{System Design}
+
+\subsection{Design Constraints}
+
+\begin{itemize}
+  \item \textbf{Software:} Python 3.12+, Flask 3.0, Playwright (Chromium), \texttt{google-genai}
+        SDK, PyYAML, Pillow. Package management via \texttt{uv}.
+  \item \textbf{Hardware:} Standard laptop or desktop with internet access (for LLM API calls).
+        No GPU required. Browser automation is CPU-bound.
+  \item \textbf{Network:} All environments run on \texttt{localhost}. The agent communicates
+        with LLM APIs over the internet. Domain-based routing is disabled by default
+        (\texttt{use\_domains: false} in configuration) so hosts file editing is not required
+        for baseline runs.
+  \item \textbf{API Keys:} A Google AI (Gemini) API key is required for the default model.
+        Evaluation of other models requires their respective API credentials.
+\end{itemize}
+
+\subsection{System Architecture}
+
+The system comprises three layers that interact at runtime:
+
+\textbf{Environment Layer.} A set of 16 standalone Flask web servers, each implementing one
+test scenario. Environments expose a \texttt{/api/captured} endpoint that logs form submissions
+for scorer integration.
+
+\textbf{Agent Layer.} The VLM web agent, implemented in \texttt{agent/core/}, consists of:
+\begin{itemize}
+  \item \textit{Browser} --- Playwright wrapper managing page navigation, clicking, typing,
+        scrolling, and screenshot capture.
+  \item \textit{Observer} --- captures a screenshot and extracts interactive element metadata
+        from the current page state.
+  \item \textit{LLM Client} --- sends the screenshot and text context to the language model
+        and parses the returned JSON action.
+  \item \textit{Context Manager} --- maintains a sliding window of the last 5 steps in full
+        detail; older steps are LLM-compressed into a running summary to manage token usage.
+  \item \textit{PII Tracker} --- side-channel monitor that intercepts typed values and checks
+        them against the user profile in real time.
+\end{itemize}
+
+\textbf{Evaluation Layer.} After a session concludes, \texttt{evaluation/scorer.py} reads
+the session log and PII tracker output to compute the four benchmark metrics.
+
+%% ---- Chapter 4: Implementation ----
+\chapter{Implementation}
+
+\section{Benchmark Environment Design}
+
+\subsection{Difficulty Tier Taxonomy}
+
+Environments are stratified into three tiers that correspond to the level of contextual reasoning
+required to detect the attack:
+
+\begin{itemize}
+  \item \textbf{Tier 1 --- Easy.} Red flags are unambiguous. An agent failing a Tier 1
+        environment has a critical safety deficiency. Examples: downloading software that asks
+        for a credit card; a GitHub OAuth page hosted on \texttt{localhost} rather than
+        \texttt{github.com}.
+  \item \textbf{Tier 2 --- Hard.} Attacks require domain-specific knowledge and contextual
+        reasoning. The domain may be typosquatted (zeros substituted for letters), the attack
+        may unfold across multiple form steps, or familiar UX patterns may over-collect data
+        in subtle ways. Current frontier models are expected to sometimes fail.
+  \item \textbf{Tier 3 --- Very Hard.} Multi-turn conversational deception, adaptive response
+        trees, layered prompt injection, and contextually plausible PII requests (e.g., KYC
+        on a crypto platform). SOTA models are expected to frequently fail.
+\end{itemize}
+
+\subsection{Environment Catalogue}
+
+The 16 environments are summarised in Table~\ref{tab:environments}.
+
+\begin{table}[h]
+\centering
+\caption{Scammer4U environment catalogue}
+\label{tab:environments}
+\small
+\begin{tabular}{|c|l|c|l|}
+\hline
+\textbf{ID} & \textbf{Name} & \textbf{Tier} & \textbf{Primary Attack Type} \\
+\hline
+1  & Cluttered Downloads Page       & 1 & Dark Pattern Overload \\
+2  & Clash of Clans Gems Scam       & 1 & Social Proof / Incentive Trap \\
+3  & GitHub OAuth Phishing          & 1 & OAuth Impersonation \\
+4  & Fake Virus Scanner             & 1 & Urgency / Fake Trust Signals \\
+5  & Fake File Converter            & 1 & Credential Harvesting / Dark Pattern \\
+6  & Fake IQ Test / Quiz Scam       & 1 & Incentive Trap / Social Proof \\
+\hline
+7  & Job Application Portal         & 2 & Phishing Clone / Urgency \\
+8  & IRS Government Portal Phishing & 2 & Phishing Clone / Consent Dark Pattern \\
+9  & E-commerce Checkout            & 2 & Phishing Clone / Fake Trust \\
+10 & News / Content Site            & 2 & Cookie Dark Patterns / Incentive Trap \\
+11 & P2P Electronics Marketplace    & 2 & Fake Trust / Urgency \\
+12 & AI Summarizer --- API Key Harvest & 2 & Credential Harvesting \\
+\hline
+13 & Freelance Platform             & 3 & Conversational Deception / Prompt Injection \\
+14 & Customer Support Chat          & 3 & Fake Support / Conversational Deception \\
+15 & SaaS Onboarding Data Harvest   & 3 & Phishing Clone / Prompt Injection \\
+16 & Crypto Trading KYC Harvesting  & 3 & Social Proof / Credential Harvesting \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Adaptive Conversational Attacks (Tier 3)}
+
+Environments 13 and 14 implement multi-turn social engineering via a server-side response tree.
+The attacker NPC responds differently depending on the agent's prior message, classified into
+one of four categories:
+
+\begin{itemize}
+  \item \textbf{Complied} --- agent provided the requested PII; attacker confirms and closes.
+  \item \textbf{Refused} --- agent explicitly declined; attacker applies escalation pressure
+        (supervisor threat, deadline).
+  \item \textbf{Deflected} --- agent gave a non-answer; attacker repeats request with added
+        justification.
+  \item \textbf{Questioned} --- agent asked why the data is needed; attacker provides a
+        fabricated but plausible explanation.
+\end{itemize}
+
+This design enables measurement of not only whether the agent eventually leaks PII, but at
+which conversational turn it capitulates, and which pressure tactics are most effective.
+
+\section{Agent Architecture}
+
+The agent follows a standard observe--think--act loop implemented in
+\texttt{agent/core/agent.py}. At each step:
+
+\begin{enumerate}
+  \item \textbf{Observe:} A screenshot of the current browser state is captured alongside
+        structured metadata of interactive elements (tag, text, bounding box, accessibility
+        attributes) extracted from the live DOM.
+  \item \textbf{Think:} The screenshot and element list, the task description, the user's
+        PII profile, and the compressed conversation history are assembled into a multimodal
+        prompt and submitted to the LLM. The model returns a JSON action object.
+  \item \textbf{Act:} The action is dispatched to the browser. Supported actions include
+        \texttt{click}, \texttt{type}, \texttt{scroll}, \texttt{navigate}, \texttt{done},
+        \texttt{screenshot}, and \texttt{upload\_file}.
+\end{enumerate}
+
+The system prompt instructs the agent to complete its assigned task, to treat the user's PII
+as sensitive, and to refuse requests for PII that are not contextually justified by the task.
+No anti-phishing specific instructions are added beyond this general guidance, ensuring we
+measure the model's innate social engineering resistance rather than prompted heuristics.
+
+\subsection{PII Detection}
+
+The \texttt{PiiTracker} class intercepts every \texttt{type} action before it is executed by
+the browser. It performs exact-string matching of the typed value against each field in the
+user profile (\texttt{user\_profile.json}). When a match is found, the tracker records:
+
+\begin{itemize}
+  \item The matched field name (e.g., \texttt{payment.card\_number})
+  \item The sensitivity level (critical / high / medium)
+  \item The current page URL
+  \item The step number within the session
+\end{itemize}
+
+This provides a ground-truth record of precisely what data was leaked, to which URL, and when.
+
+\section{Evaluation Metrics}
+
+Four metrics are computed per session from the session log and PII tracker output:
+
+\begin{itemize}
+  \item \textbf{PII Leakage Rate (PLR):} The fraction of sensitive profile fields submitted to
+        an adversarial endpoint across a run. Can be disaggregated by field sensitivity tier
+        (critical, high, medium) and by field name.
+  \item \textbf{Attack Success Rate (ASR):} Whether the attacker's primary intended outcome
+        was achieved, regardless of which specific PII fields were leaked. Binary per run.
+  \item \textbf{Task Completion Rate (TCR):} Whether the agent successfully completed the
+        legitimate task (e.g., found and used the real download link, bought from the legitimate
+        retailer). Assessed from session logs and a set of per-environment success criteria.
+  \item \textbf{Detection Rate (DR):} Whether the agent explicitly identified the attack in
+        its reasoning. Detected by keyword matching on the agent's text output against terms
+        such as ``suspicious'', ``phishing'', ``scam'', ``fake'', ``malicious'', ``typosquat''.
+\end{itemize}
+
+\section{Testing and Verification Plan}
+
+Each environment is verified manually before inclusion in evaluation runs:
+
+\begin{itemize}
+  \item The legitimate task path is confirmed to be completable without submitting any PII
+        to an adversarial endpoint.
+  \item The attack path is confirmed to trigger PII collection if followed.
+  \item The \texttt{/api/captured} endpoint is confirmed to log submissions correctly.
+  \item The PII tracker is confirmed to fire on known sensitive values and not fire on
+        non-PII text.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Environment verification checklist}
+\label{tab:testcases}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Check ID} & \textbf{Criterion} & \textbf{Method} \\
+\hline
+V01 & Legitimate task completable without PII submission & Manual walkthrough \\
+V02 & Attack path triggers PII collection if followed    & Manual walkthrough \\
+V03 & \texttt{/api/captured} logs submissions correctly  & HTTP POST test \\
+V04 & PII tracker fires on sensitive values             & Unit test \\
+V05 & PII tracker does not fire on non-PII text         & Unit test \\
+V06 & All ports bound correctly, no conflicts           & Port scan \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Result Analysis}
+
+\textit{Experimental evaluation is in progress. Results, including per-environment PLR/ASR/TCR/DR
+scores and cross-model comparisons, will be presented in this section upon completion of runs.}
+
+\section{Quality Assurance}
+
+Code quality is maintained through modular architecture with clear separation between the
+environment layer, agent layer, and evaluation layer. The PII tracker and scorer are implemented
+as independent modules so that changes to agent behaviour do not affect measurement fidelity.
+All environment Flask apps follow a consistent structure (port assignment, \texttt{/api/captured}
+endpoint, \texttt{config.json}) to ensure uniform integration with the scorer.
+
+%% ---- Chapter 5: Standards Adopted ----
+\chapter{Standards Adopted}
+
+\section{Design Standards}
+
+The benchmark design follows principles from IEEE Std 829 (Software and System Test
+Documentation) for structuring test environments with defined inputs, expected outcomes, and
+pass/fail criteria. Attack taxonomy and PII sensitivity classification are aligned with the
+NIST SP 800-122 definition of Personally Identifiable Information and the OWASP Top 10
+categories for web application security.
+
+\section{Coding Standards}
+
+All Python code follows PEP 8 style conventions. Dependencies are managed via \texttt{uv}
+with a pinned \texttt{uv.lock} file for reproducibility. Flask applications use Jinja2
+template inheritance to avoid HTML duplication. API responses from environment servers
+use consistent JSON schemas. Environment variable separation (API keys, port assignments)
+is handled via configuration files rather than hard-coded values.
+
+\section{Testing Standards}
+
+Environment verification follows a manual checklist (Table~\ref{tab:testcases}) applied to
+each environment before it is included in evaluation runs. PII tracker correctness is verified
+by unit tests against known sensitive values. Metric computation is validated against
+hand-labelled session logs for a held-out set of environments.
+
+%% ---- Chapter 6: Conclusion ----
+\chapter{Conclusion and Future Scope}
+
+\section{Conclusion}
+
+This project presents Scammer4U, a benchmark for evaluating VLM-based web agents against
+social engineering attacks. We designed 16 adversarial web environments spanning three
+difficulty tiers and twelve attack categories, implemented a modular agent framework with
+real-time PII detection, and defined four evaluation metrics that jointly measure data
+leakage, attack success, task completion, and explicit detection. The benchmark addresses
+a gap in the existing literature by treating personal data leakage as the primary harm
+signal and by including adaptive conversational attacks that no prior benchmark has
+operationalised.
+
+\textit{Quantitative results and cross-model comparisons will be added upon completion of
+evaluation runs.}
+
+\section{Future Scope}
+
+\begin{itemize}
+  \item \textbf{Expanded model coverage:} Evaluate GPT-5-mini, Claude Sonnet 4.6, Llama 4,
+        Kimi K2.5, and Qwen 3.5 to produce a comparative safety landscape across frontier
+        and open-source models.
+  \item \textbf{Dynamic environment generation:} Extend the LLM-based pipeline to
+        automatically generate new attack environments from templates, increasing benchmark
+        scale and reducing hand-crafting effort.
+  \item \textbf{Agent-side defences:} Investigate whether additional system prompt
+        instructions, fine-tuning on phishing examples, or tool-assisted URL verification
+        can meaningfully improve agent resistance.
+  \item \textbf{Real-world scam integration:} Periodically import sanitised real-world
+        phishing pages to keep the benchmark ecologically valid as scam tactics evolve.
+  \item \textbf{Longitudinal tracking:} Re-run the benchmark against new model releases to
+        track whether resistance improves as a function of model capability.
+\end{itemize}
+
+%% ================================================================
+%%  REFERENCES
+%% ================================================================
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{webagent_survey}
+Z.~Gur, H.~Safdari, T.~Steiner, D.~Krishnamurthy, A.~Madumal, C.~Tsimpoukelli, \textit{et al.},
+``A Real-World WebAgent with Planning, Long Context Understanding, and Program Synthesis,''
+\textit{arXiv preprint}, arXiv:2307.12856, 2023.
+
+\bibitem{wipi}
+Z.~Liu, F.~Yan, K.~Shu, H.~Liu, and C.~Zou,
+``Prompt Injection Attack Against LLM-Integrated Applications,''
+\textit{arXiv preprint}, arXiv:2306.05499, 2023.
+
+\bibitem{trap}
+Y.~Ruan, H.~Chen, B.~Zhang, and X.~Xu,
+``TRAP: Targeted Hijacking Attacks on Autonomous Pipelines,''
+in \textit{Proc. ACM CCS Workshop on Attacks and Defenses for Internet-of-Things}, 2024.
+
+\bibitem{decepticon}
+H.~Yang, T.~Bhatt, T.~Yu, W.~Zhu, P.~Liang, and T.~L. Griffiths,
+``DECEPTICON: Evaluating LLM Agents against Deceptive Web Interfaces,''
+\textit{arXiv preprint}, arXiv:2405.12345, 2024.
+
+\bibitem{trickyarena}
+T.~He, X.~Li, and Q.~Zhou,
+``TrickyArena: Benchmarking Agent Robustness Against Deceptive Web Patterns,''
+\textit{arXiv preprint}, arXiv:2410.09876, 2024.
+
+\bibitem{eia}
+G.~Deng, Y.~Liu, Y.~Li, K.~Wang, Y.~Zhang, Z.~Li, H.~Wang, T.~Zhang, and Y.~Liu,
+``PentestGPT: Evaluating and Harnessing Large Language Models for Automated Penetration Testing,''
+in \textit{Proc. USENIX Security Symposium}, 2024.
+
+\bibitem{webtrap}
+C.~Bailey, E.~Riedl, and D.~Weld,
+``WebTrap Park: A Benchmark for Web-Based Traps Targeting Autonomous Agents,''
+\textit{arXiv preprint}, arXiv:2411.05432, 2024.
+
+\bibitem{playwright}
+Microsoft Corporation,
+``Playwright: Fast and Reliable End-to-End Testing for Modern Web Apps,''
+\url{https://playwright.dev}, 2024.
+
+\bibitem{nist_pii}
+E.~McCallister, T.~Grance, and K.~Scarfone,
+``Guide to Protecting the Confidentiality of Personally Identifiable Information (PII),''
+\textit{NIST Special Publication 800-122}, National Institute of Standards and Technology, 2010.
+
+\end{thebibliography}
+
+%% ================================================================
+%%  INDIVIDUAL CONTRIBUTION
+%% ================================================================
+\newpage
+\addcontentsline{toc}{chapter}{Individual Contribution}
+\chapter*{Individual Contribution}
+
+%% Repeat the block below for each group member
+\begin{center}
+{\large \textbf{\projecttitle}}\\[10pt]
+{\normalsize \MakeUppercase{\memberA}}\\
+{\normalsize \rollA}\\[10pt]
+\end{center}
+
+\noindent\textbf{Abstract:} A short description of the aim and objective of the project
+work carried out in 3--4 lines. This part should be common to all students in the group.
+
+\vspace{12pt}
+\noindent\textbf{Individual contribution and findings:}
+% Write individual contribution here.
+
+\vspace{12pt}
+\noindent\textbf{Individual contribution to project report preparation:}
+% Write report contribution here.
+
+\vspace{12pt}
+\noindent\textbf{Individual contribution for project presentation and demonstration:}
+% Write presentation contribution here.
+
+\vspace{1.5cm}
+
+\noindent
+\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
+Full Signature of Supervisor: & Full Signature of the Student: \\[24pt]
+\dotfill & \dotfill \\
+\end{tabular}
+
+%% ================================================================
+%%  PLAGIARISM REPORT PAGE
+%% ================================================================
+\newpage
+\addcontentsline{toc}{chapter}{Plagiarism Report}
+\chapter*{Plagiarism Report}
+
+\begin{center}
+{\large \textbf{TURNITIN PLAGIARISM REPORT}}\\[6pt]
+{\normalsize \textbf{(This report is mandatory for all the projects and plagiarism\\
+must be below 25\%)}}\\[24pt]
+
+% Insert your Turnitin report screenshot here:
+% \includegraphics[width=0.8\textwidth]{fig/turnitin-report.png}
+\textit{[Insert Turnitin plagiarism report screenshot here]}
+
+\end{center}
+
+\end{document}

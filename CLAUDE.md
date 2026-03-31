@@ -579,10 +579,15 @@ SCAFFOLD ARCHITECTURE
 agent/
   __init__.py
   __main__.py       — module entry (calls runner.entry())
-  runner.py         — CLI entry point (--env, --model, --max-steps, --headed)
-                      Default model: gemini-3-flash-preview
-                      Supports all 16 environments plus "all" flag
-  requirements.txt  — agent-specific deps (playwright, google-genai, pyyaml, Pillow)
+  runner.py         — CLI entry point with multi-model and env group support
+                      Flags: --env, --model, --max-steps, --headed,
+                             --run-name, --dry-run, --output-dir, --api-key
+                      Env groups: benchmark (10), tier1 (4), tier2 (4),
+                                  tier3 (2), all (16), or any single env
+                      Model aliases: gemini, llama-scout/llama4, gpt-oss,
+                                     or "all" for all 3 benchmark models
+  requirements.txt  — agent-specific deps (playwright, google-genai,
+                      openai, pyyaml, Pillow)
   config/
     environments.yaml — all 16 environments with ports, domains, tasks,
                         and run_servers paths. Global flag use_domains: false
@@ -593,10 +598,23 @@ agent/
                          Run: python -m agent.config.generate_resume
   core/
     agent.py          — main observe→think→act loop (WebNavigationAgent class),
-                        system prompt builder, PII formatter for prompt
+                        system prompt builder, PII formatter for prompt.
+                        Vision-aware: adapts system prompt and screenshot
+                        behavior based on model capabilities.
     browser.py        — Playwright browser wrapper (headless/headed, file uploads)
-    llm_client.py     — Google Generative AI (Gemini) client with retries,
-                        multimodal support (text + screenshot), JSON action parsing
+    base_client.py    — abstract base class (BaseLLMClient) defining the
+                        interface all LLM backends implement:
+                        get_action_batch() and generate_text()
+    llm_client.py     — GeminiClient: Google GenAI SDK backend (VLM).
+                        Also exports LLMClient as backward-compatible alias.
+    openai_client.py  — OpenAICompatClient: Groq-hosted backend via OpenAI
+                        SDK. Supports VLM (Llama 4 Scout with images) and
+                        text-only (GPT OSS 120B, drops screenshots).
+                        Includes automatic image compression for Groq's
+                        4MB request limit.
+    llm_factory.py    — Model registry + factory function create_llm_client().
+                        Resolves model aliases and routes to correct backend.
+                        Unknown model names default to Gemini.
     observer.py       — screenshot + DOM observation, interactive element extraction
     action_space.py   — action types (click, type, scroll, navigate, done,
                         screenshot, upload_file, etc.) and JSON parsing
@@ -861,13 +879,86 @@ PORT ASSIGNMENTS
 
 
 ======================================================================
-MODELS WE PLAN TO TEST
+EVALUATION SETUP
 ======================================================================
-  Gemini 3.0 Flash (current default: gemini-3-flash-preview)
-  GPT-5-mini
-  Claude Sonnet 4.6
-  Llama 4-Scout, Llama 4-Maverick (open source)
-  Kimi K2.5, Minimax M2.5, Qwen 3.5 122B
+
+Three Models Under Test:
+
+  Model                    Backend    Vision   Role
+  ────────────────────     ────────   ──────   ──────────────────────
+  gemini-3-flash-preview   Google     VLM      Primary VLM baseline
+  llama-4-scout-17b        Groq       VLM      Open-source VLM comparison
+  gpt-oss-120b             Groq       None     Text-only / DOM baseline
+
+  Gemini and Llama 4 Scout receive DOM text + page screenshots.
+  GPT OSS 120B receives DOM text only — no screenshots. This is the
+  text-only baseline measuring how much visual understanding helps.
+
+Model Aliases (CLI shorthand):
+  gemini       → gemini-3-flash-preview
+  llama-scout  → meta-llama/llama-4-scout-17b-16e-instruct
+  llama4       → meta-llama/llama-4-scout-17b-16e-instruct
+  gpt-oss      → openai/gpt-oss-120b
+  gpt-oss-120b → openai/gpt-oss-120b
+
+Benchmark Subset (10 environments, 3 × 10 = 30 total runs):
+
+  Tier 1 — Easy (4):
+    cluttered_downloads   Dark Pattern Overload, Reward/Incentive Trap
+    coc_gems              Social Proof Manipulation, Credential Phishing
+    github_phish          OAuth Impersonation, Phishing Clone
+    virus_scanner         Urgency Tricks, Fake Trust Signals
+
+  Tier 2 — Hard (4):
+    job_portal            Phishing Clone, Urgency Tricks, Fake Trust Signals
+    gov_portal            Progressive Phishing, Authority Impersonation
+    ecommerce             Multi-site Phishing, Social Proof Manipulation
+    marketplace           Fake Trust Signals, Urgency Tricks
+
+  Tier 3 — Very Hard (2):
+    freelance             Conversational Deception, Prompt Injection
+    support_chat          Progressive Trust Escalation, Prompt Injection
+
+API Keys Required:
+  GEMINI_API_KEY (or GOOGLE_API_KEY) — for Gemini models
+  GROQ_API_KEY                       — for Llama 4 Scout and GPT OSS 120B
+
+
+RUNNING THE EVALUATION
+-----------------------
+
+  # 1. Start all 10 environment servers
+  bash start_servers.sh
+  bash start_servers.sh status     # verify all healthy
+
+  # 2. Quick single-env test (sanity check)
+  python -m agent.runner --env cluttered_downloads --model gemini --headed --max-steps 10
+
+  # 3. Dry run (preview without executing)
+  python -m agent.runner --env benchmark --model all --dry-run
+
+  # 4. Run full benchmark (3 models × 10 envs = 30 runs)
+  python -m agent.runner --env benchmark --model all --run-name experiment-v1
+
+  # 5. Run a single tier
+  python -m agent.runner --env tier1 --model llama-scout --max-steps 30
+
+  # 6. Run a single model across all benchmark envs
+  python -m agent.runner --env benchmark --model gpt-oss --run-name gpt-baseline
+
+  # 7. Stop all servers when done
+  bash start_servers.sh stop
+
+Output Structure:
+  agent/logs/<run-name>/aggregate_results.json   — combined scores
+  agent/logs/<run-name>/<model>/                 — per-model session logs
+  Each run also produces .score.json files alongside the session logs.
+
+Server Launcher (start_servers.sh):
+  bash start_servers.sh           # start all 10 benchmark env servers
+  bash start_servers.sh status    # health check (port connectivity)
+  bash start_servers.sh stop      # kill all background server processes
+  Logs written to: logs/server_<env_name>.log
 
 
 ======================================================================

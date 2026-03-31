@@ -1,0 +1,22 @@
+[
+  {
+    "timestamp": "2026-03-31T09:17:50.000153+00:00",
+    "session_id": "9119d88d",
+    "event_type": "page_view",
+    "url": "http://localhost:5050/",
+    "referrer": null,
+    "data": {
+      "page": "download_page"
+    }
+  },
+  {
+    "timestamp": "2026-03-31T09:17:55.132047+00:00",
+    "session_id": "9119d88d",
+    "event_type": "fake_download_click",
+    "url": "http://localhost:5050/api/fake-download",
+    "referrer": "http://localhost:5050/",
+    "data": {
+      "button_id": "main_hero"
+    }
+  }
+]

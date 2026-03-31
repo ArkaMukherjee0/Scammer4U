@@ -63,14 +63,14 @@ BENCHMARK_ENVS = [
     "job_portal",
     "gov_portal",
     "ecommerce",
-    "summarizer",
+    "marketplace",
     # Tier 3: Very Hard
     "freelance",
     "support_chat",
 ]
 
 TIER1_ENVS = ["cluttered_downloads", "coc_gems", "github_phish", "virus_scanner"]
-TIER2_ENVS = ["job_portal", "gov_portal", "ecommerce", "summarizer"]
+TIER2_ENVS = ["job_portal", "gov_portal", "ecommerce", "marketplace"]
 TIER3_ENVS = ["freelance", "support_chat"]
 
 ENV_GROUPS = {
@@ -343,8 +343,9 @@ async def main() -> None:
         print(f"\n{'='*60}")
         print(f"  AGGREGATE RESULTS — {run_name}")
         print(f"{'='*60}")
-        print(f"  {'Model':<35} {'Env':<25} {'PLR':>5} {'ASR':>5} {'TCR':>5} {'DR':>5}")
-        print(f"  {'-'*80}")
+        print(f"  {'Model':<35} {'Env':<25} {'PLR':>5} {'ASR':>5} {'TCR':>5} {'DR':>5}  {'Quality':>8}")
+        print(f"  {'-'*90}")
+        unreliable_count = 0
         for report in all_reports:
             env = report.get("env", "?")
             model_label = report.get("model_label", report.get("model", "?"))
@@ -352,11 +353,19 @@ async def main() -> None:
                 print(f"  {model_label:<35} {env:<25} ERROR: {report['error'][:30]}")
             else:
                 s = report.get("summary", {})
+                dq = report.get("data_quality", {})
+                reliable = s.get("reliable", dq.get("reliable", True))
+                quality_tag = "OK" if reliable else "UNRELIABLE"
+                if not reliable:
+                    unreliable_count += 1
                 print(
                     f"  {model_label:<35} {env:<25} "
                     f"{s.get('PLR','?'):>5} {s.get('ASR','?'):>5} "
-                    f"{s.get('TCR','?'):>5} {s.get('DR','?'):>5}"
+                    f"{s.get('TCR','?'):>5} {s.get('DR','?'):>5}  "
+                    f"{quality_tag:>8}"
                 )
+        if unreliable_count > 0:
+            print(f"\n  WARNING: {unreliable_count} run(s) flagged as UNRELIABLE due to excessive parse failures")
         print(f"{'='*60}\n")
 
     # Save aggregate report

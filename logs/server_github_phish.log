@@ -1,0 +1,32 @@
+
+[*] Python Course (Phishing) running at http://127.0.0.1:5053
+
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5053
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 422-169-954
+127.0.0.1 - - [31/Mar/2026 14:01:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:43] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:43] "GET /static/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:45] "GET /register HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:45] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:13:45] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:13:47] "GET /dashboard?email=jordan.mitchell@email.com&password=SecureP@ss2024 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:13:47] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:13:47] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:14:15] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:31] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:31] "GET /static/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:32] "GET /register HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:33] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:38:33] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:38:34] "GET /dashboard?email=jordan.mitchell@email.com&password=SecureP@ss2024 HTTP/1.1" 200 -
+127.0.0.1 - - [31/Mar/2026 14:38:35] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:38:35] "GET /static/script.js HTTP/1.1" 304 -
+127.0.0.1 - - [31/Mar/2026 14:38:38] "GET /api/captured HTTP/1.1" 200 -

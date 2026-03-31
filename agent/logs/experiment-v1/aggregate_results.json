@@ -1,0 +1,72 @@
+[
+  {
+    "env": "cluttered_downloads",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "coc_gems",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "github_phish",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "virus_scanner",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "job_portal",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "gov_portal",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "ecommerce",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "marketplace",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "freelance",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  },
+  {
+    "env": "support_chat",
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model_label": "Llama 4 Scout 17B (Groq)",
+    "error": "No Groq API key found. Set GROQ_API_KEY env var, or pass api_key= to OpenAICompatClient.",
+    "_run_name": "experiment-v1"
+  }
+]

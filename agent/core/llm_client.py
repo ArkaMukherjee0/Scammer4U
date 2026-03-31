@@ -13,12 +13,12 @@ from typing import Any, Optional
 from google import genai
 from google.genai import types
 
-from .action_space import AgentAction, ActionParseError, parse_action, parse_action_batch
+from .action_space import AgentAction, ActionParseError, parse_action, parse_action_batch, build_retry_feedback
 from .base_client import BaseLLMClient
 
 
 DEFAULT_MODEL = "gemini-3-flash-preview"
-MAX_RETRIES = 3
+MAX_RETRIES = 7
 
 
 class GeminiClient(BaseLLMClient):
@@ -48,9 +48,10 @@ class GeminiClient(BaseLLMClient):
         screenshot_base64: optional base64 PNG to attach to the latest user message
         """
         last_error: Optional[str] = None
+        last_raw: str = ""
 
         for attempt in range(MAX_RETRIES):
-            contents = self._build_contents(messages, screenshot_base64, last_error)
+            contents = self._build_contents(messages, screenshot_base64, last_error, last_raw)
 
             retry_tag = f" (retry {attempt})" if attempt > 0 else ""
             print(f"  [llm] Calling Gemini API ({self.model}){retry_tag}...")
@@ -84,6 +85,7 @@ class GeminiClient(BaseLLMClient):
                 return actions
             except ActionParseError as e:
                 last_error = str(e)
+                last_raw = response_text
                 print(f"  [llm] Parse error: {e}")
                 continue
 
@@ -119,6 +121,7 @@ class GeminiClient(BaseLLMClient):
         messages: list[dict[str, Any]],
         screenshot_base64: Optional[str],
         retry_error: Optional[str],
+        retry_raw_response: str = "",
     ) -> list[types.Content]:
         """Convert our message format to Gemini SDK Content objects."""
         contents: list[types.Content] = []
@@ -140,16 +143,19 @@ class GeminiClient(BaseLLMClient):
                 ))
 
         if retry_error:
-            error_text = (
-                f"Your previous response was not a valid action. Error: {retry_error}\n"
-                "Please respond with a JSON object containing an 'actions' array."
-            )
-            if contents and contents[-1].role == "user":
-                contents[-1].parts.append(types.Part.from_text(text=error_text))
+            # Add the failed response as model message for context
+            if retry_raw_response:
+                contents.append(types.Content(
+                    role="model",
+                    parts=[types.Part.from_text(text=retry_raw_response)],
+                ))
+            feedback = build_retry_feedback(retry_error, retry_raw_response)
+            if contents and contents[-1].role == "user" and not retry_raw_response:
+                contents[-1].parts.append(types.Part.from_text(text=feedback))
             else:
                 contents.append(types.Content(
                     role="user",
-                    parts=[types.Part.from_text(text=error_text)],
+                    parts=[types.Part.from_text(text=feedback)],
                 ))
 
         return contents

@@ -183,6 +183,118 @@ def parse_action_batch(raw: str | dict) -> list[AgentAction]:
     return actions
 
 
+def build_retry_feedback(error_msg: str, raw_response: str = "") -> str:
+    """Build a targeted retry message based on the specific parse error.
+
+    Returns a detailed correction prompt that tells the model exactly
+    what went wrong and how to fix the JSON.
+    """
+    valid_actions = ", ".join(sorted(ACTION_SCHEMA.keys()))
+
+    example = (
+        '{"actions": [{"action": "done", "summary": "Task completed."}], '
+        '"reasoning": "Explaining why"}'
+    )
+
+    # --- Single-quote JSON (Python dict syntax instead of JSON) ---
+    if "Expecting property name enclosed in double quotes" in error_msg or \
+       "Invalid JSON" in error_msg and raw_response.lstrip().startswith("{"):
+        # Check if it looks like single-quoted Python dict
+        if "'" in raw_response and '"' not in raw_response[:50]:
+            return (
+                "ERROR: Your response used single quotes (Python dict syntax) "
+                "instead of double quotes (JSON syntax).\n"
+                "JSON requires double quotes for all keys and string values.\n"
+                f"Correct format example:\n{example}\n"
+                "Respond ONLY with a valid JSON object. No explanation text before or after."
+            )
+        return (
+            f"ERROR: Your response contained invalid JSON. Details: {error_msg}\n"
+            "Make sure all keys and string values use double quotes, not single quotes.\n"
+            "Do not include trailing commas. Ensure all braces and brackets are matched.\n"
+            f"Correct format example:\n{example}\n"
+            "Respond ONLY with a valid JSON object. No explanation text before or after."
+        )
+
+    # --- Empty actions array ---
+    if "Expected an 'actions' array with at least one action" in error_msg:
+        return (
+            "ERROR: You returned an empty 'actions' array. The array MUST contain "
+            "at least one action object.\n"
+            "If the task is complete, use the 'done' action:\n"
+            '{"actions": [{"action": "done", "summary": "Description of what was accomplished."}], '
+            '"reasoning": "Why the task is complete"}\n'
+            "If the task is NOT complete, include the next action(s) to take.\n"
+            f"Valid action types: {valid_actions}\n"
+            "Respond ONLY with a valid JSON object."
+        )
+
+    # --- No JSON object found at all ---
+    if "No JSON object found" in error_msg:
+        return (
+            "ERROR: Your response did not contain any JSON object.\n"
+            "You MUST respond with a JSON object — no plain text responses.\n"
+            f"Required format:\n{example}\n"
+            f"Valid action types: {valid_actions}\n"
+            "Respond ONLY with the JSON object. Do not write any explanation before or after it."
+        )
+
+    # --- Missing or invalid 'action' field ---
+    if "Missing or invalid 'action' field" in error_msg:
+        return (
+            f"ERROR: {error_msg}\n"
+            "Each action object inside the 'actions' array MUST have an 'action' field "
+            f"set to one of: {valid_actions}\n"
+            f"Correct format example:\n{example}\n"
+            "Respond ONLY with a valid JSON object."
+        )
+
+    # --- Missing required parameter ---
+    if "requires parameter" in error_msg:
+        return (
+            f"ERROR: {error_msg}\n"
+            "Check the required parameters for the action you are using:\n"
+            + _format_action_params_hint(error_msg)
+            + "\nRespond ONLY with a valid JSON object."
+        )
+
+    # --- Wrong parameter type ---
+    if "must be" in error_msg and "got" in error_msg:
+        return (
+            f"ERROR: {error_msg}\n"
+            "Fix the parameter type. For example:\n"
+            "  - element_id must be an integer (5, not \"5\")\n"
+            "  - text must be a string (\"hello\", not 123)\n"
+            "  - checked must be a boolean (true/false)\n"
+            "Respond ONLY with a valid JSON object."
+        )
+
+    # --- Fallback: generic but still more helpful than before ---
+    return (
+        f"ERROR: Your previous response was not valid. Details: {error_msg}\n"
+        "You MUST respond with a JSON object in this exact format:\n"
+        f"{example}\n"
+        f"Valid action types: {valid_actions}\n"
+        "Rules:\n"
+        "- Use double quotes for all keys and strings\n"
+        "- The 'actions' array must have at least one action\n"
+        "- Each action must have an 'action' field with a valid type\n"
+        "- Include required parameters for each action type\n"
+        "Respond ONLY with the JSON object."
+    )
+
+
+def _format_action_params_hint(error_msg: str) -> str:
+    """Extract the action type from an error and return its parameter schema."""
+    for action_type, params in ACTION_SCHEMA.items():
+        if f"'{action_type}'" in error_msg:
+            if not params:
+                return f"  {action_type}: no parameters needed"
+            param_strs = [f'"{k}": <{v}>' for k, v in params.items()]
+            return f'  {action_type}: {{{", ".join(param_strs)}}}'
+    return "  See the action descriptions in the system prompt."
+
+
 def get_action_prompt_description() -> str:
     """Return a description of available actions for the system prompt."""
     lines = [

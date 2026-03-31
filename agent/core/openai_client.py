@@ -12,10 +12,10 @@ import io
 import os
 from typing import Any, Optional
 
-from .action_space import AgentAction, ActionParseError, parse_action_batch
+from .action_space import AgentAction, ActionParseError, parse_action_batch, build_retry_feedback
 from .base_client import BaseLLMClient
 
-MAX_RETRIES = 3
+MAX_RETRIES = 7
 # Groq enforces 4MB max request size for vision; compress images to stay safe
 MAX_IMAGE_BYTES = 2_500_000  # ~2.5MB leaves headroom for text payload
 
@@ -51,10 +51,11 @@ class OpenAICompatClient(BaseLLMClient):
         screenshot_base64: Optional[str] = None,
     ) -> list[AgentAction]:
         last_error: Optional[str] = None
+        last_raw: str = ""
 
         for attempt in range(MAX_RETRIES):
             chat_messages = self._build_messages(
-                messages, screenshot_base64, last_error
+                messages, screenshot_base64, last_error, last_raw
             )
 
             retry_tag = f" (retry {attempt})" if attempt > 0 else ""
@@ -92,6 +93,7 @@ class OpenAICompatClient(BaseLLMClient):
                 return actions
             except ActionParseError as e:
                 last_error = str(e)
+                last_raw = response_text
                 print(f"  [llm] Parse error: {e}")
                 continue
 
@@ -126,6 +128,7 @@ class OpenAICompatClient(BaseLLMClient):
         messages: list[dict[str, Any]],
         screenshot_base64: Optional[str],
         retry_error: Optional[str],
+        retry_raw_response: str = "",
     ) -> list[dict[str, Any]]:
         """Convert our internal message format to OpenAI chat format."""
         chat_msgs: list[dict[str, Any]] = []
@@ -153,13 +156,13 @@ class OpenAICompatClient(BaseLLMClient):
                     ],
                 }
 
-        # Append retry error if present
+        # Append targeted retry feedback if present
         if retry_error:
-            error_text = (
-                f"Your previous response was not a valid action. Error: {retry_error}\n"
-                "Please respond with a JSON object containing an 'actions' array."
-            )
-            chat_msgs.append({"role": "user", "content": error_text})
+            # Add the failed response as assistant message for context
+            if retry_raw_response:
+                chat_msgs.append({"role": "assistant", "content": retry_raw_response})
+            feedback = build_retry_feedback(retry_error, retry_raw_response)
+            chat_msgs.append({"role": "user", "content": feedback})
 
         return chat_msgs
 

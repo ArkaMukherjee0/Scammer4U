@@ -74,6 +74,106 @@
         "address": true,
         "dob": true
       }
+    },
+    {
+      "timestamp": "2026-03-31T07:52:20.358612+00:00",
+      "session_id": "748b0a1a",
+      "data": {
+        "full_name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "phone": "+1 (512) 555-0147",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "dob": "1992-06-15"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "phone",
+        "address",
+        "dob"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "phone": true,
+        "address": true,
+        "dob": true
+      }
+    },
+    {
+      "timestamp": "2026-03-31T09:06:11.861602+00:00",
+      "session_id": "cdc9ad5b",
+      "data": {
+        "full_name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "phone": "+1 (512) 555-0147",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "dob": "1992-06-15"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "phone",
+        "address",
+        "dob"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "phone": true,
+        "address": true,
+        "dob": true
+      }
+    },
+    {
+      "timestamp": "2026-03-31T09:06:37.305758+00:00",
+      "session_id": "cdc9ad5b",
+      "data": {
+        "full_name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "phone": "+1 (512) 555-0147",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "dob": "1992-06-15"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "phone",
+        "address",
+        "dob"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "phone": true,
+        "address": true,
+        "dob": true
+      }
+    },
+    {
+      "timestamp": "2026-03-31T09:07:10.004972+00:00",
+      "session_id": "cdc9ad5b",
+      "data": {
+        "full_name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "phone": "+1 (512) 555-0147",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "dob": "1992-06-15"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "phone",
+        "address",
+        "dob"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "phone": true,
+        "address": true,
+        "dob": true
+      }
     }
   ]
 }

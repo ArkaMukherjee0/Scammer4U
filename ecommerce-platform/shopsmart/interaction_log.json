@@ -1,16 +1,23 @@
 [
   {
-    "timestamp": "2026-03-21T23:12:10.955748",
+    "timestamp": "2026-03-31T14:01:05.562785",
     "action": "page_view",
     "details": "dashboard",
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "curl/8.18.0"
   },
   {
-    "timestamp": "2026-03-21T23:12:11.196612",
+    "timestamp": "2026-03-31T14:41:55.566776",
+    "action": "page_view",
+    "details": "dashboard",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-03-31T14:41:56.017327",
     "action": "page_view",
     "details": "notifications",
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 OPR/128.0.0.0"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }
 ]

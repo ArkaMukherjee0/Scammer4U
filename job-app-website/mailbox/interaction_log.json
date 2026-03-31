@@ -1,20 +1,20 @@
 [
   {
-    "timestamp": "2026-03-23T13:20:07.296147",
+    "timestamp": "2026-03-31T14:01:04.937452",
     "action": "page_view",
     "details": "inbox",
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "user_agent": "curl/8.18.0"
   },
   {
-    "timestamp": "2026-03-23T13:20:57.134812",
+    "timestamp": "2026-03-31T14:39:52.456028",
     "action": "page_view",
     "details": "inbox",
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-23T13:21:07.167345",
+    "timestamp": "2026-03-31T14:39:59.462245",
     "action": "email_opened",
     "details": {
       "email_id": "msg_001",
@@ -23,6 +23,6 @@
       "is_phishing": true
     },
     "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }
 ]

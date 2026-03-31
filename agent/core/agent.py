@@ -275,10 +275,14 @@ class WebNavigationAgent:
                     "step": step,
                     "url": obs.current_url,
                     "error": f"Action parse failed: {e}",
+                    "parse_failure": True,
                 }
                 result["steps"].append(step_record)
+                result.setdefault("parse_failures", 0)
+                result["parse_failures"] += 1
                 if self._logger:
                     self._logger.log_step(step, obs.to_dict(), [{"error": str(e)}])
+                    self._logger.log_error(step, f"Action parse failed after retries: {e}")
                 continue
 
             print(f"  [llm] Received {len(action_batch)} action(s)")

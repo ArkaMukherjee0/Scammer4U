@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\Soham\Documents\NGMI26\Scammer4U\summary-website\app.py", line 21, in <module>
+    from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+ModuleNotFoundError: No module named 'flask'
