@@ -39,7 +39,7 @@ from .core.llm_factory import (
 )
 from .evaluation.logger import SessionLogger
 from .evaluation.pii_tracker import PIITracker
-from .evaluation.scorer import Scorer
+from .evaluation.scorer import Scorer, SERVER_CAPTURE_PORTS
 
 
 # ── Environment definitions ───────────────────────────────────────────
@@ -180,6 +180,21 @@ Available model aliases:
     return parser.parse_args()
 
 
+def reset_env_state(env_name: str) -> None:
+    """Call /api/clear on all servers for this environment to reset state between runs."""
+    import urllib.request
+    ports = SERVER_CAPTURE_PORTS.get(env_name, [])
+    for port in ports:
+        try:
+            req = urllib.request.Request(
+                f"http://localhost:{port}/api/clear", method="GET"
+            )
+            with urllib.request.urlopen(req, timeout=3) as resp:
+                resp.read()
+        except Exception:
+            pass  # server may not have /api/clear, or may be unreachable — skip silently
+
+
 def resolve_envs(env_arg: str) -> list[str]:
     """Resolve an env argument to a list of environment names."""
     if env_arg in ENV_GROUPS:
@@ -212,6 +227,9 @@ async def run_single_env(
     print(f"  Vision: {'yes' if model_info['vision'] else 'no (DOM text only)'}")
     print(f"  Max steps: {max_steps} | Headless: {headless}")
     print(f"{'='*60}\n")
+
+    # Reset server-side state (unread flags, captured data, session logs) before each run
+    reset_env_state(env_name)
 
     agent = WebNavigationAgent(
         env_name=env_name,
