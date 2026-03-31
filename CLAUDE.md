@@ -577,30 +577,251 @@ SCAFFOLD ARCHITECTURE
 ======================================================================
 
 agent/
+  __init__.py
+  __main__.py       — module entry (calls runner.entry())
   runner.py         — CLI entry point (--env, --model, --max-steps, --headed)
+                      Default model: gemini-3-flash-preview
+                      Supports all 16 environments plus "all" flag
+  requirements.txt  — agent-specific deps (playwright, google-genai, pyyaml, Pillow)
   config/
-    environments.yaml — all 10 environments with ports, domains, tasks
-    user_profile.json — agent's PII (name, email, SSN, card, bank, etc.)
-    resume.pdf        — agent's resume for job application tasks
+    environments.yaml — all 16 environments with ports, domains, tasks,
+                        and run_servers paths. Global flag use_domains: false
+                        (flip to true when hosts file entries are configured)
+    user_profile.json — agent's PII profile (see USER PROFILE section below)
+    resume.pdf        — generated dummy resume for Jordan Mitchell
+    generate_resume.py — script to rebuild resume.pdf from user_profile.json
+                         Run: python -m agent.config.generate_resume
   core/
-    agent.py          — main agent loop
-    browser.py        — Playwright browser wrapper
-    llm_client.py     — Gemini API client
-    observer.py       — screenshot + DOM observation
-    action_space.py   — available actions (click, type, scroll, etc.)
+    agent.py          — main observe→think→act loop (WebNavigationAgent class),
+                        system prompt builder, PII formatter for prompt
+    browser.py        — Playwright browser wrapper (headless/headed, file uploads)
+    llm_client.py     — Google Generative AI (Gemini) client with retries,
+                        multimodal support (text + screenshot), JSON action parsing
+    observer.py       — screenshot + DOM observation, interactive element extraction
+    action_space.py   — action types (click, type, scroll, navigate, done,
+                        screenshot, upload_file, etc.) and JSON parsing
+    context_manager.py — sliding-window conversation memory: keeps last 5 steps
+                         in full detail, older steps LLM-compressed into summary
   evaluation/
-    logger.py         — session logging
-    pii_tracker.py    — real-time PII detection in typed values
+    logger.py         — session logging (per-step observations + actions to file)
+    pii_tracker.py    — real-time PII detection: checks typed values against
+                        user_profile fields, logs field name + sensitivity + URL
     scorer.py         — PLR/ASR/TCR/DR computation from session logs
 
-Each environment directory contains:
-  - Flask app(s) with run_servers.py or standalone app.py
-  - Templates (HTML) for the website UI
-  - config.json with port/domain mappings
-  - /api/captured endpoint for scorer integration
-  - Session logs in logs/ directory
 
-Port assignments:
+USER PROFILE (agent/config/user_profile.json)
+----------------------------------------------
+The agent's simulated PII, organized by category:
+
+  identity:      full_name, email, phone, date_of_birth, ssn
+  address:       street, city, state, zip
+  payment:       card_number, expiry, cvv, cardholder_name, billing_zip
+  financial:     bank_name, routing_number, account_number, account_type,
+                 filing_status
+  professional:  current_employer (TechCorp Inc.), title (ML Engineer),
+                 salary, linkedin, portfolio, resume_path
+  credentials:   freelancehub_username, freelancehub_password
+  supercell:     supercell_email, supercell_password, player_tag
+  social_media:  instagram_password, twitter_password, facebook_password
+  api_keys:      openai_api_key
+
+
+ENVIRONMENT WEBSITE STRUCTURE
+-------------------------------
+Each environment directory (e.g. cluttered-downloads/, freelance-platform/)
+contains:
+  - Flask app(s): either a standalone app.py or run_servers.py for multi-server
+    environments
+  - templates/ — HTML templates (Jinja2)
+  - static/ — CSS, JS, images
+  - config.json — port/domain mappings for the environment
+  - /api/captured POST endpoint for scorer integration (logs PII submissions
+    to a local JSON file)
+  - Session logs in logs/ directory (runtime)
+
+
+======================================================================
+ALTERNATIVE SERVER ARCHITECTURE (server.py)
+======================================================================
+
+In addition to per-environment Flask apps, the repo has a central
+FastAPI-based server (server.py) that can host multiple environments
+behind a single port (8080) using Host-header dispatch:
+
+  server.py
+    Framework:  FastAPI + Jinja2Templates + Uvicorn
+    Port:       8080 (configurable)
+    Dispatch:   Host header → environment mapping:
+                  talentbridge.io   → env1-job-portal
+                  ta1entbridge.io   → env1-phishing
+                  softwarehub.org   → env2-downloads
+    APIs:
+      GET  /                      — root dispatcher (renders per-env templates)
+      GET  /apply                 — job application page
+      POST /submit-application    — form submission handler
+      GET  /download/{scenario}   — download page variants (v1, v2, etc.)
+      GET  /api/scenarios/{env}   — scenario JSON definitions
+      POST /api/log               — generic action logging endpoint
+    Logging:   logs/ directory, session-based JSON files
+
+  templates/
+    index.html                    — default landing page
+    env1-job-portal/              — legitimate job portal templates
+    env1-phishing/                — phishing clone templates
+    env2-downloads/               — download page template variants
+
+NOTE: This FastAPI server is the earlier prototype architecture. Most
+environments now run as standalone Flask apps (the primary approach).
+The central server is kept for environments that benefit from Host-based
+routing and multi-variant scenario testing.
+
+
+======================================================================
+SCENARIO DEFINITIONS (scenarios/)
+======================================================================
+
+JSON files defining multi-variant test scenarios with difficulty levels:
+
+  scenarios/
+    env1-job-portal.json   — 3 variants (basic, subtle, high-pressure urgency)
+    env2-downloads.json    — download page scenario variants
+    env4-ecommerce.json    — e-commerce scenario variants
+
+Each scenario file contains:
+  - Benchmark metadata (name, description)
+  - Domain mappings (legitimate vs. phishing)
+  - Per-variant config:
+    - id, name, difficulty level
+    - Narrative (the task instruction given to the agent)
+    - Target action (legitimate site + required/optional fields)
+    - Phishing site (domain, trigger mechanism, extra PII fields)
+    - Red flags list
+    - Success/failure criteria
+    - Deception patterns used
+    - Metrics to capture (boolean flags and string arrays)
+  - Global success/failure indicators
+  - PII sensitivity level mappings (high/medium/low)
+
+NOTE: The scenarios/ directory uses an older naming convention
+(env1=job-portal, env2=downloads, env4=ecommerce) that predates
+the current 16-environment numbering.
+
+
+======================================================================
+LLM WEBSITE GENERATION PIPELINE (llm-pit/)
+======================================================================
+
+Automated pipeline that uses Claude Code (Sonnet) to generate and
+review benchmark websites:
+
+  llm-pit/
+    run_pipeline.ps1      — PowerShell orchestrator
+    run_pipeline.sh       — Bash equivalent
+    website_prompts.ps1   — prompt definitions for each website
+    website_prompts.sh    — Bash equivalent
+    logs/                 — generation and reflection logs
+    websites/             — output directory for generated websites
+      cluttered-downloads/
+      coc-gems/
+      ecommerce-platform/
+      freelance-platform/
+      github-phish/
+      gov-portal-site/
+      job-app-website/
+      marketplace-website/
+      news-content-site/
+      summary-website/
+
+Pipeline Design:
+  - Two-pass process per website:
+    1. GENERATE: Claude Code creates the full Flask app from a detailed prompt
+    2. REFLECT:  Claude Code reviews and fixes its own output
+  - State machine with checkpointing:
+    pending → generating → generated → reflecting → completed
+  - Resumable: re-running the script skips completed websites
+  - CLI options:
+    run_pipeline.ps1                    # Run all pending
+    run_pipeline.ps1 -List             # Show status
+    run_pipeline.ps1 -Only "key1,key2" # Run specific websites
+    run_pipeline.ps1 -Reset "key1"     # Reset one website
+    run_pipeline.ps1 -ResetAll         # Reset everything
+    run_pipeline.ps1 -DryRun           # Preview only
+
+Currently Defined (in website_prompts):
+  Tier 1: cluttered_downloads, coc_gems, github_phish
+  Tier 2: job_portal, gov_portal, ecommerce, news, marketplace, summarizer
+  Tier 3: freelance
+
+Not yet in pipeline (manually built or pending):
+  virus_scanner, file_converter, quiz_scam, support_chat, saas_onboard,
+  crypto_platform
+
+
+======================================================================
+CODEX-GENERATED WEBSITES (codex-websites/)
+======================================================================
+
+Separately generated environment websites (using OpenAI Codex):
+
+  codex-websites/
+    ecommerce-website/   — alternative e-commerce checkout environment
+      app.py             — Flask app
+      config.json        — port 8060, domain: checkout.northstar-outfitters.com
+      run_server.py      — server launcher
+      templates/         — HTML templates
+      static/            — CSS/JS/images
+
+NOTE: This is an experimental/alternative version separate from the
+primary ecommerce-platform/ environment. It uses a different domain
+(northstar-outfitters.com) and port (8060).
+
+
+======================================================================
+PROJECT CONFIGURATION & DEPENDENCIES
+======================================================================
+
+Python Version: >=3.12
+
+pyproject.toml (root):
+  name: freelance-platform  (historical — covers whole project)
+  dependencies:
+    - flask==3.0.0
+    - flask-cors==4.0.0
+    - google-genai>=1.68.0
+    - pillow>=12.1.1
+    - playwright>=1.58.0
+    - pyyaml>=6.0.3
+
+requirements.txt (root):
+  - flask==3.0.0
+  - flask-cors==4.0.0
+
+agent/requirements.txt:
+  - playwright>=1.40.0
+  - google-genai>=1.0.0
+  - pyyaml>=6.0
+  - Pillow>=10.0.0
+
+server.py dependencies (not in requirements.txt — install separately):
+  - fastapi
+  - uvicorn
+  - pydantic
+  - jinja2
+
+Package Manager: uv (uv.lock present)
+
+Entry Points:
+  - Agent runner:     python -m agent.runner --env <env_name> [options]
+  - FastAPI server:   python server.py  (runs on port 8080)
+  - Per-env servers:  python <env-dir>/app.py  or  python <env-dir>/run_servers.py
+  - Resume generator: python -m agent.config.generate_resume
+  - LLM pipeline:     cd llm-pit && .\run_pipeline.ps1
+
+
+======================================================================
+PORT ASSIGNMENTS
+======================================================================
+
   5050  cluttered_downloads
   5051  coc_gems
   5052  marketplace
@@ -623,6 +844,8 @@ Port assignments:
   8041  news (billing portal)
   8050  gov_portal (mailbox)
   8051  gov_portal (phishing IRS)
+  8060  codex ecommerce (northstar-outfitters — experimental)
+  8080  FastAPI central server (server.py — legacy prototype)
   9010  freelance (hub)
   9020  freelance (fake company)
   9030  freelance (fake DocuSign)
@@ -640,7 +863,7 @@ Port assignments:
 ======================================================================
 MODELS WE PLAN TO TEST
 ======================================================================
-  Gemini 2.0 Flash (currently implemented in scaffold)
+  Gemini 3.0 Flash (current default: gemini-3-flash-preview)
   GPT-5-mini
   Claude Sonnet 4.6
   Llama 4-Scout, Llama 4-Maverick (open source)

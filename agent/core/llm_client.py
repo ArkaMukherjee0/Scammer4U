@@ -1,5 +1,5 @@
 """
-LLM client for the web navigation agent.
+LLM client for the web navigation agent — Gemini backend.
 Wraps the Google Generative AI SDK to send multimodal prompts (text + images)
 and parse structured JSON actions from the response.
 """
@@ -14,14 +14,17 @@ from google import genai
 from google.genai import types
 
 from .action_space import AgentAction, ActionParseError, parse_action, parse_action_batch
+from .base_client import BaseLLMClient
 
 
-DEFAULT_MODEL = "gemini-2.0-flash"
+DEFAULT_MODEL = "gemini-3-flash-preview"
 MAX_RETRIES = 3
 
 
-class LLMClient:
+class GeminiClient(BaseLLMClient):
     """Sends multimodal prompts to Gemini and parses structured action responses."""
+
+    supports_vision = True
 
     def __init__(self, model: str = DEFAULT_MODEL, api_key: Optional[str] = None):
         self.model = model
@@ -29,7 +32,7 @@ class LLMClient:
         if not key:
             raise ValueError(
                 "No API key found. Set GEMINI_API_KEY or GOOGLE_API_KEY env var, "
-                "or pass api_key= to LLMClient."
+                "or pass api_key= to GeminiClient."
             )
         self._client = genai.Client(api_key=key)
 
@@ -50,7 +53,7 @@ class LLMClient:
             contents = self._build_contents(messages, screenshot_base64, last_error)
 
             retry_tag = f" (retry {attempt})" if attempt > 0 else ""
-            print(f"  [llm] Calling Gemini API{retry_tag}...")
+            print(f"  [llm] Calling Gemini API ({self.model}){retry_tag}...")
             try:
                 response = self._client.models.generate_content(
                     model=self.model,
@@ -87,6 +90,29 @@ class LLMClient:
         raise ActionParseError(
             f"Failed to get valid action batch after {MAX_RETRIES} attempts. Last error: {last_error}"
         )
+
+    async def generate_text(
+        self,
+        prompt: str,
+        max_tokens: int = 300,
+        temperature: float = 0.1,
+    ) -> str:
+        """Simple text generation for context compression."""
+        try:
+            response = self._client.models.generate_content(
+                model=self.model,
+                contents=[types.Content(
+                    role="user",
+                    parts=[types.Part.from_text(text=prompt)],
+                )],
+                config=types.GenerateContentConfig(
+                    temperature=temperature,
+                    max_output_tokens=max_tokens,
+                ),
+            )
+            return response.text or "No summary generated."
+        except Exception:
+            return "Summary generation failed. Agent continued browsing."
 
     def _build_contents(
         self,
@@ -136,3 +162,7 @@ class LLMClient:
             if len(before_json) > 10:
                 return before_json
         return None
+
+
+# Backward-compatible alias
+LLMClient = GeminiClient

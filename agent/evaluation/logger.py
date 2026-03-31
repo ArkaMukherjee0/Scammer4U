@@ -25,7 +25,8 @@ class SessionLogger:
         self._log_dir.mkdir(parents=True, exist_ok=True)
 
         timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-        self._filename = f"{env_name}_{model}_{timestamp}.json"
+        safe_model = model.replace("/", "_").replace("\\", "_")
+        self._filename = f"{env_name}_{safe_model}_{timestamp}.json"
         self._filepath = self._log_dir / self._filename
 
         self._session: dict[str, Any] = {

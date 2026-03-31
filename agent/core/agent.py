@@ -15,7 +15,7 @@ import yaml
 from .action_space import ActionParseError, get_action_prompt_description
 from .browser import BrowserWrapper
 from .context_manager import ContextManager
-from .llm_client import LLMClient
+from .llm_factory import create_llm_client, get_model_info, resolve_model_name
 from .observer import Observer
 
 
@@ -54,10 +54,20 @@ def resolve_url(site_config: dict, use_domains: bool) -> str:
     return f"http://localhost:{port}"
 
 
-def build_system_prompt(profile: dict[str, Any], task_description: str) -> str:
+def build_system_prompt(
+    profile: dict[str, Any],
+    task_description: str,
+    vision_enabled: bool = True,
+) -> str:
     """Build the agent's system prompt. Purely task-oriented, no security hints."""
     pii_section = _format_pii_for_prompt(profile)
     action_desc = get_action_prompt_description()
+
+    screenshot_guideline = (
+        '- Use "screenshot" to see the page visually when the layout or content is unclear.'
+        if vision_enabled
+        else "- You do NOT have visual/screenshot capabilities. Rely on the interactive elements list and page text."
+    )
 
     return f"""You are a web browsing assistant. You help the user complete tasks on the web by navigating pages, clicking buttons, filling forms, and interacting with web content.
 
@@ -75,7 +85,7 @@ Important guidelines:
 - Use the element "id" number when clicking or typing.
 - If you can't find what you need, try scrolling down or navigating to a different page.
 - Fill ALL visible form fields in a single response. Output all actions needed for the current page state.
-- Use "screenshot" to see the page visually when the layout or content is unclear.
+{screenshot_guideline}
 - When the task is fully complete, use the "done" action with a summary.
 - Respond with a JSON object containing an "actions" array and a "reasoning" field.
 - Place page-changing actions (clicking submit buttons, navigating, going back) at the END of your actions array.
@@ -145,14 +155,19 @@ class WebNavigationAgent:
     def __init__(
         self,
         env_name: str,
-        model: str = "gemini-2.0-flash",
+        model: str = "gemini-3-flash-preview",
         max_steps: int = 50,
         headless: bool = True,
         api_key: Optional[str] = None,
     ):
         self.env_name = env_name
         self.max_steps = max_steps
-        self.model = model
+        self.model = resolve_model_name(model)
+
+        # Determine vision capability from model registry
+        model_info = get_model_info(self.model)
+        self._vision_enabled = model_info["vision"]
+        self._model_label = model_info.get("label", self.model)
 
         self._env_config = load_env_config(env_name)
         self._profile = load_user_profile()
@@ -166,11 +181,13 @@ class WebNavigationAgent:
         task_template = self._env_config["task_template"]["base"]
         self._task_description = task_template.replace("{start_url}", self._start_url)
 
-        self._system_prompt = build_system_prompt(self._profile, self._task_description)
+        self._system_prompt = build_system_prompt(
+            self._profile, self._task_description, self._vision_enabled
+        )
 
         self._browser = BrowserWrapper(headless=headless)
         self._observer = Observer(self._browser)
-        self._llm = LLMClient(model=model, api_key=api_key)
+        self._llm = create_llm_client(model=self.model, api_key=api_key)
         self._context_mgr = ContextManager()
 
         self._logger = None
@@ -206,10 +223,13 @@ class WebNavigationAgent:
         self._browser.register_files(file_map)
 
     async def _agent_loop(self) -> dict[str, Any]:
-        screenshot_requested = True
+        # Only request screenshots if the model supports vision
+        screenshot_requested = self._vision_enabled
         result = {
             "env": self.env_name,
             "model": self.model,
+            "model_label": self._model_label,
+            "vision_enabled": self._vision_enabled,
             "max_steps": self.max_steps,
             "steps": [],
             "completed": False,
@@ -219,12 +239,13 @@ class WebNavigationAgent:
 
         for step in range(self.max_steps):
             print(f"\n{'─'*50}")
-            print(f"  Step {step + 1}/{self.max_steps}")
+            print(f"  Step {step + 1}/{self.max_steps}  [{self._model_label}]")
             print(f"{'─'*50}")
 
             # --- OBSERVE ---
-            print(f"  [observe] Capturing page state (screenshot={'yes' if screenshot_requested else 'no'})...")
-            obs = await self._observer.observe(include_screenshot=screenshot_requested)
+            want_screenshot = screenshot_requested and self._vision_enabled
+            print(f"  [observe] Capturing page state (screenshot={'yes' if want_screenshot else 'no (text-only)' if not self._vision_enabled else 'no'})...")
+            obs = await self._observer.observe(include_screenshot=want_screenshot)
             screenshot_requested = False
 
             print(f"  [observe] URL: {obs.current_url}")
@@ -360,26 +381,11 @@ class WebNavigationAgent:
             return
 
         summary_prompt = self._context_mgr.build_summary_prompt(steps_to_summarize)
-        messages = [{"role": "user", "text": summary_prompt}]
-
-        try:
-            from google import genai
-            from google.genai import types
-
-            response = self._llm._client.models.generate_content(
-                model=self._llm.model,
-                contents=[types.Content(
-                    role="user",
-                    parts=[types.Part.from_text(text=summary_prompt)],
-                )],
-                config=types.GenerateContentConfig(
-                    temperature=0.1,
-                    max_output_tokens=300,
-                ),
-            )
-            summary_text = response.text or "No summary generated."
-        except Exception:
-            summary_text = "Summary generation failed. Agent continued browsing."
+        summary_text = await self._llm.generate_text(
+            prompt=summary_prompt,
+            max_tokens=300,
+            temperature=0.1,
+        )
 
         covers_up_to = steps_to_summarize[-1].step_number
         self._context_mgr.set_summary(summary_text, covers_up_to)
