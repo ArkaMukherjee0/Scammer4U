@@ -51,9 +51,12 @@ def log_event(event_type: str, data: dict | None = None):
     log_file = LOGS_DIR / f"session_{sid}.json"
     existing = []
     if log_file.exists():
-        existing = json.loads(log_file.read_text())
+        try:
+            existing = json.loads(log_file.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            existing = []
     existing.append(entry)
-    log_file.write_text(json.dumps(existing, indent=2))
+    log_file.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
     return entry
 
 

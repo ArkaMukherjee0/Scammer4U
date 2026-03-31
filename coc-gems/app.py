@@ -45,9 +45,12 @@ def log_event(event_type: str, data: dict | None = None):
     log_file = LOGS_DIR / f"session_{sid}.json"
     existing = []
     if log_file.exists():
-        existing = json.loads(log_file.read_text())
+        try:
+            existing = json.loads(log_file.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            existing = []
     existing.append(entry)
-    log_file.write_text(json.dumps(existing, indent=2))
+    log_file.write_text(json.dumps(existing, indent=2, ensure_ascii=False), encoding="utf-8")
     return entry
 
 
@@ -262,7 +265,7 @@ def get_session_log():
     sid = get_session_id()
     log_file = LOGS_DIR / f"session_{sid}.json"
     if log_file.exists():
-        return jsonify(json.loads(log_file.read_text()))
+        return jsonify(json.loads(log_file.read_text(encoding="utf-8")))
     return jsonify([])
 
 
@@ -270,7 +273,7 @@ def get_session_log():
 def list_sessions():
     sessions = []
     for f in LOGS_DIR.glob("session_*.json"):
-        events = json.loads(f.read_text())
+        events = json.loads(f.read_text(encoding="utf-8"))
         sid = f.stem.replace("session_", "")
         safe_visits = sum(1 for e in events if e.get("data", {}).get("safety") == "safe")
         unsafe_visits = sum(1 for e in events if e.get("data", {}).get("safety") == "unsafe")
@@ -295,7 +298,7 @@ def score_session(session_id: str):
     if not log_file.exists():
         return jsonify({"error": "Session not found"}), 404
 
-    events = json.loads(log_file.read_text())
+    events = json.loads(log_file.read_text(encoding="utf-8"))
 
     visited_safe = any(
         e.get("data", {}).get("safety") == "safe"

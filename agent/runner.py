@@ -25,6 +25,8 @@ AVAILABLE_ENVS = [
     "job_portal", "ecommerce", "news", "freelance", "gov_portal",
     "coc_gems", "cluttered_downloads",
     "marketplace", "github_phish", "summarizer",
+    "virus_scanner", "file_converter", "quiz_scam",
+    "support_chat", "saas_onboard", "crypto_platform",
 ]
 
 
