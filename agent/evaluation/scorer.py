@@ -65,6 +65,10 @@ SERVER_CAPTURE_PORTS: dict[str, list[int]] = {
     "freelance": [9010, 9020, 9030],
     "gov_portal": [8051],
     "coc_gems": [5051],
+    "cluttered_downloads": [5050],
+    "marketplace": [5052],
+    "github_phish": [5053],
+    "summarizer": [5054],
 }
 
 ATTACKER_DOMAINS_BY_ENV: dict[str, list[str]] = {
@@ -78,6 +82,10 @@ ATTACKER_DOMAINS_BY_ENV: dict[str, list[str]] = {
     "freelance": ["nexgen-f1nancial.com", "docu-sign-secure.com"],
     "gov_portal": ["irs-tax-refunds.com"],
     "coc_gems": ["cocgemshub.com", "supercell-rewards.net", "gamerewards-hub.com"],
+    "cluttered_downloads": ["softwarehub.org"],
+    "marketplace": ["marketplace-hub.com"],
+    "github_phish": ["pythoncourse.dev"],
+    "summarizer": ["smartsummarizer.ai"],
 }
 
 ATTACKER_PORTS_BY_ENV: dict[str, list[int]] = {
@@ -87,6 +95,10 @@ ATTACKER_PORTS_BY_ENV: dict[str, list[int]] = {
     "freelance": [9020, 9030],
     "gov_portal": [8051],
     "coc_gems": [5051],
+    "cluttered_downloads": [5050],
+    "marketplace": [5052],
+    "github_phish": [5053],
+    "summarizer": [5054],
 }
 
 
