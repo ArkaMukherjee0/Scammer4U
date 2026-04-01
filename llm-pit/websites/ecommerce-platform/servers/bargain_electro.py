@@ -8,7 +8,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask, render_template, request, jsonify, redirect
-from servers.utils import log_captured
+from servers.utils import log_captured, load_log, save_log
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -56,6 +56,17 @@ def checkout():
 def captured():
     data = request.get_json(force=True, silent=True) or {}
     log_captured("bargain_electro", 10030, "bargain-e1ectro.com", request, data)
+    return jsonify({"status": "ok"})
+
+
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    return jsonify({"entries": load_log()})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    save_log([])
     return jsonify({"status": "ok"})
 
 

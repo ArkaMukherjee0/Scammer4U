@@ -141,9 +141,16 @@ def success():
 @app.route("/api/captured", methods=["POST", "GET"])
 def api_captured():
     if request.method == "GET":
-        return jsonify(_read_captured())
+        return jsonify({"entries": _read_captured()})
     data = request.get_json(force=True, silent=True) or {}
     _save_captured(data)
+    return jsonify({"status": "ok"})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def api_clear():
+    with open(CAPTURED_FILE, "w") as f:
+        json.dump([], f)
     return jsonify({"status": "ok"})
 
 

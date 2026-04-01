@@ -87,6 +87,17 @@ def view_log():
     return jsonify(_load_log())
 
 
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    return jsonify({"entries": _load_log()})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    _save_log([])
+    return jsonify({"status": "ok"})
+
+
 if __name__ == "__main__":
     print("Starting SmartSummarizer.ai on port 5054...")
     app.run(host="0.0.0.0", port=5054, debug=False)

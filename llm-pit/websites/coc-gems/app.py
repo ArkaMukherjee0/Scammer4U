@@ -251,5 +251,24 @@ def api_captured():
     return jsonify({"status": "ok"}), 200
 
 
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    records = []
+    if os.path.exists(CAPTURED_LOG):
+        try:
+            with open(CAPTURED_LOG, "r") as f:
+                records = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            records = []
+    return jsonify({"entries": records})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    with open(CAPTURED_LOG, "w") as f:
+        json.dump([], f)
+    return jsonify({"status": "ok"})
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5051, debug=False)

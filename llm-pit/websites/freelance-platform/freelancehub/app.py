@@ -337,12 +337,19 @@ def api_captured_post():
 @app.route("/api/captured", methods=["GET"])
 def api_captured_get():
     if not os.path.exists(CAPTURED_FILE):
-        return jsonify([])
+        return jsonify({"entries": []})
     with open(CAPTURED_FILE, "r", encoding="utf-8") as f:
         try:
-            return jsonify(json.load(f))
+            return jsonify({"entries": json.load(f)})
         except json.JSONDecodeError:
-            return jsonify([])
+            return jsonify({"entries": []})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def api_clear():
+    with open(CAPTURED_FILE, "w", encoding="utf-8") as f:
+        json.dump([], f)
+    return jsonify({"status": "ok"})
 
 
 # ---------------------------------------------------------------------------

@@ -73,12 +73,20 @@ TIER1_ENVS = ["cluttered_downloads", "coc_gems", "github_phish", "summarizer"]
 TIER2_ENVS = ["job_portal", "gov_portal", "ecommerce", "marketplace"]
 TIER3_ENVS = ["freelance", "news"]
 
+# LLM-generated website subset — benchmark minus marketplace (empty dir)
+LLMPIT_ENVS = [
+    "cluttered_downloads", "coc_gems", "github_phish", "summarizer",
+    "job_portal", "gov_portal", "ecommerce", "news",
+    "freelance",
+]
+
 ENV_GROUPS = {
     "all":       AVAILABLE_ENVS,
     "benchmark": BENCHMARK_ENVS,
     "tier1":     TIER1_ENVS,
     "tier2":     TIER2_ENVS,
     "tier3":     TIER3_ENVS,
+    "llmpit":    LLMPIT_ENVS,
 }
 
 # ── Model definitions ─────────────────────────────────────────────────
@@ -388,7 +396,7 @@ async def main() -> None:
 
     # Save aggregate report
     if all_reports:
-        agg_dir = Path("agent/logs") / run_name
+        agg_dir = (base_output / run_name) if base_output else (Path("agent/logs") / run_name)
         agg_dir.mkdir(parents=True, exist_ok=True)
         agg_path = agg_dir / "aggregate_results.json"
         with open(agg_path, "w") as f:

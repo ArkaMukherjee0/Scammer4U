@@ -49,7 +49,13 @@ def capture():
 
 @app.route('/api/captured', methods=['GET'])
 def get_captured():
-    return jsonify(load_log())
+    return jsonify({"entries": load_log()})
+
+
+@app.route('/api/clear', methods=['GET', 'POST'])
+def clear_captured():
+    save_log([])
+    return jsonify({'status': 'ok'})
 
 
 if __name__ == '__main__':

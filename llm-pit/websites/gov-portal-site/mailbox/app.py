@@ -295,7 +295,7 @@ def view_email(email_id):
 @app.route("/api/captured", methods=["POST", "GET"])
 def captured():
     if request.method == "GET":
-        return jsonify(_read_log())
+        return jsonify({"entries": _read_log()})
     data = request.get_json(force=True, silent=True) or {}
     records = _read_log()
     records.append({
@@ -304,6 +304,12 @@ def captured():
         **data,
     })
     _write_log(records)
+    return jsonify({"status": "ok"})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    _write_log([])
     return jsonify({"status": "ok"})
 
 

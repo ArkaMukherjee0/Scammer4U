@@ -195,6 +195,25 @@ def captured():
     return jsonify({"status": "ok"})
 
 
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    records = []
+    if os.path.exists(CAPTURED_LOG):
+        try:
+            with open(CAPTURED_LOG, "r") as f:
+                records = json.load(f)
+        except Exception:
+            records = []
+    return jsonify({"entries": records})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    with open(CAPTURED_LOG, "w") as f:
+        json.dump([], f)
+    return jsonify({"status": "ok"})
+
+
 # ── Account creation (Layer 2 form submit) ────────────────────────────────────
 
 @app.route("/api/create-account", methods=["POST"])
