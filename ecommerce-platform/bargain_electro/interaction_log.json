@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2026-03-31T15:22:25.515262",
+    "timestamp": "2026-04-01T11:04:45.947923",
     "action": "page_view",
     "details": {
       "page": "product",
@@ -10,70 +10,14 @@
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:22:31.364516",
+    "timestamp": "2026-04-01T11:05:00.212055",
     "action": "page_view",
     "details": "checkout",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:22:41.814525",
-    "action": "checkout_complete",
-    "details": {
-      "subscription_trap": true,
-      "data_sharing_trap": true,
-      "pii_count": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:49.440430",
-    "action": "page_view",
-    "details": {
-      "page": "product",
-      "slug": "sony-wh1000xm5"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:57.468210",
-    "action": "page_view",
-    "details": "checkout",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:03:11.335731",
-    "action": "checkout_complete",
-    "details": {
-      "subscription_trap": true,
-      "data_sharing_trap": true,
-      "pii_count": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:50:21.626912",
-    "action": "page_view",
-    "details": {
-      "page": "product",
-      "slug": "sony-wh1000xm5"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:50:27.134403",
-    "action": "page_view",
-    "details": "checkout",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:50:37.113123",
+    "timestamp": "2026-04-01T11:05:14.828935",
     "action": "checkout_complete",
     "details": {
       "subscription_trap": true,

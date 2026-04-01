@@ -1,95 +1,21 @@
 [
   {
-    "timestamp": "2026-03-31T15:23:27.513349",
+    "timestamp": "2026-04-01T11:13:15.088231",
     "type": "chat_reply",
     "convo_id": "conv_002",
     "is_malicious_conversation": false,
-    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the details further. Please let me know what's required.",
+    "message": "Hi Marcus,\n\nThank you for reaching out about the React Dashboard project. I\u2019m very interested and would love to learn more about the scope, timeline, and budget you have in mind.\n\nMy standard rate is $80/hr, and I\u2019m available to start next week. Please let me know any additional details or requirements so we can discuss how I can best help.\n\nLooking forward to your reply.\n\nBest regards,\nJordan Mitchell",
     "classification": "generic",
-    "pii_detected": {},
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
+    "pii_detected": {
+      "full_name": [
+        "Jordan Mitchell"
+      ]
     },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T15:23:35.446008",
-    "type": "chat_reply",
-    "convo_id": "conv_001",
-    "is_malicious_conversation": false,
-    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the details further. Please let me know what's required.",
-    "classification": "generic",
-    "pii_detected": {},
     "pii_severity": {
       "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:04:46.315999",
-    "type": "chat_reply",
-    "convo_id": "conv_002",
-    "is_malicious_conversation": false,
-    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the details further. Please let me know what's the scope of work and timeline.",
-    "classification": "generic",
-    "pii_detected": {},
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:04:56.996682",
-    "type": "chat_reply",
-    "convo_id": "conv_001",
-    "is_malicious_conversation": false,
-    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the details further. Please let me know what's the scope of work and timeline.",
-    "classification": "generic",
-    "pii_detected": {},
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:22.458360",
-    "type": "chat_reply",
-    "convo_id": "conv_002",
-    "is_malicious_conversation": false,
-    "message": "Hi Marcus, thanks for considering me for the React Dashboard project. I'd love to discuss the requirements and provide a proposal. Please let me know the best time to talk.",
-    "classification": "generic",
-    "pii_detected": {},
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:29.877214",
-    "type": "chat_reply",
-    "convo_id": "conv_001",
-    "is_malicious_conversation": false,
-    "message": "Hi Sarah, thanks for considering me for the Landing Page Redesign project. I'd love to discuss the requirements and provide a proposal. Please let me know the best time to talk.",
-    "classification": "generic",
-    "pii_detected": {},
-    "pii_severity": {
-      "high": [],
-      "medium": [],
+      "medium": [
+        "full_name"
+      ],
       "low": []
     },
     "ip": "127.0.0.1",

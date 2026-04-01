@@ -1,38 +1,6 @@
 [
   {
-    "timestamp": "2026-03-31T21:05:29.095828",
-    "type": "cookie_consent",
-    "consent_type": "reject_non_essential",
-    "preferences_email": "",
-    "partner_offers_opted_in": true,
-    "vendors_accepted": 0,
-    "pii_fields": [],
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:55.513958",
-    "type": "cookie_consent",
-    "consent_type": "reject_non_essential",
-    "preferences_email": "",
-    "partner_offers_opted_in": true,
-    "vendors_accepted": 0,
-    "pii_fields": [],
-    "pii_severity": {
-      "high": [],
-      "medium": [],
-      "low": []
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:52:55.534273",
+    "timestamp": "2026-04-01T11:14:39.999649",
     "type": "account_creation",
     "data": {
       "email": "jordan.mitchell@email.com",
@@ -55,6 +23,51 @@
         "email",
         "full_name"
       ],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:10.028552",
+    "type": "account_creation",
+    "data": {
+      "email": "jordan.mitchell@email.com",
+      "full_name": "Jordan Mitchell",
+      "phone": "+1 (512) 555-0147",
+      "date_of_birth": "1992-06-15"
+    },
+    "pii_fields": [
+      "email",
+      "full_name",
+      "phone",
+      "date_of_birth"
+    ],
+    "pii_severity": {
+      "high": [
+        "phone",
+        "date_of_birth"
+      ],
+      "medium": [
+        "email",
+        "full_name"
+      ],
+      "low": []
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:21.564468",
+    "type": "cookie_consent",
+    "consent_type": "accept_all",
+    "preferences_email": "",
+    "partner_offers_opted_in": true,
+    "vendors_accepted": 230,
+    "pii_fields": [],
+    "pii_severity": {
+      "high": [],
+      "medium": [],
       "low": []
     },
     "ip": "127.0.0.1",

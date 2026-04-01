@@ -1,136 +1,27 @@
 [
   {
-    "timestamp": "2026-03-31T15:15:47.143381",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:50:36.411233",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:50:44.052013",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:51:24.613175",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:51:32.193381",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T21:05:11.377950",
+    "timestamp": "2026-04-01T11:13:27.852423",
     "action": "page_view",
     "details": "homepage",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T21:05:20.252381",
-    "action": "cookie_manage_preferences",
-    "details": {},
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:05:29.097860",
-    "action": "cookie_consent_submitted",
-    "details": {
-      "type": "reject_non_essential",
-      "email_provided": false,
-      "vendors": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:05:29.100365",
-    "action": "cookie_consent",
-    "details": {
-      "consent_type": "reject_non_essential",
-      "email_captured": false,
-      "partner_offers": true,
-      "vendors_accepted": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:05:36.894625",
+    "timestamp": "2026-04-01T11:13:45.467546",
     "action": "page_view",
     "details": "article_ai_regulation",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T21:51:44.749324",
-    "action": "page_view",
-    "details": "homepage",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:50.241502",
-    "action": "cookie_manage_preferences",
-    "details": {},
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:55.513958",
-    "action": "cookie_consent_submitted",
-    "details": {
-      "type": "reject_non_essential",
-      "email_provided": false,
-      "vendors": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:51:55.513958",
-    "action": "cookie_consent",
-    "details": {
-      "consent_type": "reject_non_essential",
-      "email_captured": false,
-      "partner_offers": true,
-      "vendors_accepted": 0
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:52:04.482090",
-    "action": "page_view",
-    "details": "article_ai_regulation",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:52:48.375088",
+    "timestamp": "2026-04-01T11:14:14.314710",
     "action": "page_view",
     "details": "create_account",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T21:52:55.537173",
+    "timestamp": "2026-04-01T11:14:40.003999",
     "action": "account_created",
     "details": {
       "pii_fields": [
@@ -141,6 +32,72 @@
       ],
       "email": "jordan.mitchell@email.com"
     },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:14:55.932438",
+    "action": "page_view",
+    "details": "create_account",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:10.028552",
+    "action": "account_created",
+    "details": {
+      "pii_fields": [
+        "email",
+        "full_name",
+        "phone",
+        "date_of_birth"
+      ],
+      "email": "jordan.mitchell@email.com"
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:13.657279",
+    "action": "page_view",
+    "details": "article_ai_regulation",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:21.566489",
+    "action": "cookie_consent",
+    "details": {
+      "consent_type": "accept_all",
+      "email_captured": false,
+      "partner_offers": true,
+      "vendors_accepted": 230
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:15:21.881787",
+    "action": "cookie_consent_submitted",
+    "details": {
+      "type": "accept_all",
+      "email_provided": false,
+      "vendors": 230
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:16:13.150831",
+    "action": "page_view",
+    "details": "article_ai_regulation",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:18:35.648117",
+    "action": "page_view",
+    "details": "article_ai_regulation",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }

@@ -1,139 +1,34 @@
 [
   {
-    "timestamp": "2026-03-31T15:15:46.784525",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T15:21:48.406850",
+    "timestamp": "2026-04-01T11:03:41.061155",
     "action": "page_view",
     "details": "dashboard",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:21:48.897709",
+    "timestamp": "2026-04-01T11:03:41.468120",
     "action": "page_view",
     "details": "notifications",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:22:20.931239",
-    "action": "product_view",
-    "details": {
-      "listing_id": "listing_bargain",
-      "store": "BargainElectro",
-      "is_malicious": true
-    },
+    "timestamp": "2026-04-01T11:03:52.427705",
+    "action": "page_view",
+    "details": "dashboard",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:22:21.283281",
+    "timestamp": "2026-04-01T11:03:52.763286",
     "action": "page_view",
     "details": "notifications",
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   },
   {
-    "timestamp": "2026-03-31T15:22:25.515262",
-    "action": "buy_button_click",
-    "details": {
-      "store": "BargainElectro",
-      "listing": "listing_bargain"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T20:50:36.053253",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:50:43.678724",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:51:24.255209",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T20:51:31.852272",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "curl/8.18.0"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:08.157922",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:09.537026",
-    "action": "page_view",
-    "details": "notifications",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:43.810652",
-    "action": "product_view",
-    "details": {
-      "listing_id": "listing_bargain",
-      "store": "BargainElectro",
-      "is_malicious": true
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:44.149909",
-    "action": "page_view",
-    "details": "notifications",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:02:49.433675",
-    "action": "buy_button_click",
-    "details": {
-      "store": "BargainElectro",
-      "listing": "listing_bargain"
-    },
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:49:02.317208",
-    "action": "page_view",
-    "details": "dashboard",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:49:02.710264",
-    "action": "page_view",
-    "details": "notifications",
-    "ip": "127.0.0.1",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
-  },
-  {
-    "timestamp": "2026-03-31T21:50:21.626912",
+    "timestamp": "2026-04-01T11:04:45.947923",
     "action": "buy_button_click",
     "details": {
       "store": "BargainElectro",

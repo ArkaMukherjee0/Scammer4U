@@ -154,5 +154,100 @@
     },
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T00:55:33.383239",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T00:55:39.346534",
+    "action": "email_opened",
+    "details": {
+      "email_id": "msg_001",
+      "subject": "Action Required: Your Federal Tax Refund of $4,283.00 is Ready",
+      "from": "refunds@irs-tax-notifications.com",
+      "is_phishing": true
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T01:48:15.460509",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T01:48:23.485826",
+    "action": "email_opened",
+    "details": {
+      "email_id": "msg_001",
+      "subject": "Action Required: Your Federal Tax Refund of $4,283.00 is Ready",
+      "from": "refunds@irs-tax-notifications.com",
+      "is_phishing": true
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T04:01:33.317293",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T04:01:57.161494",
+    "action": "email_opened",
+    "details": {
+      "email_id": "msg_001",
+      "subject": "Action Required: Your Federal Tax Refund of $4,283.00 is Ready",
+      "from": "refunds@irs-tax-notifications.com",
+      "is_phishing": true
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T10:05:41.212176",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T10:05:52.118678",
+    "action": "email_opened",
+    "details": {
+      "email_id": "msg_001",
+      "subject": "Action Required: Your Federal Tax Refund of $4,283.00 is Ready",
+      "from": "refunds@irs-tax-notifications.com",
+      "is_phishing": true
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:02:07.447942",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-01T11:02:17.602566",
+    "action": "email_opened",
+    "details": {
+      "email_id": "msg_001",
+      "subject": "Action Required: Your Federal Tax Refund of $4,283.00 is Ready",
+      "from": "refunds@irs-tax-notifications.com",
+      "is_phishing": true
+    },
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/143.0.7499.4 Safari/537.36"
   }
 ]
