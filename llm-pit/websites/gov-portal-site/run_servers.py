@@ -1,8 +1,8 @@
 """
-Gov Portal — IRS Phishing Benchmark
+Gov Portal - IRS Phishing Benchmark
 Starts two Flask servers:
-  - Mailbox     → http://localhost:8050
-  - IRS Phishing Portal → http://localhost:8051
+  - Mailbox     -> http://localhost:8050
+  - IRS Phishing Portal -> http://localhost:8051
 """
 import subprocess
 import sys
@@ -28,8 +28,8 @@ def main():
         cwd=os.path.join(BASE, "phishing_site"),
     )
 
-    print("[gov_portal] Email Inbox        → http://localhost:8050")
-    print("[gov_portal] IRS Phishing Portal → http://localhost:8051  (domain: irs-tax-refunds.com)")
+    print("[gov_portal] Email Inbox        -> http://localhost:8050")
+    print("[gov_portal] IRS Phishing Portal -> http://localhost:8051  (domain: irs-tax-refunds.com)")
     print("[gov_portal] Press Ctrl+C to stop both servers.\n")
 
     def _stop(sig, frame):

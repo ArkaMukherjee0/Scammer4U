@@ -20,7 +20,7 @@ def main():
     config = load_config()
 
     print("=" * 60)
-    print("Job Portal Phishing Benchmark — Server Runner")
+    print("Job Portal Phishing Benchmark - Server Runner")
     print("=" * 60)
     print()
     print("Starting servers...")
@@ -30,8 +30,8 @@ def main():
     print(f"  Phishing site:     http://localhost:{config['ports']['phishing_clone']}")
     print()
     print("Attack flow:")
-    print("  Agent reads email → clicks link to legit site → clicks Apply Now")
-    print("  → redirected to phishing clone on typosquatted domain")
+    print("  Agent reads email -> clicks link to legit site -> clicks Apply Now")
+    print("  -> redirected to phishing clone on typosquatted domain")
     print()
     print("Domain mappings (add to /etc/hosts if use_domains=true):")
     for entry in config['hosts_entries']:

@@ -19,6 +19,26 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 PIDFILE="$ROOT/.llmpit_server_pids"
 LLMPIT="$ROOT/llm-pit/websites"
 
+# Resolve uv: check PATH, then common Windows install locations
+if command -v uv &>/dev/null; then
+    UV_BIN="uv"
+elif [ -x "$HOME/.local/bin/uv" ]; then
+    UV_BIN="$HOME/.local/bin/uv"
+elif [ -x "$HOME/.cargo/bin/uv" ]; then
+    UV_BIN="$HOME/.cargo/bin/uv"
+else
+    # Search Windows Python Scripts dirs (where pip installs uv)
+    UV_BIN="$(find "$HOME/AppData/Local" -maxdepth 6 -name "uv.exe" 2>/dev/null | head -1)"
+fi
+
+if [ -n "$UV_BIN" ]; then
+    RUNNER="$UV_BIN run python"
+    echo "  Using: $RUNNER"
+else
+    RUNNER="python"
+    echo "  WARNING: uv not found, falling back to: python"
+fi
+
 # ── Server definitions ────────────────────────────────────────────────
 NAMES=(
     "cluttered_downloads"
@@ -33,15 +53,15 @@ NAMES=(
 )
 
 CMDS=(
-    "uv run python $LLMPIT/cluttered-downloads/app.py"
-    "uv run python $LLMPIT/coc-gems/app.py"
-    "uv run python $LLMPIT/github-phish/app.py"
-    "uv run python $LLMPIT/summary-website/app.py"
-    "uv run python $LLMPIT/job-app-website/run_servers.py"
-    "uv run python $LLMPIT/gov-portal-site/run_servers.py"
-    "uv run python $LLMPIT/ecommerce-platform/run_servers.py"
-    "uv run python $LLMPIT/news-content-site/run_servers.py"
-    "uv run python $LLMPIT/freelance-platform/run_servers.py"
+    "$RUNNER $LLMPIT/cluttered-downloads/app.py"
+    "$RUNNER $LLMPIT/coc-gems/app.py"
+    "$RUNNER $LLMPIT/github-phish/app.py"
+    "$RUNNER $LLMPIT/summary-website/app.py"
+    "$RUNNER $LLMPIT/job-app-website/run_servers.py"
+    "$RUNNER $LLMPIT/gov-portal-site/run_servers.py"
+    "$RUNNER $LLMPIT/ecommerce-platform/run_servers.py"
+    "$RUNNER $LLMPIT/news-content-site/run_servers.py"
+    "$RUNNER $LLMPIT/freelance-platform/run_servers.py"
 )
 
 PORTS=(

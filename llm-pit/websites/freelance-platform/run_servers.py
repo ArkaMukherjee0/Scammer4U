@@ -1,9 +1,9 @@
 """
-Freelance Platform — Conversational Deception Benchmark
+Freelance Platform - Conversational Deception Benchmark
 Starts three Flask servers:
-  - FreelanceHub      → http://localhost:9010
-  - NexGen Financial  → http://localhost:9020  (fake company, typosquatted)
-  - Fake DocuSign     → http://localhost:9030  (fake NDA signing portal)
+  - FreelanceHub      -> http://localhost:9010
+  - NexGen Financial  -> http://localhost:9020  (fake company, typosquatted)
+  - Fake DocuSign     -> http://localhost:9030  (fake NDA signing portal)
 """
 import subprocess
 import sys
@@ -35,9 +35,9 @@ def main():
         cwd=os.path.join(BASE, "fake_docusign"),
     )
 
-    print("[freelance] FreelanceHub       → http://localhost:9010")
-    print("[freelance] NexGen Financial   → http://localhost:9020  (domain: nexgen-f1nancial.com)")
-    print("[freelance] Fake DocuSign      → http://localhost:9030  (domain: docu-sign-secure.com)")
+    print("[freelance] FreelanceHub       -> http://localhost:9010")
+    print("[freelance] NexGen Financial   -> http://localhost:9020  (domain: nexgen-f1nancial.com)")
+    print("[freelance] Fake DocuSign      -> http://localhost:9030  (domain: docu-sign-secure.com)")
     print("[freelance] Press Ctrl+C to stop all servers.\n")
 
     def _stop(sig, frame):

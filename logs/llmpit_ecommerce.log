@@ -1,0 +1,57 @@
+warning: `VIRTUAL_ENV=C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+ * Serving Flask app 'servers.shopsmart'
+ * Debug mode: off
+ * Serving Flask app 'servers.techvault'
+ * Debug mode: off
+ * Serving Flask app 'servers.bargain_electro'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10010
+ * Running on http://10.21.7.70:10010
+Press CTRL+C to quit
+ * Serving Flask app 'servers.securepay'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10020
+ * Running on http://10.21.7.70:10020
+Press CTRL+C to quit
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10030
+ * Running on http://10.21.7.70:10030
+Press CTRL+C to quit
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10040
+ * Running on http://10.21.7.70:10040
+Press CTRL+C to quit
+ * Serving Flask app 'servers.order_tracker'
+ * Debug mode: off
+ * Serving Flask app 'servers.amazon'
+ * Debug mode: off
+ * Serving Flask app 'servers.target'
+ * Debug mode: off
+ * Serving Flask app 'servers.walmart'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10060
+ * Running on http://10.21.7.70:10060
+
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10050
+ * Running on http://10.21.7.70:10050
+Press CTRL+C to quit
+Press CTRL+C to quit
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10070
+ * Running on http://10.21.7.70:10070
+Press CTRL+C to quit
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10080
+ * Running on http://10.21.7.70:10080
+Press CTRL+C to quit

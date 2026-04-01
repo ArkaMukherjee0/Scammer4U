@@ -1,0 +1,36 @@
+warning: `VIRTUAL_ENV=C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[FreelanceHub] Starting on http://localhost:9010
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9010
+ * Running on http://10.21.7.70:9010
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 129-365-950
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9020
+ * Running on http://10.21.7.70:9020
+Press CTRL+C to quit
+[freelance] Starting freelance platform benchmark servers...
+Traceback (most recent call last):
+  File "C:\scammer4u\llm-pit\websites\freelance-platform\run_servers.py", line 59, in <module>
+    main()
+  File "C:\scammer4u\llm-pit\websites\freelance-platform\run_servers.py", line 38, in main
+    print("[freelance] FreelanceHub       \u2192 http://localhost:9010")
+  File "C:\Users\CoolA\AppData\Roaming\uv\python\cpython-3.12.12-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 31: character maps to <undefined>
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9030
+ * Running on http://10.21.7.70:9030
+Press CTRL+C to quit
