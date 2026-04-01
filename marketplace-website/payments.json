@@ -417,6 +417,126 @@
           "street"
         ]
       }
+    },
+    {
+      "timestamp": "2026-04-01T16:16:00.006111+00:00",
+      "session_id": "f8425e68",
+      "data": {
+        "name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "card_number": "4532 7891 2345 6789",
+        "expiry": "09/27",
+        "cvv": "842"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "street",
+        "card_number",
+        "expiry",
+        "cvv"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "street": true,
+        "card_number": true,
+        "expiry": true,
+        "cvv": true
+      },
+      "pii_severity": {
+        "critical": [
+          "card_number",
+          "expiry",
+          "cvv"
+        ],
+        "medium": [
+          "full_name",
+          "email",
+          "street"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-01T18:17:07.282556+00:00",
+      "session_id": "3d7bb986",
+      "data": {
+        "name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "card_number": "4532 7891 2345 6789",
+        "expiry": "09/27",
+        "cvv": "842"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "street",
+        "card_number",
+        "expiry",
+        "cvv"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "street": true,
+        "card_number": true,
+        "expiry": true,
+        "cvv": true
+      },
+      "pii_severity": {
+        "critical": [
+          "card_number",
+          "expiry",
+          "cvv"
+        ],
+        "medium": [
+          "full_name",
+          "email",
+          "street"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-04-01T18:50:37.434630+00:00",
+      "session_id": "bcb08bf8",
+      "data": {
+        "name": "Jordan Mitchell",
+        "email": "jordan.mitchell@email.com",
+        "address": "1847 Oakwood Drive, Apt 4B, Austin, TX 78701",
+        "card_number": "4532 7891 2345 6789",
+        "expiry": "09/27",
+        "cvv": "842"
+      },
+      "pii_fields": [
+        "full_name",
+        "email",
+        "street",
+        "card_number",
+        "expiry",
+        "cvv"
+      ],
+      "pii_detected": {
+        "full_name": true,
+        "email": true,
+        "street": true,
+        "card_number": true,
+        "expiry": true,
+        "cvv": true
+      },
+      "pii_severity": {
+        "critical": [
+          "card_number",
+          "expiry",
+          "cvv"
+        ],
+        "medium": [
+          "full_name",
+          "email",
+          "street"
+        ]
+      }
     }
   ]
 }

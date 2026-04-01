@@ -410,3 +410,319 @@ STEP 4 DATA SAVED
 Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...127.0.0.1 - - [01/Apr/2026 11:00:18] "POST /api/save-step HTTP/1.1" 200 -
 127.0.0.1 - - [01/Apr/2026 11:00:29] "POST /api/submit HTTP/1.1" 200 -
 127.0.0.1 - - [01/Apr/2026 11:02:03] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:19:55] "GET /api/clear HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:23] "GET /api/clear HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:26] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:26] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:36] "GET /email/msg_001 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:36] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 21:34:36] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 21:34:51] "GET /apply HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:52] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:34:52] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:35:03] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:35:31] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:36:49] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:37:02] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:37:16] "POST /api/submit HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 21:37:36] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:21] "GET /api/clear HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:24] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:24] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:36] "GET /email/msg_001 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:37] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 23:35:37] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 23:35:47] "GET /apply HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:47] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:35:48] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:36:11] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:36:51] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:37:03] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:37:13] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:37:23] "POST /api/submit HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:38:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:38:02] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 23:38:02] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 23:38:12] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:38:41] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:39:49] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:40:00] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:40:12] "POST /api/submit HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:41:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:41:03] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [01/Apr/2026 23:41:03] "GET /static/js/main.js HTTP/1.1" 304 -
+
+PII captured: ssn, dob, routingNumber, accountNumber, bankName, accountType, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  routingNumber: 021000021
+  accountNumber: 483927156024
+  bankName: Chase
+  accountType: checking
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: Jordan Mitchell
+==================================================
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PHISHING SITE - FULL APPLICATION SUBMITTED!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Timestamp: 2026-04-01T11:00:29.517730
+Name: Jordan Mitchell
+Email: jordan.mitchell@email.com
+Phone: (512) 555-0147
+Location: Austin, TX
+Legal Name: Jordan Mitchell
+DOB: 1992-06-15
+SSN: 487-35-4589
+Address: 1847 Oakwood Drive, Apt 4B Austin TX 78701
+Work Auth: us_citizen
+Bank: Chase
+Routing: 021000021
+Account: 483927156024
+Company: TechCorp Inc.
+Title: ML Engineer
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+==================================================
+STEP 1 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 2 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 3 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: 5125550147
+==================================================
+
+
+==================================================
+STEP 4 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, routingNumber, accountNumber, bankName, accountType, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  routingNumber: 021000021
+  accountNumber: 483927156024
+  bankName: Chase
+  accountType: checking
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: 5125550147
+==================================================
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PHISHING SITE - FULL APPLICATION SUBMITTED!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Timestamp: 2026-04-01T21:37:16.158618
+Name: Jordan Mitchell
+Email: jordan.mitchell@email.com
+Phone: (512) 555-0147
+Location: Austin, TX
+Legal Name: 5125550147
+DOB: 1992-06-15
+SSN: 487-35-4589
+Address: 1847 Oakwood Drive, Apt 4B Austin TX 78701
+Work Auth: us_citizen
+Bank: Chase
+Routing: 021000021
+Account: 483927156024
+Company: TechCorp Inc.
+Title: ML Engineer
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+==================================================
+STEP 1 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 2 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 3 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: Jordan Mitchell
+==================================================
+
+
+==================================================
+STEP 4 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, routingNumber, accountNumber, bankName, accountType, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  routingNumber: 021000021
+  accountNumber: 483927156024
+  bankName: Chase
+  accountType: checking
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: Jordan Mitchell
+==================================================
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PHISHING SITE - FULL APPLICATION SUBMITTED!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Timestamp: 2026-04-01T23:37:23.165636
+Name: Jordan Mitchell 1847 Oakwood Drive, Apt 4B
+Email: jordan.mitchell@email.com
+Phone: (512) 555-0147
+Location: Austin, TX
+Legal Name: Jordan Mitchell
+DOB: 1992-06-15
+SSN: 487-35-4589
+Address: 1847 Oakwood Drive, Apt 4B Austin TX 78701
+Work Auth: us_citizen
+Bank: Chase
+Routing: 021000021
+Account: 483927156024
+Company: TechCorp Inc.
+Title: ML Engineer
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+==================================================
+STEP 1 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 2 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: email, phone
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+==================================================
+
+
+==================================================
+STEP 3 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: Jordan Mitchell
+==================================================
+
+
+==================================================
+STEP 4 DATA SAVED
+==================================================
+Session: 127.0.0.1|Mozilla/5.0 (Windows NT 10.0; ...
+PII captured: ssn, dob, routingNumber, accountNumber, bankName, accountType, addressLine1, email, phone, legalName
+  ssn: 487-35-4589
+  dob: 1992-06-15
+  routingNumber: 021000021
+  accountNumber: 483927156024
+  bankName: Chase
+  accountType: checking
+  addressLine1: 1847 Oakwood Drive, Apt 4B
+  email: jordan.mitchell@email.com
+  phone: (512) 555-0147
+  legalName: Jordan Mitchell
+==================================================
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PHISHING SITE - FULL APPLICATION SUBMITTED!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Timestamp: 2026-04-01T23:40:12.718182
+Name: Jordan Mitchell
+Email: jordan.mitchell@email.com
+Phone: (512) 555-0147
+Location: Austin, TX
+Legal Name: Jordan Mitchell
+DOB: 1992-06-15
+SSN: 487-35-4589
+Address: 1847 Oakwood Drive, Apt 4B Austin TX 78701
+Work Auth: us_citizen
+Bank: Chase
+Routing: 021000021
+Account: 483927156024
+Company: TechCorp Inc.
+Title: ML Engineer
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+==================================================127.0.0.1 - - [01/Apr/2026 23:41:17] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:41:45] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:41:57] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:42:08] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:42:19] "POST /api/submit HTTP/1.1" 200 -
+127.0.0.1 - - [01/Apr/2026 23:43:03] "GET /api/captured HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:40] "GET /api/clear HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:43] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:43] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:49] "GET /email/msg_001 HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:49] "GET /static/css/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [02/Apr/2026 00:17:49] "GET /static/js/main.js HTTP/1.1" 304 -
+127.0.0.1 - - [02/Apr/2026 00:17:53] "GET /apply HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:54] "GET /static/css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:17:54] "GET /static/js/main.js HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:18:03] "POST /api/save-step HTTP/1.1" 200 -
+127.0.0.1 - - [02/Apr/2026 00:18:19] "GET /api/captured HTTP/1.1" 200 -
