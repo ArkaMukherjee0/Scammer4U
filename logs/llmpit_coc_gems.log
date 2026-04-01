@@ -1,8 +1,4 @@
-warning: `VIRTUAL_ENV=C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
- * Serving Flask app 'app'
- * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5051
- * Running on http://10.21.7.70:5051
-Press CTRL+C to quit
+Traceback (most recent call last):
+  File "/mnt/c/scammer4u/llm-pit/websites/coc-gems/app.py", line 4, in <module>
+    from flask import Flask, request, jsonify, render_template, redirect, url_for
+ModuleNotFoundError: No module named 'flask'

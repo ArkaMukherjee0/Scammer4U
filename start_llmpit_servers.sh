@@ -49,6 +49,7 @@ NAMES=(
     "gov_portal"
     "ecommerce"
     "news"
+    "marketplace"
     "freelance"
 )
 
@@ -61,6 +62,7 @@ CMDS=(
     "$RUNNER $LLMPIT/gov-portal-site/run_servers.py"
     "$RUNNER $LLMPIT/ecommerce-platform/run_servers.py"
     "$RUNNER $LLMPIT/news-content-site/run_servers.py"
+    "$RUNNER $LLMPIT/marketplace-website/app.py"
     "$RUNNER $LLMPIT/freelance-platform/run_servers.py"
 )
 
@@ -73,6 +75,7 @@ PORTS=(
     "8050"
     "10010"
     "8040"
+    "5052"
     "9010"
 )
 
@@ -145,7 +148,7 @@ esac
 # ── Start all servers ─────────────────────────────────────────────────
 echo ""
 echo "  ========================================"
-echo "  Starting LLM-Pit Servers (9 envs)"
+echo "  Starting LLM-Pit Servers (10 envs)"
 echo "  ========================================"
 echo ""
 

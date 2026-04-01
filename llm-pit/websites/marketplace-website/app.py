@@ -187,6 +187,25 @@ def api_captured():
     return jsonify({"status": "ok"})
 
 
+@app.route("/api/captured", methods=["GET"])
+def get_captured():
+    entries = []
+    if os.path.exists(CAPTURED_LOG):
+        try:
+            with open(CAPTURED_LOG, "r") as f:
+                entries = json.load(f)
+        except Exception:
+            entries = []
+    return jsonify({"entries": entries})
+
+
+@app.route("/api/clear", methods=["GET", "POST"])
+def clear_captured():
+    with open(CAPTURED_LOG, "w") as f:
+        json.dump([], f)
+    return jsonify({"status": "ok"})
+
+
 @app.route("/api/listings")
 def api_listings():
     return jsonify(LISTINGS)
