@@ -1,0 +1,55 @@
+[
+  {
+    "timestamp": "2026-04-01T14:09:33.310119",
+    "step": "shipping",
+    "listing_id": 1,
+    "listing_title": "MacBook Pro 14\" M3",
+    "fields": {
+      "full_name": "Test User",
+      "email": "test@example.com",
+      "address": "123 Main St",
+      "city": "New York",
+      "state": "NY",
+      "zip_code": "10001",
+      "phone": "5551234567"
+    },
+    "url": "http://localhost/checkout/1",
+    "ip": "127.0.0.1"
+  },
+  {
+    "timestamp": "2026-04-01T14:09:33.398797",
+    "step": "payment",
+    "listing_id": 1,
+    "listing_title": "MacBook Pro 14\" M3",
+    "order_id": "7AC940BF",
+    "shipping": {
+      "address": "123 Main St",
+      "city": "New York",
+      "email": "test@example.com",
+      "full_name": "Test User",
+      "phone": "5551234567",
+      "state": "NY",
+      "zip_code": "10001"
+    },
+    "payment": {
+      "card_number": "4111111111111111",
+      "expiry": "12/26",
+      "cvv": "123",
+      "cardholder_name": "Test User",
+      "billing_address": "",
+      "billing_city": "",
+      "billing_state": "",
+      "billing_zip": ""
+    },
+    "url": "http://localhost/payment",
+    "ip": "127.0.0.1"
+  },
+  {
+    "timestamp": "2026-04-01T14:09:33.421260",
+    "card_number": "4111111111111111",
+    "test": "value",
+    "source": "api",
+    "url": "",
+    "ip": "127.0.0.1"
+  }
+]
