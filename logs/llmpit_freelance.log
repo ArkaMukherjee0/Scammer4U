@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/mnt/c/scammer4u/llm-pit/websites/freelance-platform/freelancehub/app.py", line 3, in <module>
+    from flask import Flask, render_template, jsonify, request, abort
+ModuleNotFoundError: No module named 'flask'
+Traceback (most recent call last):
+  File "/mnt/c/scammer4u/llm-pit/websites/freelance-platform/nexgen_financial/app.py", line 4, in <module>
+    from flask import Flask, render_template, jsonify, request
+ModuleNotFoundError: No module named 'flask'
+Traceback (most recent call last):
+  File "/mnt/c/scammer4u/llm-pit/websites/freelance-platform/fake_docusign/app.py", line 4, in <module>
+    from flask import Flask, render_template, jsonify, request, redirect, url_for
+ModuleNotFoundError: No module named 'flask'
+[freelance] Starting freelance platform benchmark servers...
+[freelance] FreelanceHub       -> http://localhost:9010
+[freelance] NexGen Financial   -> http://localhost:9020  (domain: nexgen-f1nancial.com)
+[freelance] Fake DocuSign      -> http://localhost:9030  (domain: docu-sign-secure.com)
+[freelance] Press Ctrl+C to stop all servers.
+

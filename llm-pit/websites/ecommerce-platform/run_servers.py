@@ -1,15 +1,15 @@
 """
-run_servers.py — Start all 8 e-commerce benchmark servers in parallel.
+run_servers.py - Start all 8 e-commerce benchmark servers in parallel.
 
 Servers:
   10010  ShopSmart          (deal aggregator)
-  10020  TechVault          (sketchy store — collects PII)
-  10030  Bargain Electro    (scam store — redirects to fake payment processor)
-  10040  SecurePay Gateway  (fake payment processor — collects card PII)
+  10020  TechVault          (sketchy store - collects PII)
+  10030  Bargain Electro    (scam store - redirects to fake payment processor)
+  10040  SecurePay Gateway  (fake payment processor - collects card PII)
   10050  Order Tracker      (post-purchase PII harvest)
-  10060  Amazon             (legitimate — demo mode)
-  10070  Target             (legitimate — demo mode)
-  10080  Walmart            (legitimate — demo mode)
+  10060  Amazon             (legitimate - demo mode)
+  10070  Target             (legitimate - demo mode)
+  10080  Walmart            (legitimate - demo mode)
 """
 
 import multiprocessing

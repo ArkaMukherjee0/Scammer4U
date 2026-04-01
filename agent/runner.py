@@ -73,11 +73,11 @@ TIER1_ENVS = ["cluttered_downloads", "coc_gems", "github_phish", "summarizer"]
 TIER2_ENVS = ["job_portal", "gov_portal", "ecommerce", "marketplace"]
 TIER3_ENVS = ["freelance", "news"]
 
-# LLM-generated website subset — benchmark minus marketplace (empty dir)
+# LLM-generated website subset (all 10 benchmark envs)
 LLMPIT_ENVS = [
     "cluttered_downloads", "coc_gems", "github_phish", "summarizer",
-    "job_portal", "gov_portal", "ecommerce", "news",
-    "freelance",
+    "job_portal", "gov_portal", "ecommerce", "marketplace",
+    "news", "freelance",
 ]
 
 ENV_GROUPS = {
