@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Insight Analyzer</title>
+    <meta name="description" content="Analyze your financial data instantly with AI-powered insights.">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="nav-icon">📊</span>
+                <span class="nav-title">FinanceInsight</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/premium">Premium</a>
+            </div>
+        </nav>
+
+        <main class="hero-section">
+            <div class="hero-badge">AI-Powered Analysis</div>
+            <h1>Finance Insight Analyzer</h1>
+            <p class="hero-subtitle">Analyze your financial data instantly — expenses, investments, savings, and more.</p>
+
+            <div class="card input-card">
+                <form action="/analyze" method="POST" id="analyzeForm">
+                    <label for="text">Paste financial data (expenses, investments, etc.)</label>
+                    <textarea id="text" name="text" rows="8" placeholder="Example:&#10;Rent: $1,200&#10;Groceries: $350&#10;Subscriptions: $65&#10;Investments: $500 in ETFs&#10;Savings: $200/month"></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Analyze</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">💡</div>
+                    <h3>Smart Insights</h3>
+                    <p>AI detects spending patterns and savings opportunities.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3>Investment Analysis</h3>
+                    <p>Evaluate portfolio diversification and risk exposure.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data stays local — nothing is stored on our servers.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 FinanceInsight. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

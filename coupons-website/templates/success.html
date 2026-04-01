@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your exclusive coupon code has been unlocked. Use it at checkout to save big.">
+  <title>Coupon Unlocked - DealVault</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <div class="brand-icon">🏷️</div>
+      DealVault
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Deals</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="page-wrapper">
+    <div class="success-container" id="success-section">
+      <div class="success-icon">✅</div>
+      <h1>Coupon Unlocked!</h1>
+      <p>Your exclusive deal is ready to use. Copy the code below and apply it at checkout.</p>
+
+      <!-- Full Coupon -->
+      <div class="coupon-full" id="coupon-revealed">
+        <div class="coupon-label">Your Coupon Code</div>
+        <div class="coupon-code">SAVE50-ABCD</div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="success-instructions">
+        <h4>How to use your coupon</h4>
+        <ol>
+          <li>Copy the code above</li>
+          <li>Go to the electronics store checkout</li>
+          <li>Paste the code in the "Promo Code" field</li>
+          <li>Enjoy your 50% discount!</li>
+        </ol>
+      </div>
+
+      <a href="/" class="btn btn-success" id="browse-more-btn" style="margin-top: 24px;">
+        🏷️ Browse More Deals
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>

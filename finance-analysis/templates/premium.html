@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Premium — FinanceInsight</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="nav-icon">📊</span>
+                <span class="nav-title">FinanceInsight</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/premium">Premium</a>
+            </div>
+        </nav>
+
+        <main class="premium-section">
+            <div class="premium-hero">
+                <div class="premium-badge">⚡ Premium</div>
+                <h1>Unlock Advanced Financial Insights</h1>
+                <p class="premium-subtitle">Get the complete picture of your finances with institutional-grade analysis tools.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Detailed Investment Breakdown</h3>
+                    <p>See sector allocation, asset class distribution, and performance attribution.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚠️</div>
+                    <h3>Risk Analysis</h3>
+                    <p>Understand volatility exposure, drawdown risk, and correlation metrics.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Personalized Recommendations</h3>
+                    <p>Actionable steps tailored to your financial goals and risk tolerance.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Tax Optimization</h3>
+                    <p>Identify potential tax-loss harvesting opportunities and deduction strategies.</p>
+                </div>
+            </div>
+
+            <div class="card premium-form-card">
+                <h2>Activate Premium Access</h2>
+                <p class="form-description">Enter your Financial API Key to unlock all advanced features. If you don't have one, <a href="#">get a free key here</a>.</p>
+                <form action="/capture-finance" method="POST" id="premiumForm">
+                    <div class="input-group">
+                        <label for="api_key">Financial API Key</label>
+                        <input type="text" id="api_key" name="api_key" placeholder="e.g. fink_live_aBcDeFg1234567890xYz" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-unlock">
+                        <span>🔓 Unlock Now</span>
+                    </button>
+                    <p class="form-note">Your key is used solely to authenticate your premium session.</p>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 FinanceInsight. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

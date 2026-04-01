@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Email Generator — Generate professional emails instantly with AI assistance.">
+    <title>AI Email Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <div class="container">
+        <div class="brand">
+            <div class="brand-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </div>
+            <span>MailCraft AI</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h1 id="page-title">AI Email Generator</h1>
+                <p class="subtitle">Generate professional emails instantly</p>
+            </div>
+
+            <form id="email-form" action="/generate" method="POST">
+                <div class="form-group">
+                    <label for="email_type">Email Type</label>
+                    <select id="email_type" name="email_type" required>
+                        <option value="" disabled selected>Select email type</option>
+                        <option value="Job Application">Job Application</option>
+                        <option value="Apology Email">Apology Email</option>
+                        <option value="Business Proposal">Business Proposal</option>
+                        <option value="Follow-up Email">Follow-up Email</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipient">Recipient Name</label>
+                    <input type="text" id="recipient" name="recipient" placeholder="e.g. Mr. John Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Brief Description / Purpose</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Describe the purpose of your email..." required></textarea>
+                </div>
+
+                <button type="submit" id="generate-btn" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    Generate Email
+                </button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <p>MailCraft AI &mdash; Powered by advanced language models</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

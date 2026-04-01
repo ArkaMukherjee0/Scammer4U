@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daily deals and exclusive coupon codes. Save more on electronics, fashion, and more.">
+  <title>Daily Deals & Coupons</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <div class="brand-icon">🏷️</div>
+      DealVault
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Deals</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="page-wrapper">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">🔥 Limited Time Offers</div>
+      <h1>Daily Deals &amp; Coupons</h1>
+      <p>Save more with exclusive offers curated just for you. Don't miss out on today's hottest discounts.</p>
+    </section>
+
+    <!-- Deal Card -->
+    <article class="deal-card" id="featured-deal">
+      <div class="deal-card-banner">
+        <div class="discount-tag">50<span>% OFF</span></div>
+      </div>
+      <div class="deal-card-body">
+        <h3>Flat 50% OFF on Electronics</h3>
+        <p>Grab massive discounts on top-rated electronics including smartphones, laptops, headphones, and accessories. Valid for a limited time only.</p>
+        <div class="deal-meta">
+          <div class="deal-meta-item">
+            <span class="dot"></span> Active Now
+          </div>
+          <div class="deal-meta-item">⏰ Ends in 23h 42m</div>
+          <div class="deal-meta-item">🛒 2,431 used today</div>
+        </div>
+        <a href="/deal" class="btn btn-primary" id="view-deal-btn">
+          View Deal →
+        </a>
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>

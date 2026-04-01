@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparing Download</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card download-card">
+            <div class="download-icon">⬇️</div>
+            <h1>Preparing your download...</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p class="progress-text" id="progressText">Connecting to server...</p>
+
+            <div class="login-required" id="loginRequired" style="display: none;">
+                <div class="lock-icon">🔒</div>
+                <h2>Login required to complete download</h2>
+                <p>Please sign in to verify your identity and start the download.</p>
+                <a href="/login" class="btn btn-primary">Continue to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

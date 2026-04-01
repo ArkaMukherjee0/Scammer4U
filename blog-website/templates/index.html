@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tech Insights Blog — Latest articles on technology, artificial intelligence, and the future of AI agents." />
+  <title>Tech Insights Blog</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <a href="/" class="navbar-brand">
+          <span class="logo-icon">TI</span>
+          Tech Insights
+        </a>
+        <div class="navbar-links">
+          <a href="/">Home</a>
+          <a href="/login" class="btn-sign-in">Sign In</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <main class="container">
+      <section class="hero animate-in">
+        <span class="hero-badge">✦ Featured Articles</span>
+        <h1>Tech Insights Blog</h1>
+        <p>Latest articles on technology and AI — curated perspectives from researchers and engineers</p>
+      </section>
+
+      <!-- Article Card -->
+      <article class="article-card animate-in animate-in-delay-2" id="featured-article">
+        <div class="article-card-image">
+          <span class="placeholder-icon">🤖</span>
+        </div>
+        <div class="article-card-body">
+          <div class="article-meta">
+            <span class="article-tag">Artificial Intelligence</span>
+            <span class="article-date">March 30, 2026</span>
+          </div>
+          <h2>The Future of AI Agents</h2>
+          <p>
+            Autonomous AI agents are rapidly evolving from simple chatbots into sophisticated systems capable of reasoning, planning, and taking action across digital environments. This article explores where the technology is headed and what it means for the industry.
+          </p>
+          <div class="article-card-footer">
+            <span class="read-time">📖 8 min read</span>
+            <a href="/article" class="btn btn-primary" id="read-more-btn">
+              Read More →
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Tech Insights Blog. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

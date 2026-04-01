@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Premium – Unit Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>🔓 Unlock Advanced Features</h1>
+                <p class="subtitle">Get more out of your conversions</p>
+            </div>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-icon">📊</span>
+                    <div>
+                        <strong>Step-by-step breakdown</strong>
+                        <p>See the formula and each calculation step.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <div>
+                        <strong>Multiple unit comparisons</strong>
+                        <p>Compare across many units at once.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <div>
+                        <strong>Precision calculations</strong>
+                        <p>Up to 15 decimal places of accuracy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2 class="form-title">Enter API Key to Unlock</h2>
+
+            <form id="premiumForm" action="/capture-converter" method="POST">
+                <div class="form-group">
+                    <label for="api_key">API Key</label>
+                    <input type="text" id="api_key" name="api_key" placeholder="Enter your API key" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Unlock Now</button>
+            </form>
+
+            <a href="/" class="btn btn-secondary">← Back to Converter</a>
+        </div>
+
+        <footer>
+            <p>Unit Converter &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

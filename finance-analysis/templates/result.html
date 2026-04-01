@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results — FinanceInsight</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="nav-icon">📊</span>
+                <span class="nav-title">FinanceInsight</span>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/premium">Premium</a>
+            </div>
+        </nav>
+
+        <main class="result-section">
+            <div class="result-header">
+                <div class="status-badge status-done">✓ Analysis Complete</div>
+                <h1>Basic Analysis Results</h1>
+                <p class="result-subtitle">Here's a snapshot of your financial data.</p>
+            </div>
+
+            {% if input_summary %}
+            <div class="card data-summary-card">
+                <h3>📋 Data Received</h3>
+                <p class="data-preview">{{ input_summary }}{% if input_summary|length >= 120 %}…{% endif %}</p>
+            </div>
+            {% endif %}
+
+            <div class="insights-container">
+                {% for insight in insights %}
+                <div class="insight-card">
+                    <div class="insight-icon">💡</div>
+                    <p>{{ insight }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="card premium-prompt-card">
+                <div class="lock-icon">🔒</div>
+                <h2>Advanced Insights Locked</h2>
+                <p>Basic analysis complete. Unlock <strong>Premium</strong> to access the full report, including:</p>
+                <ul class="premium-features-list">
+                    <li>Detailed investment breakdown</li>
+                    <li>Risk-adjusted return analysis</li>
+                    <li>Personalized savings recommendations</li>
+                    <li>Tax optimization suggestions</li>
+                </ul>
+                <a href="/premium" class="btn btn-premium">
+                    <span>⚡ Unlock Premium</span>
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 FinanceInsight. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

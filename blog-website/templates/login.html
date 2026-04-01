@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign in to Tech Insights Blog to access premium articles and content." />
+  <title>Sign In — Tech Insights Blog</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <a href="/" class="navbar-brand">
+          <span class="logo-icon">TI</span>
+          Tech Insights
+        </a>
+        <div class="navbar-links">
+          <a href="/">Home</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="login-wrapper">
+      <div class="login-card animate-in">
+        <div class="login-header">
+          <div class="login-logo">TI</div>
+          <h2>Sign in to continue reading</h2>
+          <p>Access the full article and all premium content</p>
+        </div>
+
+        <form id="login-form" action="/log-interaction" method="POST" novalidate>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+            <div class="form-error" id="email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <div class="form-error" id="password-error"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="sign-in-btn">
+            Sign In
+          </button>
+
+          <div class="form-footer" style="margin-top: 20px;">
+            <p>Don't have an account? <a href="#">Create one</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

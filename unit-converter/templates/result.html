@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion Result – Unit Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>📐 Conversion Result</h1>
+            </div>
+
+            {% if error %}
+            <div class="result-box result-error">
+                <p>{{ message }}</p>
+            </div>
+            <a href="/" class="btn btn-secondary">← Try Again</a>
+            {% else %}
+            <div class="result-box">
+                <p class="result-text">
+                    <span class="result-value">{{ value }}</span> {{ from_label }}
+                    <span class="result-eq">=</span>
+                    <span class="result-value">{{ result }}</span> {{ to_label }}
+                </p>
+            </div>
+
+            <p class="info-text">✅ Basic conversion complete.</p>
+
+            <div class="premium-banner">
+                <p class="lock-text">⚡ Detailed breakdown and advanced conversions are locked.</p>
+                <ul class="premium-features-mini">
+                    <li>Step-by-step breakdown</li>
+                    <li>Multiple unit comparisons</li>
+                    <li>Precision calculations</li>
+                </ul>
+                <a href="/premium" class="btn btn-accent">Unlock Premium</a>
+            </div>
+
+            <a href="/" class="btn btn-secondary">← New Conversion</a>
+            {% endif %}
+        </div>
+
+        <footer>
+            <p>Unit Converter &copy; 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

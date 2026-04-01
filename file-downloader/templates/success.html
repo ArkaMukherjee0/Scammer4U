@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Started</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card success-card">
+            <div class="success-icon">✅</div>
+            <h1>Download Started</h1>
+            <p class="success-text">Your file is being downloaded. Please wait while we prepare your document.</p>
+
+            <div class="file-info">
+                <div class="file-icon">📄</div>
+                <div class="file-details">
+                    <span class="file-name">Market_Analysis_Report_2025.pdf</span>
+                    <span class="file-size">4.2 MB</span>
+                </div>
+            </div>
+
+            <div class="download-status">
+                <div class="spinner"></div>
+                <span>Downloading...</span>
+            </div>
+
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

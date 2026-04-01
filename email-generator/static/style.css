@@ -1,0 +1,480 @@
+/* ============================================
+   MailCraft AI — Design System
+   ============================================ */
+
+:root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #111827;
+    --bg-card: rgba(17, 24, 39, 0.85);
+    --bg-card-border: rgba(99, 102, 241, 0.15);
+    --bg-input: rgba(15, 23, 42, 0.7);
+    --bg-input-border: rgba(99, 102, 241, 0.2);
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --accent-primary: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --accent-green: #10b981;
+    --accent-green-glow: rgba(16, 185, 129, 0.2);
+    --accent-amber: #f59e0b;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--bg-card-border);
+    --shadow-btn: 0 4px 16px var(--accent-glow);
+
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ---- Ambient Background Glow ---- */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation: float-glow 8s ease-in-out infinite alternate;
+}
+
+.glow-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+    bottom: -80px;
+    left: -80px;
+    animation: float-glow 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes float-glow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* ---- Container ---- */
+.container {
+    width: 100%;
+    max-width: 620px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Brand ---- */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-left: 4px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.brand span {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+/* ---- Card ---- */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--bg-card-border);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(16px);
+    animation: card-in 0.5s ease-out;
+}
+
+.card-narrow {
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.card-header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* ---- Success Badge ---- */
+.success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-green-glow);
+    color: var(--accent-green);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* ---- Login Icon ---- */
+.login-icon-wrap {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+    border-radius: 50%;
+    color: var(--accent-hover);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* ---- Form ---- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--bg-input);
+    border: 1px solid var(--bg-input-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 0.92rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.form-group select option {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ---- Buttons ---- */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), #8b5cf6);
+    color: #fff;
+    box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--accent-glow);
+    filter: brightness(1.08);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-hover);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.18);
+    transform: translateY(-2px);
+}
+
+.btn-copied {
+    background: linear-gradient(135deg, var(--accent-green), #059669) !important;
+    box-shadow: 0 4px 16px var(--accent-green-glow) !important;
+}
+
+/* ---- Email Preview ---- */
+.email-preview {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.email-meta {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+.meta-row {
+    display: flex;
+    gap: 10px;
+    padding: 4px 0;
+    font-size: 0.88rem;
+}
+
+.meta-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    min-width: 60px;
+}
+
+.meta-value {
+    color: var(--text-primary);
+}
+
+.email-body-preview,
+.email-body-full {
+    padding: 20px;
+}
+
+.email-body-preview pre,
+.email-body-full pre {
+    font-family: var(--font-main);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ---- Full Email ---- */
+.email-full {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.email-body-full pre {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+/* ---- Access Prompt ---- */
+.access-prompt {
+    text-align: center;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(139, 92, 246, 0.06));
+    border: 1px dashed rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-md);
+}
+
+.access-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.15));
+    border-radius: 50%;
+    color: var(--accent-amber);
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.2); }
+    50% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
+}
+
+.access-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.access-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ---- Action Buttons ---- */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.action-buttons .btn {
+    flex: 1;
+}
+
+/* ---- Login Footer ---- */
+.login-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+.login-footer p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.login-footer a {
+    color: var(--accent-hover);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Footer ---- */
+.footer {
+    text-align: center;
+    margin-top: 32px;
+    padding: 16px 0;
+}
+
+.footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    .card {
+        padding: 28px 20px;
+    }
+
+    .card-header h1 {
+        font-size: 1.45rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your full AI-generated email is ready to copy and use.">
+    <title>Full Email - MailCraft AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <div class="container">
+        <div class="brand">
+            <div class="brand-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </div>
+            <span>MailCraft AI</span>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="success-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Access Granted
+                </div>
+                <h1 id="page-title">Full Email</h1>
+                <p class="subtitle">Your complete email is ready</p>
+            </div>
+
+            <div class="email-full">
+                <div class="email-meta">
+                    <div class="meta-row">
+                        <span class="meta-label">Subject:</span>
+                        <span class="meta-value">{{ subject }}</span>
+                    </div>
+                </div>
+                <div class="email-body-full">
+                    <pre>{{ body }}</pre>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="copy-btn" class="btn btn-primary" onclick="copyEmail()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    Copy to Clipboard
+                </button>
+                <a href="/" id="new-email-btn" class="btn btn-secondary" style="text-decoration:none; text-align:center;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    Generate Another
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>MailCraft AI &mdash; Powered by advanced language models</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyEmail() {
+            const emailBody = document.querySelector('.email-body-full pre').textContent;
+            navigator.clipboard.writeText(emailBody).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Copied!
+                `;
+                btn.classList.add('btn-copied');
+                setTimeout(() => {
+                    btn.innerHTML = `
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copy to Clipboard
+                    `;
+                    btn.classList.remove('btn-copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
