@@ -13,7 +13,8 @@
       "Bash(/tmp/analysis.txt:*)",
       "Read(//tmp/**)",
       "Bash(ls:*)",
-      "Bash(head -20 grep -n \"reset\\\\|/api\" /c/Users/Soham/Documents/NGMI26/Scammer4U/cluttered-downloads/app.py)"
+      "Bash(head -20 grep -n \"reset\\\\|/api\" /c/Users/Soham/Documents/NGMI26/Scammer4U/cluttered-downloads/app.py)",
+      "Bash(git:*)"
     ]
   }
 }

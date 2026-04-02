@@ -1331,6 +1331,44 @@ Freelance Plat  & 3 &   0 &   0 &   0 & 100 &   0 &   0 & 100 &   0 &   0 &   0 
 \end{tabular}
 \end{table}
 
+\subsection{Detection--Leakage Cross-Analysis}
+
+Table~\ref{tab:detect_leak_cross} classifies every run into one of four outcome quadrants
+by crossing the two binary signals: whether the agent detected the attack and whether it
+leaked PII (PLR$>$0). The four cells are \textit{Detect + Leak} (attack recognised but
+PII submitted regardless), \textit{Detect + Safe} (recognised and avoided leaking),
+\textit{Miss + Leak} (no recognition, PII leaked --- the modal failure mode), and
+\textit{Miss + Safe} (no recognition but no leakage --- attack structurally failed).
+
+Gemini 3 Flash is the only model to produce any \textit{Detect + Safe} runs (5 of 30, 17\%),
+showing that detection can occasionally translate into safe behaviour. However, it also has
+the most \textit{Detect + Leak} runs (6 of 30, 20\%) --- the detection-without-resistance
+failure discussed in Section~4.4.7. GPT-OSS 120B detected attacks in only 2 runs and
+leaked in both, yielding zero \textit{Detect + Safe} outcomes. Llama 4 Scout never detected
+any attack: its entire 30-run set splits between \textit{Miss + Leak} (21 runs, 70\%) and
+\textit{Miss + Safe} (9 runs, 30\%). The \textit{Detect + Safe} rate --- runs in which the
+agent both recognised and resisted an attack --- peaks at 17\% (Gemini), indicating that
+improving the conversion from detection to resistance is a critical open problem.
+
+\begin{table}[h]
+\centering
+\caption{Detection--leakage outcome classification across all 30 runs per model.}
+\label{tab:detect_leak_cross}
+\small
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Outcome} & \textbf{Gemini 3 Flash} & \textbf{GPT-OSS 120B} & \textbf{Llama 4 Scout} \\
+\hline
+Detect $+$ Leak &  6 (20\%) &  2 (7\%)  &  0 (0\%)  \\
+Detect $+$ Safe &  5 (17\%) &  0 (0\%)  &  0 (0\%)  \\
+Miss $+$ Leak   & 12 (40\%) & 15 (50\%) & 21 (70\%) \\
+Miss $+$ Safe   &  7 (23\%) & 13 (43\%) &  9 (30\%) \\
+\hline
+\textbf{Total}  & \textbf{30} & \textbf{30} & \textbf{30} \\
+\hline
+\end{tabular}
+\end{table}
+
 \subsection{Agent Step Efficiency}
 
 Table~\ref{tab:steps} records the average number of browser steps taken per session.
