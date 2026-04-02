@@ -2,16 +2,11 @@
 # ============================================================================
 # Start All Benchmark Environment Servers
 # ============================================================================
-# Launches all 10 benchmark environment servers as background processes.
-#
-# Usage:
-#   bash start_servers.sh          # Start all servers
-#   bash start_servers.sh stop     # Stop all servers
-#   bash start_servers.sh status   # Check which are running
-# ============================================================================
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 PIDFILE="$ROOT/.server_pids"
+
+FORCE=0
 
 # ── Server definitions ────────────────────────────────────────────────
 NAMES=(
@@ -53,29 +48,45 @@ PORTS=(
     "9010"
 )
 
+# ── Kill process on port (used for force mode) ────────────────────────
+kill_port() {
+    local port="$1"
+    pid=$(lsof -ti :"$port" 2>/dev/null)
+
+    if [ -n "$pid" ]; then
+        echo "  [FORCE] Killing process on port $port (PID $pid)"
+        kill "$pid" 2>/dev/null
+        sleep 1
+
+        # If still alive → hard kill
+        if kill -0 "$pid" 2>/dev/null; then
+            echo "  [FORCE] Force killing PID $pid"
+            kill -9 "$pid" 2>/dev/null
+        fi
+    fi
+}
+
 # ── Stop all servers ──────────────────────────────────────────────────
 stop_servers() {
     echo ""
     echo "  Stopping all benchmark servers..."
+
     if [ -f "$PIDFILE" ]; then
         while read -r pid; do
             if kill -0 "$pid" 2>/dev/null; then
                 kill "$pid" 2>/dev/null
-                # Also kill child processes
                 pkill -P "$pid" 2>/dev/null
                 echo "  Killed PID $pid"
             fi
         done < "$PIDFILE"
         rm -f "$PIDFILE"
     fi
-    # Fallback: kill any python processes on known ports
+
+    # Fallback: kill anything on known ports
     for port in "${PORTS[@]}"; do
-        pid=$(lsof -ti :"$port" 2>/dev/null)
-        if [ -n "$pid" ]; then
-            kill $pid 2>/dev/null
-            echo "  Killed process on port $port (PID $pid)"
-        fi
+        kill_port "$port"
     done
+
     echo "  Done."
     echo ""
 }
@@ -112,18 +123,24 @@ case "${1:-start}" in
         check_status
         exit 0
         ;;
+    force)
+        FORCE=1
+        ;;
     start)
         ;;
     *)
-        echo "Usage: $0 [start|stop|status]"
+        echo "Usage: $0 [start|stop|status|force]"
         exit 1
         ;;
 esac
 
-# ── Start all servers ─────────────────────────────────────────────────
+# ── Start servers ─────────────────────────────────────────────────────
 echo ""
 echo "  ========================================"
 echo "  Starting Benchmark Servers (10 envs)"
+if [ "$FORCE" -eq 1 ]; then
+    echo "  Mode: FORCE (will restart running servers)"
+fi
 echo "  ========================================"
 echo ""
 
@@ -138,16 +155,24 @@ for i in "${!NAMES[@]}"; do
     cmd="${CMDS[$i]}"
     port="${PORTS[$i]}"
 
-    # Check if already running
+    is_running=0
     if curl -s --connect-timeout 1 "http://localhost:$port/" > /dev/null 2>&1; then
-        echo "  [SKIP] $name — already running on port $port"
-        skipped=$((skipped + 1))
-        continue
+        is_running=1
     fi
 
-    # Start in background, redirect output to log
+    if [ "$is_running" -eq 1 ]; then
+        if [ "$FORCE" -eq 1 ]; then
+            kill_port "$port"
+        else
+            echo "  [SKIP] $name — already running on port $port"
+            skipped=$((skipped + 1))
+            continue
+        fi
+    fi
+
     logfile="$ROOT/logs/server_${name}.log"
     mkdir -p "$ROOT/logs"
+
     cd "$ROOT"
     $cmd > "$logfile" 2>&1 &
     pid=$!
@@ -157,7 +182,7 @@ for i in "${!NAMES[@]}"; do
     started=$((started + 1))
 done
 
-# Wait for servers to bind
+# Wait for servers
 echo ""
 echo "  Waiting 4 seconds for servers to start..."
 sleep 4
@@ -192,6 +217,7 @@ if [ "$failed" -gt 0 ]; then
     echo ""
 fi
 
-echo "  To stop all:    bash start_servers.sh stop"
+echo "  To stop all:     bash start_servers.sh stop"
 echo "  To check status: bash start_servers.sh status"
+echo "  To force restart: bash start_servers.sh force"
 echo ""

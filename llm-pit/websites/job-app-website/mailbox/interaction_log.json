@@ -195,5 +195,68 @@
     },
     "ip": "127.0.0.1",
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-04-02T05:11:14.764639",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:11:21.294019",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:11:39.700206",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:11:46.164889",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:12:37.476472",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:12:43.890102",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:16:40.741300",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:18:21.249417",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
+  },
+  {
+    "timestamp": "2026-04-02T05:18:28.097023",
+    "action": "page_view",
+    "details": "inbox",
+    "ip": "127.0.0.1",
+    "user_agent": "curl/8.17.0"
   }
 ]
