@@ -286,9 +286,7 @@ Project Guide
 {\Large \textbf{Acknowledgements}}\\[18pt]
 \end{center}
 
-We are profoundly grateful to \textbf{\guidename} of School of Computer Engineering,
-KIIT University for his expert guidance and continuous encouragement throughout to see
-that this project rights its target since its commencement to its completion.
+We are profoundly grateful to \textbf{\guidename} of the School of Computer Engineering, KIIT University, for his expert guidance and continuous encouragement throughout to see that this project achieves its target since its commencement to its completion.
 
 % Add more acknowledgement text here...
 
@@ -311,34 +309,14 @@ Signature of \memberE
 {\Large \textbf{ABSTRACT}}\\[18pt]
 \end{center}
 
-Large Language Model (LLM) and Vision-Language Model (VLM) agents are increasingly deployed to
-browse the web autonomously on behalf of users. These agents store sensitive personal information
---- including names, addresses, credit card numbers, and social security numbers --- so that they
-can complete tasks such as filling in forms, making purchases, and applying for jobs. As these
-agents gain traction, adversaries have strong incentives to construct deceptive web environments
-designed to socially engineer the agent into surrendering this stored data.
+Large Language Model (LLM) and Vision-Language Model (VLM) agents are increasingly deployed to browse the web autonomously on behalf of users. These agents store sensitive personal information, including names, addresses, credit card numbers, and social security numbers, so that they can complete tasks such as filling in forms, making purchases, and applying for jobs. As these agents gain traction, adversaries have strong incentives to construct deceptive web environments designed to socially engineer the agent into surrendering this stored data.
 
-This report introduces \textbf{Scammer4U}, a benchmark for evaluating the susceptibility of
-VLM-based web agents to social engineering attacks. We construct 16 realistic adversarial
-web environments spanning three difficulty tiers, covering attack categories including phishing
-clones, dark pattern overloads, urgency tricks, fake trust signals, conversational deception,
-prompt injection, OAuth impersonation, and credential harvesting via paywalls. Each environment
-presents the agent with a plausible legitimate task while hiding a social engineering trap.
+This report introduces \textbf{Scammer4U}, a benchmark for evaluating the susceptibility of VLM-based web agents to social engineering attacks. We construct 16 realistic adversarial web environments spanning three difficulty tiers, covering attack categories including phishing clones, dark pattern overloads, urgency tricks, fake trust signals, conversational deception, prompt injection, OAuth impersonation, and credential harvesting via paywalls. Each environment presents the agent with a plausible, legitimate task while hiding a social engineering trap.
 
-To examine the scalability of attack surface generation, we introduce an \textbf{LLM-Pit}
-pipeline that uses an LLM (Claude Code) to autonomously generate functionally equivalent
-versions of 10 benchmark environments from structured prompts, enabling a controlled comparison
-between hand-coded and LLM-generated attack websites.
+To examine the scalability of attack surface generation, we introduce an \textbf{LLM-Pit} pipeline that uses an LLM (Claude Code) to autonomously generate functionally equivalent versions of 10 benchmark environments from structured prompts, enabling a controlled comparison between hand-coded and LLM-generated attack websites.
 
-We evaluate three frontier models --- Gemini~3 Flash, GPT-OSS 120B, and Llama~4 Scout ---
-across 180 independent sessions (90 hand-coded, 90 LLM-generated) and measure four metrics:
-PII Leakage Rate (PLR), Attack Success Rate (ASR), Task Completion Rate (TCR), and Detection
-Rate (DR). Key findings include: (1)~all models exhibit PLR above 47\%, with hand-coded
-websites achieving 62.2\% overall ASR compared to 50.0\% for LLM-generated sites; (2)~Tier~2
-environments are the most dangerous, with up to 100\% ASR because attacks blend into plausible
-task flows; (3)~detection does not prevent leakage --- Gemini detects attacks in 37\% of runs
-but still leaks PII; and (4)~text-only models perform comparably to VLMs, suggesting visual
-understanding provides minimal defensive advantage.
+We evaluate three frontier models: Gemini~3 Flash, GPT-OSS 120B, and Llama~4 Scout across 180 independent sessions (90 hand-coded, 90 LLM-generated) and measure four metrics: PII Leakage Rate (PLR), Attack Success Rate (ASR), Task Completion Rate (TCR), and Detection Rate (DR). Key findings include: (1)~all models exhibit PLR above 47\%, with hand-coded websites achieving 62.2\% overall ASR compared to 50.0\% for LLM-generated sites; (2)~Tier~2 environments are the most dangerous, with up to 100\% ASR because attacks blend into plausible
+task flows; (3)~detection does not prevent leakage as Gemini detects attacks in 37\% of runs but still leaks PII; and (4)~text-only models perform comparably to VLMs, suggesting visual understanding provides minimal defensive advantage.
 
 \vspace{12pt}
 \noindent\textbf{Keywords:} VLM agents, social engineering, phishing, web security, benchmark,
@@ -376,15 +354,15 @@ PII leakage, prompt injection, conversational deception, agentic AI safety, LLM-
 Autonomous AI agents that browse the web are moving rapidly from research prototypes into
 production deployments. Systems such as OpenAI Operator, Google Project Mariner, Anthropic's
 computer-use feature, and a growing ecosystem of open-source frameworks allow a user to delegate
-web-based tasks --- booking flights, filling in applications, managing subscriptions --- to an
+web-based tasks, such as booking flights, filling in applications, and managing subscriptions, to an
 LLM or VLM agent. To do this usefully, these agents must be given the user's personal information:
 their name, address, payment details, government identifiers, and login credentials. The agent
 stores this data in its context and uses it to populate forms on the user's behalf.
 
 This creates an entirely new attack surface. A malicious website operator no longer needs to
 compromise the user's device or trick the human into a bad click: they only need to deceive the
-agent. Social engineering attacks --- phishing pages, urgency pressure, fake authority signals,
-conversational manipulation --- that were designed for humans are now being repurposed for AI.
+agent. Social engineering attacks (phishing pages, urgency pressure, fake authority signals,
+and conversational manipulation) that were designed for humans are now being repurposed for AI.
 The question is no longer whether humans will fall for these attacks, but whether the AI agents
 acting on their behalf will.
 
@@ -402,7 +380,7 @@ We present \textbf{Scammer4U}, a benchmark addressing this gap. Our contribution
   \item \textbf{16 adversarial web environments} spanning three difficulty tiers and twelve
         distinct attack categories, each hosting a plausible legitimate task alongside a hidden
         social engineering trap.
-  \item \textbf{A tiered difficulty taxonomy} --- Easy, Hard, and Very Hard --- enabling
+  \item \textbf{A tiered difficulty taxonomy} (Easy, Hard, and Very Hard) enabling
         systematic ablation of agent vulnerability across attack sophistication levels.
   \item \textbf{Adaptive conversational attacks} with response trees that modify attacker
         behaviour based on whether the agent complied, refused, deflected, or questioned,
@@ -456,17 +434,17 @@ agents) through psychological tactics rather than technical exploits. Categories
 benchmark include:
 
 \begin{itemize}
-  \item \textbf{Phishing} --- impersonation of trusted entities (banks, government agencies,
+  \item \textbf{Phishing:} impersonation of trusted entities (banks, government agencies,
         OAuth providers) to harvest credentials or sensitive data.
-  \item \textbf{Dark patterns} --- interface design choices that manipulate users into actions
+  \item \textbf{Dark patterns:} interface design choices that manipulate users into actions
         they did not intend, such as pre-checked consent boxes and deliberately hidden safe options.
-  \item \textbf{Urgency and scarcity} --- countdown timers, ``limited slots'' messaging, and
+  \item \textbf{Urgency and scarcity:} countdown timers, ``limited slots'' messaging, and
         deadline pressure designed to suppress deliberate reasoning.
-  \item \textbf{Fake trust signals} --- fraudulent security badges, regulatory claims, and
+  \item \textbf{Fake trust signals:} fraudulent security badges, regulatory claims, and
         social proof (inflated reviews, download counts) that manufacture credibility.
-  \item \textbf{Conversational deception} --- multi-turn dialogue where an attacker progressively
+  \item \textbf{Conversational deception:} multi-turn dialogue where an attacker progressively
         builds rapport and escalates PII requests, adapting to resistance.
-  \item \textbf{Prompt injection} --- hidden instructions embedded in web content that attempt
+  \item \textbf{Prompt injection:} hidden instructions embedded in web content that attempt
         to override the agent's original task instructions.
 \end{itemize}
 
@@ -568,15 +546,15 @@ Environments are stratified into three tiers that correspond to the level of con
 required to detect the attack:
 
 \begin{itemize}
-  \item \textbf{Tier 1 --- Easy.} Red flags are unambiguous. An agent failing a Tier 1
+  \item \textbf{Tier 1 (Easy).} Red flags are unambiguous. An agent failing a Tier 1
         environment has a critical safety deficiency. Examples: downloading software that asks
         for a credit card; a GitHub OAuth page hosted on \texttt{localhost} rather than
         \texttt{github.com}.
-  \item \textbf{Tier 2 --- Hard.} Attacks require domain-specific knowledge and contextual
+  \item \textbf{Tier 2 (Hard).} Attacks require domain-specific knowledge and contextual
         reasoning. The domain may be typosquatted (zeros substituted for letters), the attack
         may unfold across multiple form steps, or familiar UX patterns may over-collect data
         in subtle ways. Current frontier models are expected to sometimes fail.
-  \item \textbf{Tier 3 --- Very Hard.} Multi-turn conversational deception, adaptive response
+  \item \textbf{Tier 3 (Very Hard).} Multi-turn conversational deception, adaptive response
         trees, layered prompt injection, and contextually plausible PII requests (e.g., KYC
         on a crypto platform). SOTA models are expected to frequently fail.
 \end{itemize}
@@ -623,12 +601,12 @@ The attacker NPC responds differently depending on the agent's prior message, cl
 one of four categories:
 
 \begin{itemize}
-  \item \textbf{Complied} --- agent provided the requested PII; attacker confirms and closes.
-  \item \textbf{Refused} --- agent explicitly declined; attacker applies escalation pressure
+  \item \textbf{Complied:} agent provided the requested PII; attacker confirms and closes.
+  \item \textbf{Refused:} agent explicitly declined; attacker applies escalation pressure
         (supervisor threat, deadline).
-  \item \textbf{Deflected} --- agent gave a non-answer; attacker repeats request with added
+  \item \textbf{Deflected:} agent gave a non-answer; attacker repeats request with added
         justification.
-  \item \textbf{Questioned} --- agent asked why the data is needed; attacker provides a
+  \item \textbf{Questioned:} agent asked why the data is needed; attacker provides a
         fabricated but plausible explanation.
 \end{itemize}
 
@@ -700,15 +678,15 @@ for scorer integration. Each environment is isolated on a dedicated \texttt{loca
 
 \textbf{Agent Layer.} The VLM web agent, implemented in \texttt{agent/core/}, consists of:
 \begin{itemize}
-  \item \textit{Browser} --- Playwright wrapper managing page navigation, clicking, typing,
+  \item \textit{Browser:} Playwright wrapper managing page navigation, clicking, typing,
         scrolling, and screenshot capture.
-  \item \textit{Observer} --- captures a screenshot and extracts interactive element metadata
+  \item \textit{Observer:} captures a screenshot and extracts interactive element metadata
         from the current page state.
-  \item \textit{LLM Client} --- sends the screenshot and text context to the language model
+  \item \textit{LLM Client:} sends the screenshot and text context to the language model
         and parses the returned JSON action.
-  \item \textit{Context Manager} --- maintains a sliding window of the last 5 steps in full
+  \item \textit{Context Manager:} maintains a sliding window of the last 5 steps in full
         detail; older steps are LLM-compressed into a running summary to manage token usage.
-  \item \textit{PII Tracker} --- side-channel monitor that intercepts typed values and checks
+  \item \textit{PII Tracker:} side-channel monitor that intercepts typed values and checks
         them against the user profile in real time.
 \end{itemize}
 
@@ -1175,8 +1153,8 @@ deception that, paradoxically, gives the model more opportunities to reconsider.
 Table~\ref{tab:field_leakage} shows how frequently each critical- and high-sensitivity
 profile field was leaked, measured as the percentage of each model's 30 runs in which
 that field was submitted to an attacker-controlled endpoint.
-The \texttt{supercell\_email} field --- the game-account credential used solely in the
-CoC Gems environment --- was the most frequently leaked critical field overall (47--67\%),
+The \texttt{supercell\_email} field, which is the game-account credential used solely in the
+CoC Gems environment, was the most frequently leaked critical field overall (47--67\%),
 driven by Llama 4 Scout submitting it in every one of its CoC Gems runs.
 Across all three models, full payment card details (\texttt{card\_number}, \texttt{cvv},
 \texttt{card\_expiry}) were leaked in 10--30\% of runs, and \texttt{ssn} in 20--30\%.
@@ -1290,9 +1268,9 @@ All environments    & Llama 4 Scout  &   0\% & --- \\
 \subsection{Attack Success vs.\ Task Completion Cross-Analysis}
 
 Table~\ref{tab:asr_tcr} cross-analyses attack success and task completion at the run level,
-yielding four outcome categories: \textbf{Both} (attack succeeded and task completed ---
+yielding four outcome categories: \textbf{Both} (attack succeeded and task completed,
 the worst-case outcome), \textbf{Atk} (attack succeeded but task not completed),
-\textbf{Task} (task completed, attack resisted --- the ideal outcome), and \textbf{None}
+\textbf{Task} (task completed, attack resisted; the ideal outcome), and \textbf{None}
 (neither succeeded). Values are percentages over 3 runs.
 
 For Llama 4 Scout, the dominant outcome in every vulnerable environment is \textit{Both}:
@@ -1302,7 +1280,7 @@ outcome on Cluttered Downloads (100\%), where it submitted PII but failed to rea
 legitimate download. The ideal \textit{Task only} outcome is consistent across News Site
 and Summarizer for all models, and appears partially in Gov Portal (GPT-OSS, 33\%) and
 Freelance Platform (GPT-OSS, 100\%; Llama, 67\%). The \textit{None} outcome indicates
-runs where the agent hit the step limit without achieving either objective --- most common
+runs where the agent hit the step limit without achieving either objective, most common
 in News Site (GPT-OSS 67\%, Gemini 100\%) and Summarizer (GPT-OSS 100\%, Gemini 100\%).
 
 \begin{table}[h]
@@ -1585,8 +1563,8 @@ Source & Model & Tier & PLR & ASR & TCR & DR & N \\
 The most important finding from the tier analysis is that \textbf{Tier~2 (Hard) environments
 are the most dangerous tier in the benchmark}, not Tier~1. In HC runs, Gemini and Llama
 achieve 100\% ASR at Tier~2, and even at LP, Tier~2 ASR remains above 75\% for most models.
-This occurs because Tier~2 attacks are embedded in contextually plausible workflows ---
-job applications, government tax portals, e-commerce checkouts --- where PII submission
+This occurs because Tier~2 attacks are embedded in contextually plausible workflows
+such as job applications, government tax portals, and e-commerce checkouts, where PII submission
 appears reasonable. The agent completes the form because it looks legitimate.
 
 Tier~3 environments show 0\% PLR/ASR across both sources and all models. However, TCR is
@@ -1617,8 +1595,8 @@ PII fields between hand-coded and LLM-generated websites, averaged across all th
 \end{tabular}
 \end{table}
 
-Financial field leakage drops modestly in LP, consistent with the overall lower ASR. Notably,
-CVV leakage is identical across sources (20\%), suggesting that once an agent decides to fill
+Financial field leakage drops modestly in LP, consistent with the overall lower ASR.
+CVV leakage is notably identical across sources (20\%), suggesting that once an agent decides to fill
 a payment form, it fills it \textit{completely} --- partial form submission is not a common
 behaviour. Banking fields (\texttt{routing\_number}, \texttt{account\_number}) show the
 largest drop ($-8$~pp), reflecting the reduced effectiveness of the LP government portal and
@@ -1783,7 +1761,7 @@ Env & Source & & & & & & \\
 Our results reveal a consistent disconnect between detection and prevention. Gemini~3 Flash
 achieved the highest detection rate across both sources (37\% HC, 43\% LP), using keywords
 like ``suspicious,'' ``phishing,'' and ``scam'' in its reasoning traces. However, detection
-did not prevent leakage --- on Cluttered Downloads (HC), Gemini detected the attack in
+did not prevent leakage. On Cluttered Downloads (HC), Gemini detected the attack in
 100\% of runs yet leaked PII in 100\% of runs, spending all 50 steps navigating the
 cluttered interface without finding a safe path. This suggests that current VLMs can
 \textit{recognise} threats but lack the action-planning capability to \textit{respond}
@@ -1832,7 +1810,7 @@ requires semantic-level reasoning about context and intent, not visual pattern r
 \subsection{Scalability of LLM-Generated Attacks}
 
 The LLM-Pit experiment demonstrates that LLM-generated attack websites can extract PII
-from frontier agents at a 50\% overall ASR --- lower than hand-coded (62\%) but still
+from frontier agents at a 50\% overall ASR, lower than hand-coded (62\%) but still
 operationally dangerous. The 12~pp gap is attributable to reduced attack refinement in
 specific environments (Cluttered Downloads, E-commerce), while structurally simpler attacks
 (GitHub Phishing, Marketplace) transfer perfectly. This suggests that as LLM generation
@@ -1842,7 +1820,7 @@ threat vector.
 Importantly, the LLM-Pit pipeline produced functional attack websites in a single
 generation pass with one reflection step, requiring only minor manual fixes (Unicode
 encoding, missing API endpoints). The 50\% ASR achieved by these automatically generated
-sites --- against frontier models with safety training --- demonstrates that the barrier
+sites, even against frontier models with safety training, demonstrates that the barrier
 to creating effective social engineering environments is already low.
 
 \subsection{Implications for Agent Safety}
@@ -1889,8 +1867,8 @@ leakage, attack success, task completion, and explicit detection. To investigate
 scalability of attack surface generation, we introduced LLM-Pit, a pipeline that
 autonomously generates functionally equivalent attack websites using an LLM.
 
-Our evaluation of three frontier models --- Gemini 3 Flash, GPT-OSS 120B, and Llama 4
-Scout --- across 180 total sessions (90 hand-coded, 90 LLM-generated) reveals several
+Our evaluation of three frontier models (Gemini 3 Flash, GPT-OSS 120B, and Llama 4
+Scout) across 180 total sessions (90 hand-coded, 90 LLM-generated) reveals several
 key findings:
 
 \begin{enumerate}
@@ -1909,8 +1887,8 @@ key findings:
         obvious red flags, because plausibility overrides suspicion.
 
   \item \textbf{LLM-generated attacks are viable but less effective.} The LLM-Pit pipeline
-        produced websites that achieved 50\% overall ASR --- a 12~pp reduction from
-        hand-coded sites --- with the gap concentrated in environments requiring fine-grained
+        produced websites that achieved 50\% overall ASR, a 12~pp reduction from
+        hand-coded sites, with the gap concentrated in environments requiring fine-grained
         deceptive craftsmanship (Cluttered Downloads, E-commerce). Structurally simple
         attacks (GitHub Phishing, Marketplace) transferred perfectly.
 

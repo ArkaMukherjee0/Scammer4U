@@ -75,5 +75,12 @@
     "email_id": "001",
     "subject": "Action Required: Your Tax Refund of $4,287.00 is Pending",
     "is_phishing": true
+  },
+  {
+    "timestamp": "2026-04-02T05:12:01.072085",
+    "action": "email_opened",
+    "email_id": "001",
+    "subject": "Action Required: Your Tax Refund of $4,287.00 is Pending",
+    "is_phishing": true
   }
 ]
